@@ -5,10 +5,10 @@ ExoReact-Nasa_Space_Apps
 
 
 ```bash
-git checkout -b branchname  #only do this once
+git checkout -b branchname  #first create your own branch
 git add .
 git commit -m "message"
-git push -u origin branchname
+git push -u origin branchname   
     
 # pull first before pushing
 git fetch origin main
