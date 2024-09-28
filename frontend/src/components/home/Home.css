@@ -1,0 +1,111 @@
+/* Home.css */
+@import '../variables.css';
+
+.home-container {
+    display: flex;
+    background-color: var(--background-color);
+    flex-direction: column;
+}
+
+.home-container > div {
+    margin: 0;
+    padding: 0;
+}
+
+.title-section {
+    display: flex;
+    background-color: var(--primary-color);
+    min-width: 100%;
+}
+
+.home-left {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.title-box {
+    background-color: var(--secondary-color);
+    /* Transparent white box */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 500px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+    align-items: center;
+    /* Center content horizontally */    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+.title-box button {
+    padding: 10px 20px;
+    background-color: var(--accent-color01);
+    border: none;
+    border-radius: 5px;
+    color: var(--text-same);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    /* Smooth transition effect */
+}
+
+.title-font.home {
+    font-weight: bold;
+    margin-bottom: 0px;
+
+}
+.description.home{
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.title-box button:hover {
+    background-color: var(--accent-color02);
+}
+
+.home-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.background-gif {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.home-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;    
+    min-height: 300px;
+}
+
+.stat-box {
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    flex: 1;
+    max-width: 300px;
+    min-height: 150px;
+   overflow-wrap: break-word; /* Ensures long words break to fit within the container */
+    word-wrap: break-word;
+    word-break: break-word;
+    
+}
+
+.stat-box h3 {   
+    margin: 0;
+   
+}

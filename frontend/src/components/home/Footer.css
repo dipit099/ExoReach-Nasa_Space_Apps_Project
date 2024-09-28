@@ -1,0 +1,38 @@
+/* Footer.css */
+@import '../variables.css';
+
+.footer {
+    display: flex;
+    justify-content: space-around;  
+    align-items: center; 
+    padding: 20px;
+    background-color: var(--footer-color);
+    color: var(--text-same);
+    border-top: 1px solid var(--primary-color);
+    min-height: 200px;
+}
+
+.footer-title{
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--text-same);
+    margin-bottom: 10px;
+}
+.footer-description{
+    font-size: 20px;
+    color: var(--text-same);
+    margin-bottom: 10px;
+}
+.footer-left{
+    max-width: 50%;
+}
+.footer-right{
+    max-width: 50%;
+}
+.footer-nav a {
+    text-decoration: none;
+    color: var(--text-same);   
+}
+.footer-nav a:hover {
+    color: var(--accent-color01);
+}

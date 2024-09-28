@@ -1,0 +1,50 @@
+@import './components/variables.css';
+
+body {
+  margin: 0;
+  font-family: "Inter";
+  /*Roboto,Inter, Poppins*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  color: var(--text-normal);
+  min-height: 100vh;
+  font-size: 20px;
+}
+
+.title-font,h1 {
+  font-size: 48px;  
+  font-weight: bold;    
+}
+
+.big-font,h2{
+    font-size: 32px;  
+    margin: 10px;
+}
+
+.medium-font,h3{
+  font-size: 24px; 
+  margin: 0;
+}
+
+.description,p{
+  font-size: 20px;
+  margin-top: 10px; 
+  font-family: "Roboto";
+  color: var(--text-low);
+}
+
+button{
+  font-size: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--accent-color01);
+  color: var(--text-same);
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button:hover{
+  background-color: var(--secondary-color);
+}

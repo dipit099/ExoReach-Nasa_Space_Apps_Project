@@ -1,0 +1,82 @@
+/* Navbar.css */
+@import '../variables.css';
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: var(--background-color);
+    color: var(--text-normal);
+    max-height: 50px;
+}
+
+.navbar-left {
+    display: flex;
+    gap: 10px;
+}
+
+.logo-icon {
+    font-size: 40px;
+    color: var(--text-high);
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--text-high);
+    font-family: cursive, Arial, Helvetica, sans-serif;
+}
+
+.navbar-center {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-normal);
+}
+
+.nav-link.active {
+    text-decoration: underline;
+    color: var(--accent-color01);
+    /* Optional: change color for active link */
+}
+
+.nav-link:hover {
+    color: var(--accent-color01);
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.login-button {
+    text-decoration: none;
+    color: var(--text-same);
+    background-color: var(--accent-color02);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.login-button:hover {
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+}
+
+.theme-toggle-button {
+    background: none;
+    color: var(--text-normal);
+    cursor: pointer;
+    font-size: 35px;
+    padding: 0;
+    margin-right: 10px;
+
+}
