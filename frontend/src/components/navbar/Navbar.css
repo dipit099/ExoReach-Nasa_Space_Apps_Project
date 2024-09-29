@@ -8,8 +8,9 @@
     padding: 10px 30px;
     background-color: var(--background-color);
     color: var(--text-normal);
-    max-height: 50px;
+    max-height: 47px;
     font-family: 'Glacial', cursive, Arial, Helvetica, sans-serif;
+    background: linear-gradient(to bottom,#052355, #020e21);
 }
 
 .navbar-left {
@@ -56,8 +57,9 @@
 
 .navbar-right {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
     font-family: 'Glacial';
     font-weight: bold;
 }
@@ -66,14 +68,14 @@
     text-decoration: none;
     color: var(--text-same);
     background-color: var(--accent-color02);
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 5px;
     font-weight: bold;
 }
 
 .login-button:hover {
     background-color: var(--accent-color01);
-    color: var(--text-same);
+    color: var(--text-low);
 }
 
 .theme-toggle-button {

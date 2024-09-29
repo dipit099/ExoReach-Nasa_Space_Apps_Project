@@ -1,16 +1,15 @@
 :root {
-    --background-color: #F0F5F1;
-    --background-color02: #f1fff4;
+    --background-color: #052355;
+    --background-color02: #020e21;
     --footer-color: #222222;
     --primary-color: #D1E8D6;
     --secondary-color: #A7D7C5;
-    --accent-color01: #0D6D95;
+    --accent-color01: #ffbe58;
     --accent-color02: #7933FF;
-
-    --text-high: #1C3B29;
-    --text-low: #4B6654;
-    --text-normal: black;
-    --text-same: white;
+    --text-high: #ffbe58;
+    --text-low: #020e21;
+    --text-normal: #e0f3ff;
+    --text-same: #e0f3ff;
 }
 
 [data-theme="dark"] {
