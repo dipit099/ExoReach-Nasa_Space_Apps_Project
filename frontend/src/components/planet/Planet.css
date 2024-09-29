@@ -1,0 +1,53 @@
+@import '../variables.css';
+
+.homeplant-container {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    background-image: url('../../assets/home-planet.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.exoplanet-text{
+    margin-top: 250px;
+    margin-left: 100px;
+    color: white;
+    animation: floatUp 3s ease-out forwards;
+}
+.homeplant-text {
+    background-color: rgba(0, 0, 0, 0.5); 
+    color: white;
+    padding: 20px;
+    text-align: left;
+}
+
+.homeplant-text p {
+    font-family: 'Glacial';
+    line-height: 1.4;
+    color : white;
+    margin-top: 10px;
+    font-size: 1.35rem;
+    margin-left: 95px;
+    margin-right: 380px;
+}
+
+.anton-regular {
+    font-family: "Anton", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 6.5rem;
+  }
+  
+  @keyframes floatUp {
+    0% {
+        transform: translateY(20px); /* Start 20px below */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: translateY(0); /* End at the original position */
+        opacity: 1; /* Fade in */
+    }
+}

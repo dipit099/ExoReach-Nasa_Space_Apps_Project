@@ -1,30 +1,21 @@
 import React from 'react';
 import './Home.css';
-import Navbar from '../navbar/Navbar';
-import Footer from './Footer';
-
+import Navbar from '../../components/navbar/Navbar';
+import SubNavbar from '../../components/subnavbar/Subnavbar';
 import CountUp from 'react-countup';
 import gif from '../../assets/eHospital.gif';
-import HomeReview from './HomeReview'; // Import the HomeReview component
+import Planet from '../../components/planet/Planet';
+const items = ['Explore Exoplanets', 'ExoCards', 'ExoShowdown', 'ExoQuiz'];
 
 function Home() {
   return (
     <div>
       <Navbar />
+      <SubNavbar items={items}/>
+      <Planet/>
       <div className="home-container">
         <div className="title-section">
-          <div className="home-left">
-            <div className="title-box">
-              <div className='title-font home'>CareConnect</div>
-              <div className='title-font home'>Integrated Healthcare Network</div>
-              <div className='description home'>
-                Experience seamless care with CareConnect, where your health is our priority. Join our integrated network today.
-              </div>
-              <button>Join Us Now</button>
-            </div>
-          </div>
           <div className="home-right">
-            <img src={gif} alt="Healthcare GIF" className="background-gif" />
           </div>
         </div>
         <div className='home-stats'>
@@ -45,9 +36,8 @@ function Home() {
           </div>
         </div>
 
-        <HomeReview /> {/* Use the HomeReview component */}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
