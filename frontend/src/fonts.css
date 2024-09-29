@@ -1,14 +1,20 @@
 @font-face {
     font-family: 'Glacial';
-    src: url('D:/NASA/ExoReact-Nasa_Space_Apps/frontend/src/assets/fonts/GlacialIndifference-Regular.otf') format('opentype');
+    src: url('./assets/fonts/GlacialIndifference-Regular.otf') format('opentype');
     font-weight: normal;
     font-style: normal;
   }
   
   @font-face {
     font-family: 'Glacial';
-    src: url('D:/NASA/ExoReact-Nasa_Space_Apps/frontend/src/assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
+    src: url('./assets/fonts/GlacialIndifference-Bold.otf') format('opentype');
     font-weight: bold;
     font-style: normal;
   }
   
+  @font-face {
+    font-family: 'Norwester';
+    src: url('./assets/fonts/norwester.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }
