@@ -9,6 +9,7 @@
     background-color: var(--background-color);
     color: var(--text-normal);
     max-height: 50px;
+    font-family: 'Glacial', cursive, Arial, Helvetica, sans-serif;
 }
 
 .navbar-left {
@@ -25,7 +26,7 @@
     font-size: 32px;
     font-weight: bold;
     color: var(--text-high);
-    font-family: cursive, Arial, Helvetica, sans-serif;
+    font-family: 'Glacial', cursive, Arial, Helvetica, sans-serif;
 }
 
 .navbar-center {
