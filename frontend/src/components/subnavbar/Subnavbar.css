@@ -1,0 +1,30 @@
+.subnavbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(2, 37, 85, 0.65);
+    margin-left: 15rem;
+    margin-right: 15rem;
+    height: 2.7rem;
+  }
+  
+  .subnavbar-item {
+    color: white;
+    font-size: 0.89em;
+    cursor: pointer;
+    text-decoration: none; 
+    transition: color 0.3s ease;
+  }
+  
+  .subnavbar-item:hover {
+    color: #ffcc00;
+  }
+  
+  .subnavbar-item.active {
+    color: #ffcc00; 
+  }
+  
+  .subnavbar-item:first-child {
+    color: #ffcc00; 
+  }
+  

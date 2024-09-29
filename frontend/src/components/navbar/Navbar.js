@@ -33,7 +33,9 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <img src={Logo} alt="Logo" className="logo-icon" />
+            <Link to="/">  
+                    <img src={Logo} alt="Logo" className="logo-icon" />
+            </Link>
                 <div className="logo-text">ExoReach</div>
             </div>
             <div className="navbar-center">
