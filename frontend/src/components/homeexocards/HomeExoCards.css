@@ -1,0 +1,89 @@
+@import '../variables.css';
+
+/* Define the keyframes for the scroll animation */
+@keyframes scrollAnimation {
+  0% {
+    transform: translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Apply the animation to each card based on its index */
+.card-ani-1 {
+  animation: scrollAnimation 0.5s ease forwards; /* Card 1 */
+  transform: translateX(-100px) rotate(-40deg);
+}
+
+.card-ani-2 {
+  animation: scrollAnimation 0.5s ease forwards; /* Card 2 */
+  transform: translateX(-50px) rotate(-30deg);
+}
+
+.card-ani-3 {
+  animation: scrollAnimation 0.5s ease forwards; /* Card 3 */
+  transform: translateX(0) rotate(-20deg);
+}
+
+.exocards-section {
+  display: flex;                   /* Use flexbox for layout */
+  align-items: flex-start;        /* Align items to the start vertically */
+  justify-content: space-between;  /* Space between the sections */
+  margin-top: 70px;               /* Adjust as needed */
+}
+
+.exocards-section-left {
+  display: flex;                   /* Keep this flex for card layout */
+  flex-direction: column;          /* Ensure cards stack vertically */
+  align-items: center;            /* Center cards horizontally */
+  width: 50%;                     /* Occupy half the space */
+  position: relative;              /* Allow absolute positioning of cards without overlap */
+}
+
+.main {
+  display: flex;                  /* Flexbox for card layout */
+  justify-content: center;        /* Center cards horizontally */
+  position: relative;             /* Required for absolute positioning of cards */
+  height: 30vmax;      
+  margin-left: 50px;         
+}
+
+.card {
+  width: 331px;
+  height: 442.1px;
+  transition: .3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  position: absolute;            
+}
+
+.exocards-section-right {
+  width: 30%;  
+  text-align: right;  
+  margin-right: 100px; 
+  font-size: 27px;
+  font-family: 'Glacial';
+  line-height: 1.49;              
+}
+
+.button-wrap-homexo {
+  margin-left: 200px;
+}
+  
+.anton-regular-homexo {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  margin-top: 3rem;
+  text-align: left;
+  margin-left: 100px;
+}
+
+.highlight-text {
+  color: var(--text-high);
+  font-style: italic;
+  font-weight: bold;
+}
