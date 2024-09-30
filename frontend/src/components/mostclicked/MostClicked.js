@@ -22,7 +22,9 @@ const MostClickedExoplanets = () => {
 
   return (
     <div className="most-clicked-section">
-      <div className='anton-regular-most'>Most Clicked Exoplanets</div>
+        <br />
+        <br />
+      <div className='anton-regular-most'>MOST CLICKED EXOPLANETS</div>
       <div className="most-clicked-list">
         {mostClicked.map((planet, index) => (
           <MostClickedCard name={planet.name} imageSrc={planet.img} />
