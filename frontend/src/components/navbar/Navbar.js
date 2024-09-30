@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import '../variables.css';
-// import { FaBriefcaseMedical } from "react-icons/fa6";
 import Logo from '../../assets/logo.png';
-// import { MdDarkMode } from "react-icons/md";
-// import { MdOutlineLightMode } from "react-icons/md";
 import Login from '../login/Login'; // Import the Login component
 
 function Navbar() {
