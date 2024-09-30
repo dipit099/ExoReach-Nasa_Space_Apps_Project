@@ -48,8 +48,8 @@ function Navbar() {
             </div>
             <div className="navbar-right">
                 <Link to="/" className={getLinkClass('/')}>Home</Link>
-                <Link to="/about" className={getLinkClass('/about')}>Community</Link>
-                <Link to="/services" className={getLinkClass('/services')}>Profile</Link>
+                <Link to="/community" className={getLinkClass('/about')}>Community</Link>
+                <Link to="/profile" className={getLinkClass('/services')}>Profile</Link>
                 {/* <button onClick={toggleTheme} className="theme-toggle-button">
                     {theme === 'light' ? (
                         <MdDarkMode className="theme-icon" />
@@ -57,7 +57,7 @@ function Navbar() {
                         <MdOutlineLightMode className="theme-icon" />
                     )}
                 </button> */}
-                <button onClick={openLoginPopup} className="login-button">Login</button>
+                <button onClick={openLoginPopup} className="login-button1">Login</button>
             </div>
             {isLoginPopupOpen && <Login onClose={closeLoginPopup} createAccountPopupOpen={openCreateAccountPopup} />}
             {isCreateAccountPopupOpen && <CreateAccount onClose={closeCreateAccountPopup} loginPopupOpen={openLoginPopup} />}

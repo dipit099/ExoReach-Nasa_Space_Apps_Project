@@ -1,0 +1,86 @@
+/* ExoVision.css */
+.exovision-container {
+    text-align: center;
+    padding: 20px;  /* Reduced padding to make content closer */
+    background-color: var(--background-color);
+    color: var(--text-normal);
+    font-family: 'Roboto', sans-serif;
+    margin-top: 0;  /* Remove any top margin */
+}
+
+.exovision-title {
+    font-size: 3rem;
+    color: var(--accent-color01);
+    margin: 0;  /* Remove any default margin from the h1 element */
+    padding-top: 10px;  /* Add a small padding for breathing space */
+    animation: fadeIn 2s ease-in-out;
+}
+
+.exovision-iframe-container {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.exovision-iframe-container:hover {
+    transform: scale(1.02);  /* Slight zoom on hover */
+}
+
+.exovision-iframe {
+    width: 100%;
+    height: 600px;
+}
+
+.exovision-description {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    color: var(--text-low);
+    animation: fadeIn 3s ease-in-out;
+}
+
+.exovision-buttons {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.explore-btn, .learn-btn {
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.explore-btn {
+    background-color: var(--accent-color01);
+    color: var(--background-color02);
+}
+
+.learn-btn {
+    background-color: var(--accent-color02);
+    color: var(--background-color02);
+}
+
+.explore-btn:hover, .learn-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Additional Global Styles */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+

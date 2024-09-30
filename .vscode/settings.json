@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "aws-0-ap-southeast-1.pooler.supabase.com",
+            "port": 6543,
+            "driver": "PostgreSQL",
+            "username": "postgres.crtqyfeppilazklquwvc",
+            "database": "postgres",
+            "password": "UE#MhtRn_*!WPd9",
+            "name": "ExoReach"
+        }
+    ]
+}

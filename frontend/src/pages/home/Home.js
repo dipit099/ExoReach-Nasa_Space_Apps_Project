@@ -7,13 +7,13 @@ import Planet from '../../components/planet/Planet';
 import MostClickedExoplanets from '../../components/mostclicked/MostClicked';
 import HomeExoCards from '../../components/homeexocards/HomeExoCards';
 import HomeQuiz from '../../components/homequiz/HomeQuiz';
-const items = ['Overview','Explore Exoplanets', 'ExoCards', 'ExoShowdown', 'ExoQuiz'];
+
 
 function Home() {
   return (
     <div>
       <Navbar />
-      <SubNavbar items={items}/>
+      <SubNavbar/>
       <Planet/>
       <div className="home-container">
         <div className="title-section">
