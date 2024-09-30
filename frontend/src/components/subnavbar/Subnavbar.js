@@ -9,7 +9,7 @@ const SubNavbar = ({ items }) => {
     <div className="subnavbar">
       {items.map((item, index) => {
         // If the item is "Explore Exoplanets", set the path to "/"
-        const path = item.toLowerCase() === "explore exoplanets" 
+        const path = item.toLowerCase() === "overview" 
           ? '/' 
           : `/${item.toLowerCase().replace(/\s+/g, '')}`; 
         

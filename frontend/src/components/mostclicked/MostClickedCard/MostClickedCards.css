@@ -1,0 +1,46 @@
+@import '../../variables.css';
+.most-clicked-card {
+    position: relative;
+    width: 15.2375rem; 
+    height: 21.75rem; 
+    background: linear-gradient(to bottom, rgba(224, 243, 255, 0.7), rgba(92, 23, 232, 0.7));
+    border-radius: 1.45rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .most-clicked-card:hover {
+    transform: scale(1.03); 
+    box-shadow: 0 0 20px rgba(255, 190, 88, 0.9), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+  .card-content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .image-container {
+    width: 12rem;
+    height: 12rem;
+    margin: 1rem auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #818cf8;
+  }
+  
+  .planet-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .planet-name {
+    text-align: center;
+    color: var(--text-same);
+    font-size: 1.45rem; /* 18px */
+    font-weight: bold;
+    font-family: 'Norwester';
+  }

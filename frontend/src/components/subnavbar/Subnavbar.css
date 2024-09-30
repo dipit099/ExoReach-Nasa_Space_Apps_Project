@@ -22,6 +22,7 @@
   
   .subnavbar-item.active {
     color: #ffcc00; 
+    text-decoration: underline;
   }
   
   .subnavbar-item:first-child {

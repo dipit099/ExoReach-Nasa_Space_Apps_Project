@@ -18,3 +18,10 @@
     font-weight: bold;
     font-style: normal;
   }
+
+  @font-face {
+    font-family: 'Horizon';
+    src: url('./assets/fonts/Horizon.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+  }

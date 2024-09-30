@@ -1,0 +1,26 @@
+@import '../variables.css';
+.large-button {
+    display: inline-block; 
+    padding: 1rem 1.5rem; 
+    font-size: 1.5rem; /* Larger font size */
+ /* Text color */
+    background-color: var(--accent-color01); 
+    border: none; /* Remove default border */
+    border-radius: 1.7rem; 
+    text-decoration: none; 
+    text-align: center; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    color: var(--background-color);
+    font-family: 'Glacial';
+    font-weight: bold;
+}
+
+.large-button:hover {
+    background-color: var(--accent-color02); 
+    color: var(--text-same);
+}
+
+.button-flex{
+    display: flex;
+    flex-direction: row;
+}
