@@ -82,7 +82,9 @@
 
 .login-button:hover {
     background-color: var(--accent-color01);
-    color: var(--text-low);
+    color: var(--text-same);
+    /*increase size*/transform: scale(1.1);
+
 }
 
 .theme-toggle-button {

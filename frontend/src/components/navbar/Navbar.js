@@ -3,11 +3,14 @@ import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import '../variables.css';
 import Logo from '../../assets/logo.png';
-import Login from '../login/Login';
-import CreateAccount from '../createaccount/CreateAccount'; // Import the Login component
+
+import Login from '../login/Login'; // Import the Login component
+import { MdDarkMode } from "react-icons/md";
+import { MdOutlineLightMode } from "react-icons/md";
+
 
 function Navbar() {
-    const [theme, setTheme] = useState('light');
+    const [theme, setTheme] = useState('dark');  // Set default theme to 'dark'
     const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
     const [isCreateAccountPopupOpen, setIsCreateAccountPopupOpen] = useState(false);
     const location = useLocation();  // Use useLocation to get the current path
@@ -35,15 +38,15 @@ function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-left">
-            <Link to="/">  
+                <Link to="/">  
                     <img src={Logo} alt="Logo" className="logo-icon" />
-            </Link>
+                </Link>
                 <div className="logo-text">ExoReach</div>
             </div>
             <div className="navbar-center">
             </div>
             <div className="navbar-right">
-            <Link to="/" className={getLinkClass('/')}>Home</Link>
+                <Link to="/" className={getLinkClass('/')}>Home</Link>
                 <Link to="/about" className={getLinkClass('/about')}>Community</Link>
                 <Link to="/services" className={getLinkClass('/services')}>Profile</Link>
                 {/* <button onClick={toggleTheme} className="theme-toggle-button">
