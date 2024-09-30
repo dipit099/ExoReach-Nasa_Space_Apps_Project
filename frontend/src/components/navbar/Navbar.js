@@ -5,6 +5,7 @@ import '../variables.css';
 import Logo from '../../assets/logo.png';
 
 import Login from '../login/Login'; // Import the Login component
+import CreateAccount from '../createaccount/CreateAccount'; // Import the CreateAccount component
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 
