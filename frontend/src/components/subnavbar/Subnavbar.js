@@ -2,7 +2,9 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Subnavbar.css';
 
-const SubNavbar = ({ items }) => {
+const SubNavbar = () => {
+
+  const items = ['Overview','Explore Exoplanets', 'ExoVision', 'ExoShowdown', 'ExoQuiz'];
   const location = useLocation();
 
   return (

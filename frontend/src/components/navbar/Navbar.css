@@ -71,7 +71,7 @@
     font-weight: bold;
 }
 
-.login-button {
+.login-button1 {
     text-decoration: none;
     color: var(--text-same);
     background-color: var(--accent-color02);
@@ -80,7 +80,7 @@
     font-weight: bold;
 }
 
-.login-button:hover {
+.login-button1:hover {
     background-color: var(--accent-color01);
     color: var(--text-same);
     /*increase size*/transform: scale(1.1);

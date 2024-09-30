@@ -1,0 +1,100 @@
+/* ExoQuiz.css */
+.quiz-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.quiz-header, .leaderboard-header {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button.active {
+    background-color: var(--accent-color02);
+}
+
+.quiz-section {
+    margin-bottom: 40px;
+}
+
+.no-quizzes, .no-leaderboard {
+    text-align: center;
+    color: var(--text-normal);
+}
+
+.quiz-card, .question-card, .result-card {
+    background-color: var(--background-color02);
+    border: 1px solid var(--footer-color);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-title {
+    color: var(--text-high);
+    margin-bottom: 10px;
+}
+
+.quiz-description, .quiz-start-time, .question-text, .user-answer, .correct-answer, .points, .score {
+    color: var(--text-normal);
+}
+
+.quiz-button, .submit-button {
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quiz-button:hover, .submit-button:hover {
+    background-color: var(--accent-color02);
+}
+
+.quiz-results {
+    background-color: var(--background-color02);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.leaderboard-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.leaderboard-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.leaderboard-item {
+    background-color: var(--background-color02);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
