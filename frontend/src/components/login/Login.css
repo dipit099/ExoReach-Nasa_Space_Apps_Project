@@ -63,6 +63,7 @@
 
 .login-popup button:hover {
     background-color: var(--accent-color02); /* Hover background color */
+    color: var(--text-same);
 }
 
 .signup-section {

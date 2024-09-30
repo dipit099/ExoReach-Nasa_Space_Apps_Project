@@ -19,10 +19,7 @@ function Home() {
           <div className="home-right">
           </div>
         </div>
-        <MostClickedExoplanets/>
-
-
-      </div>
+        <MostClickedExoplanets/>      </div>
        <Footer /> 
     </div>
   );
