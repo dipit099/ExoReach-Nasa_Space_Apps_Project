@@ -20,11 +20,13 @@ function Home() {
           <div className="home-right">
           </div>
         </div>
+
         <MostClickedExoplanets/>
         <HomeExoCards/>
         <HomeQuiz/>
         <div className="blank"></div>
       </div>
+
        <Footer /> 
     </div>
   );

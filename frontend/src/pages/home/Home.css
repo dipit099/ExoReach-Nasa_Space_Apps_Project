@@ -1,5 +1,5 @@
 /* Home.css */
-@import '../variables.css';
+@import '../../components/variables.css';
 
 .home-container {
     display: flex;
