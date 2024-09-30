@@ -1,7 +1,7 @@
 import React from 'react';
 import './Login.css'; // Create this CSS file for styling
 
-const Login = ({ onClose }) => {
+const Login = ({ onClose, createAccountPopupOpen }) => {
   return (
     <div className="login-overlay">
       <div className="login-popup">
@@ -14,7 +14,7 @@ const Login = ({ onClose }) => {
         </form>
         <div className="signup-section">
           <p>Don't have an account?</p>
-          <button className="create-account-button">Create Account</button>
+          <button className="create-account-button" on onClick={() => {onClose(); createAccountPopupOpen();}}>Create Account</button>
         </div>
       </div>
     </div>
