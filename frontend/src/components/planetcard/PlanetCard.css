@@ -1,4 +1,4 @@
-@import '../../variables.css';
+@import '../variables.css';
 .most-clicked-card {
     position: relative;
     width: 15.2375rem; 
