@@ -22,7 +22,7 @@
     /* Use background color from variables */
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 500px;
     position: relative;
 }
 
@@ -50,6 +50,7 @@
 }
 
 .register-popup input {
+    width: 40%;
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid var(--text-low);
@@ -101,4 +102,38 @@
     background-color: var(--accent-color02); 
     /* Hover background color */
     color: black;
+}
+
+.register-popup select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid var(--text-low);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: var(--primary-color);
+    color: var(--text-same);
+    cursor: pointer;
+   
+}
+
+.register-popup select:focus {
+    border-color: var(--accent-color02);
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.register-popup option {
+    color: var(--text-normal);
+    background-color: var(--background-color);
+}
+
+.register-two-div{
+    display: flex;
+    justify-content: space-between;
+   
+
+}
+
+.register-input-username{
+    width: 20px;
 }
