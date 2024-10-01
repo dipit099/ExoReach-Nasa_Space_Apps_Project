@@ -1,7 +1,7 @@
 import React from 'react';
-import './MostClickedCards.css';
+import './PlanetCard.css';
 
-const MostClickedCard = ({ name, imageSrc }) => {
+const PlanetCard = ({ name, imageSrc }) => {
   return (
     <div className="most-clicked-card">
       <div className="card-content">
@@ -14,4 +14,4 @@ const MostClickedCard = ({ name, imageSrc }) => {
   );
 };
 
-export default MostClickedCard;
+export default PlanetCard;

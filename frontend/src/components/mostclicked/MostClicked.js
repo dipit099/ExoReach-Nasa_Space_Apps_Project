@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './MostClicked.css'; 
-import MostClickedCard from './MostClickedCard/MostClickedCards'; 
+import PlanetCard from '../planetcard/PlanetCard'; 
 import LargeButton from '../largebutton/LargeButton';
 // TODO: data from backend
 
-const imgsrc = 'https://images.unsplash.com/photo-1708257106455-3bffdd9aae64?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+const imgsrc = 'https://images.unsplash.com/photo-1708257106455-3bffdd9aae64?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 const exoplanetData = [
   { name: 'Kepler-22b', clicks: 120 , img: imgsrc },
   { name: 'Proxima Centauri b', clicks: 95 ,img: imgsrc},
@@ -23,16 +23,20 @@ const MostClickedExoplanets = () => {
 
   return (
     <div className="most-clicked-section">
-        <br />
-        <br />
+      <br />
+      <br />
       <div className='anton-regular-most'>MOST CLICKED EXOPLANETS</div>
       <div className="most-clicked-list">
         {mostClicked.map((planet, index) => (
-          <MostClickedCard name={planet.name} imageSrc={planet.img} />
+          <PlanetCard 
+            key={index}  
+            name={planet.name} 
+            imageSrc={planet.img} 
+          />
         ))}
       </div>
       <div className="button-wrap">
-      <LargeButton text='LEARN MORE' link='/exploreexoplanets'/>
+        <LargeButton text='LEARN MORE' link='/exploreexoplanets'/>
       </div>
     </div>
   );
