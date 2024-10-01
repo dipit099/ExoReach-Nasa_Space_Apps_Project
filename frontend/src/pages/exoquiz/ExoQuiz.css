@@ -9,27 +9,31 @@
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Glacial';
 }
 
 .filter-buttons {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
+    gap: 10px;
 }
 
 .filter-button {
     margin: 0 10px;
     padding: 10px 20px;
-    background-color: var(--accent-color01);
+    background-color: var(--accent-color02);
     color: var(--text-same);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'Glacial';
 }
 
 .filter-button.active {
-    background-color: var(--accent-color02);
+    background-color: var(--accent-color01);
+    color: var(--text-same);
 }
 
 .quiz-section {
@@ -39,6 +43,7 @@
 .no-quizzes, .no-leaderboard {
     text-align: center;
     color: var(--text-normal);
+    font-family: 'Glacial';
 }
 
 .quiz-card, .question-card, .result-card {
@@ -48,15 +53,18 @@
     margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Glacial';
 }
 
 .quiz-title {
     color: var(--text-high);
     margin-bottom: 10px;
+    font-family: 'Glacial';
 }
 
 .quiz-description, .quiz-start-time, .question-text, .user-answer, .correct-answer, .points, .score {
     color: var(--text-normal);
+    font-family: 'Glacial';
 }
 
 .quiz-button, .submit-button {
@@ -67,10 +75,12 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-family: 'Glacial';
 }
 
 .quiz-button:hover, .submit-button:hover {
     background-color: var(--accent-color02);
+    font-family: 'Glacial';
 }
 
 .quiz-results {
@@ -79,6 +89,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    font-family: 'Glacial';
 }
 
 .leaderboard-section {
@@ -97,4 +108,5 @@
     margin-bottom: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Glacial';
 }

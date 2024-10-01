@@ -1,21 +1,28 @@
-@import '../variables.css';
-
-/* Bounce animation for the image */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
+@keyframes shake-pop {
+  0% {
+      transform: scale(1) translateX(0);
   }
-  40% {
-    transform: translateY(-20px); /* Move up */
+  25% {
+      transform: scale(1.2) translateX(-5px);
   }
-  60% {
-    transform: translateY(-10px); /* Move down */
+  50% {
+      transform: scale(1.1) translateX(5px);
+  }
+  75% {
+      transform: scale(1.2) translateX(-5px);
+  }
+  100% {
+      transform: scale(1) translateX(0);
   }
 }
 
-/* Apply the animation to the image */
+/* Apply the shake and pop animation to the image */
 .img-ani {
   max-width: 100%;
-  animation: bounce 1s ease forwards; /* Infinite loop for a pulsing effect */
+  animation: shake-pop 1.5s ease-in-out forwards; /* Continuous shake and pop effect */
 }
 
+.button-wrap-homequiz {
+  margin-left: 550px;
+  width: 285px;
+}

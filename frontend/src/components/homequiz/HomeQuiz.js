@@ -35,7 +35,6 @@ const HomeQuiz = () => {
       <br />
       <div className="anton-regular-homexo">EXOQUIZ</div>
       <div className="exocards-section">
-        <Link to="/exocards"></Link>
         <div className="exocards-section-left">
           <img
             ref={imageRef}
@@ -46,14 +45,14 @@ const HomeQuiz = () => {
         </div>
 
         <div className="exocards-section-right">
-          Think you’re an exoplanet expert? Dive into our quiz to test your
+          Think you are an exoplanet expert? Dive into our quiz to test your
           knowledge and discover how much you really know about these
           fascinating worlds!
           <br />
           <br />
           <br />
           <br />
-          <div className="button-wrap-homexo">
+          <div className="button-wrap-homequiz">
             <LargeButton text="TAKE QUIZ" link="/exoquiz" />
           </div>
         </div>

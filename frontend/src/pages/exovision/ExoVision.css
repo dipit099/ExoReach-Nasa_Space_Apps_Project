@@ -4,7 +4,7 @@
     padding: 20px;  /* Reduced padding to make content closer */
     background-color: var(--background-color);
     color: var(--text-normal);
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Glacial', sans-serif;
     margin-top: 0;  /* Remove any top margin */
 }
 
@@ -36,9 +36,10 @@
 
 .exovision-description {
     margin-top: 20px;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: var(--text-low);
     animation: fadeIn 3s ease-in-out;
+    font-family: 'Glacial';
 }
 
 .exovision-buttons {
@@ -55,6 +56,7 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Glacial';
 }
 
 .explore-btn {

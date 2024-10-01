@@ -49,7 +49,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr; 
     gap: 20px; /* Increased from 10px */
-    padding: 20px; /* Added padding */
+    
   }
   .footer-links {
     list-style: none;
@@ -120,7 +120,7 @@
     display: flex;
     justify-content: space-between; 
     width: 100%;
-    margin-left: 160px;
+    margin-left: 250px;
     line-height: 1.5;
 }
 

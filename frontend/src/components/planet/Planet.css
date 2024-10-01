@@ -24,15 +24,24 @@
     text-align: left;
 }
 
+@keyframes colorChange {
+    from { color: transparent; }
+    to { color: white; }
+}
+
 .homeplant-text p {
     font-family: 'Glacial';
     line-height: 1.4;
-    color : white;
+    color: transparent; /* Initially hidden */
     margin-top: 10px;
     font-size: 1.35rem;
     margin-left: 95px;
     margin-right: 380px;
+    white-space: normal;
+    animation: colorChange 3s ease-in-out forwards; /* Smooth color change */
 }
+
+
 
 .anton-regular {
     font-family: "Anton", sans-serif;

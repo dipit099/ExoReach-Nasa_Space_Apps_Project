@@ -10,6 +10,7 @@ const exoplanetData = [
   { name: 'Proxima Centauri b', clicks: 95 ,img: imgsrc},
   { name: 'TRAPPIST-1d', clicks: 150 ,img: imgsrc},
   { name: 'Gliese 581g', clicks: 80 ,img: imgsrc},
+  { name: 'Gliese 581g', clicks: 80 ,img: imgsrc}
 ];
 
 const MostClickedExoplanets = () => {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';  // Import Axios for API calls
 import './ExoQuiz.css';  // Custom CSS for styling
 import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/Footer'
 
 function ExoQuiz() {
     const [liveQuizzes, setLiveQuizzes] = useState([]);
@@ -85,7 +86,7 @@ function ExoQuiz() {
     };
 
     return (
-        <>
+        <> 
             <Navbar />
             <div className="quiz-container">
                 <h1 className="quiz-header">ExoQuiz: Test Your Knowledge!</h1>
@@ -203,6 +204,8 @@ function ExoQuiz() {
                     </ul>
                 </section>
             </div>
+            <div className="blank"></div>
+            <Footer/>
         </>
     );
 }

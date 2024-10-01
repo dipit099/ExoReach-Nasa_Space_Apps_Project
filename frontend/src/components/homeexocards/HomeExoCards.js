@@ -35,8 +35,9 @@ const HomeExoCards = () => {
   return (
     <div>
       <div className="anton-regular-homexo">EXOCARDS</div>
+      <br />
+      <br />
       <div className="exocards-section">
-        <Link to="/exocards"></Link>
         <div className="exocards-section-left">
           <div className="main">
             <img
@@ -65,7 +66,7 @@ const HomeExoCards = () => {
 
         <div className="exocards-section-right">
           Explore key facts about exoplanets and add it to your collection.
-          Get ready for <span className="highlight-text">ExoShowdown</span>, where you can use your cards in exciting
+          Get ready for <Link to='/exoshowdown' className="link-exoshowdown"> <span className="highlight-text">ExoShowdown</span></Link>, where you can use your cards in exciting
           battles!
           <br />
           <br />
