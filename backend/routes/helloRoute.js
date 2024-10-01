@@ -1,8 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
+
 // DONT FORGET TO USE '/' IN THE ROUTE 
 // DONT USE router.get('/hello'.. AGAIN!!!
+
+//also add route in index.js file
+
 router.get('/', (req, res) => {
   try {
     console.log('Request to the helloRoute received!');

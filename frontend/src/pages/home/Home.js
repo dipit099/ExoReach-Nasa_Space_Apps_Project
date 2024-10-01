@@ -1,7 +1,8 @@
 import React from 'react';
 import './Home.css';
 import Navbar from '../../components/navbar/Navbar';
-import SubNavbar from '../../components/subnavbar/Subnavbar';
+import SubNavbar from '../../components/navbar/SubNavbar';
+
 import Footer from '../../components/footer/Footer';
 import Planet from '../../components/planet/Planet';
 import MostClickedExoplanets from '../../components/mostclicked/MostClicked';
