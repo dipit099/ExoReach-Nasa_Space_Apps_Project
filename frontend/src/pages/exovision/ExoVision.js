@@ -1,9 +1,10 @@
 import React from 'react';
 import './ExoVision.css';  // Import your custom CSS file for styling
 import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/Footer';
 
 function ExoVision() {
-    return (
+    return ( 
         <>
         <Navbar />
         <div className="exovision-container">
@@ -16,7 +17,8 @@ function ExoVision() {
                     Learn More 📚
                 </button>
             </div>
-
+            <br />
+            <br />
             <div className="exovision-iframe-container">
                 <iframe 
                     src="https://eyes.nasa.gov/apps/exo/" 
@@ -27,13 +29,15 @@ function ExoVision() {
                     className="exovision-iframe"
                 ></iframe>
             </div>
-
+            <br />
             <p className="exovision-description">
                 Discover the wonders of distant worlds through interactive 3D models! Use the controls to zoom in, rotate, and explore exoplanets in detail.
             </p>
 
             
         </div>
+        <div className="blank"></div>
+        <Footer/>
         </>
     );
 }

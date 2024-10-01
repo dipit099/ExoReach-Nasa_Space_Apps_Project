@@ -13,17 +13,17 @@
 
 /* Apply the animation to each card based on its index */
 .card-ani-1 {
-  animation: scrollAnimation 0.5s ease forwards; /* Card 1 */
+  animation: scrollAnimation 1.5s ease forwards; /* Card 1 */
   transform: translateX(-100px) rotate(-40deg);
 }
 
 .card-ani-2 {
-  animation: scrollAnimation 0.5s ease forwards; /* Card 2 */
+  animation: scrollAnimation 1.5s ease forwards; /* Card 2 */
   transform: translateX(-50px) rotate(-30deg);
 }
 
 .card-ani-3 {
-  animation: scrollAnimation 0.5s ease forwards; /* Card 3 */
+  animation: scrollAnimation 1.5s ease forwards; /* Card 3 */
   transform: translateX(0) rotate(-20deg);
 }
 
@@ -47,30 +47,29 @@
   justify-content: center;        /* Center cards horizontally */
   position: relative;             /* Required for absolute positioning of cards */
   height: 30vmax;      
-  margin-left: 50px;         
+  margin-left: 170px;         
 }
 
 .card {
   width: 331px;
   height: 442.1px;
   transition: .3s ease-in-out;
-  cursor: pointer;
   box-shadow: 0px 0px 30px -10px rgba(0, 0, 0, 0.3);
   object-fit: cover;
   position: absolute;            
 }
 
 .exocards-section-right {
-  width: 30%;  
+  width: 45%;  
   text-align: right;  
   margin-right: 100px; 
-  font-size: 27px;
+  font-size: 32px;
   font-family: 'Glacial';
   line-height: 1.49;              
 }
 
 .button-wrap-homexo {
-  margin-left: 200px;
+  margin-left: 550px;
 }
   
 .anton-regular-homexo {
@@ -82,8 +81,16 @@
   margin-left: 100px;
 }
 
+.link-exoshowdown{
+  text-decoration: none;
+  color: var(--text-normal);
+}
 .highlight-text {
-  color: var(--text-high);
-  font-style: italic;
   font-weight: bold;
+}
+
+.highlight-text:hover {
+  color: var(--text-high);
+  font-weight: bold;
+  cursor: pointer;
 }

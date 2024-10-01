@@ -6,6 +6,7 @@ import Home from './pages/home/Home';
 import ExoVision from './pages/exovision/ExoVision';
 import ExoQuiz from './pages/exoquiz/Exoquiz';
 import CommunityForum from './pages/community/CommunityForum';
+import ExploreExoplanets from './pages/exploreexoplanets/ExploreExoplanets';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/exovision" element={<ExoVision />} />
         <Route path="exoquiz" element={<ExoQuiz />} />
         <Route path="community" element={<CommunityForum />} />
+        <Route path="exploreexoplanets" element={<ExploreExoplanets />} />
       </Routes>
     </div>
   );
