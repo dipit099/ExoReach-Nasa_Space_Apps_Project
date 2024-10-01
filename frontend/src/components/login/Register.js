@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './CreateAccount.css';
+import './Register.css';  // Updated the CSS file name
 
-const CreateAccount = ({ onClose, loginPopupOpen }) => {
+const Register = ({ onClose, loginPopupOpen }) => {
     
     const [fullName, setFullName] = useState('');
     const [dateOfBirth, setDateOfBirth] = useState('');
@@ -27,10 +27,10 @@ const CreateAccount = ({ onClose, loginPopupOpen }) => {
     };
 
     return (
-        <div className='create-account-overlay'>
-            <div className='create-account-popup'>
-                <button className='close-button' onClick={onClose}>×</button>
-                <h2>Create Account</h2>
+        <div className='register-overlay'>
+            <div className='register-popup'>
+                <button className='register-close-button' onClick={onClose}>×</button>
+                <h2>Register</h2>
                 <form onSubmit={handleSubmit}>
                     <input
                         type="text"
@@ -74,15 +74,15 @@ const CreateAccount = ({ onClose, loginPopupOpen }) => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                     />
-                    <button type="submit">Create Account</button>
+                    <button className='register-button' type="submit">Register</button>  
                 </form>
-                <div className='signup-section'>
+                <div className='register-signup-section'>
                     <p>Already have an account?</p>
-                    <button className='login-button' onClick={() => { onClose(); loginPopupOpen(); }}>Login</button>
+                    <button className='register-login-button' onClick={() => { onClose(); loginPopupOpen(); }}>Login</button>
                 </div>
             </div>
         </div>
     );
 }
 
-export default CreateAccount;
+export default Register;

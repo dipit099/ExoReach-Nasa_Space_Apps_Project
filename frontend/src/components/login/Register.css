@@ -1,6 +1,6 @@
 @import '../variables.css';
 
-.create-account-overlay {
+.register-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -17,7 +17,7 @@
     /* Ensures it is on top */
 }
 
-.create-account-popup {
+.register-popup {
     background: var(--background-color);
     /* Use background color from variables */
     padding: 20px;
@@ -26,7 +26,7 @@
     position: relative;
 }
 
-.close-button {
+.register-close-button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -38,19 +38,18 @@
     cursor: pointer;
 }
 
-
-.create-account-popup h2 {
+.register-popup h2 {
     margin: 0 0 20px;
     color: var(--text-normal);
     /* Heading color */
 }
 
-.create-account-popup form {
+.register-popup form {
     display: flex;
     flex-direction: column;
 }
 
-.create-account-popup input {
+.register-popup input {
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid var(--text-low);
@@ -62,7 +61,7 @@
     /* Input text color */
 }
 
-.create-account-popup button {
+.register-button {
     padding: 10px;
     background-color: var(--accent-color02);
     /* Button background color */
@@ -73,21 +72,21 @@
     cursor: pointer;
 }
 
-.create-account-popup button:hover {
+.register-button:hover {
     background-color: var(--accent-color02);
     /* Hover background color */
 }
 
-.create-account-popup p {
+.register-popup p {
     color: var(--text-normal);
 }
 
-.signup-section {
+.register-signup-section {
     margin-top: 20px;
     text-align: center;
 }
 
-.login-button {
+.register-login-button {
     padding: 10px;
     background-color: var(--accent-color01);
     /* Button background color */
@@ -98,7 +97,8 @@
     cursor: pointer;
 }
 
-.login-button:hover {
-    background-color: var(--accent-color02); /* Hover background color */
+.register-login-button:hover {
+    background-color: var(--accent-color02); 
+    /* Hover background color */
     color: black;
 }
