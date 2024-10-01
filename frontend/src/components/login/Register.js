@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Register.css';  // Updated the CSS file name
+import './Register.css';  
 
 const Register = ({ onClose, loginPopupOpen }) => {
     
@@ -9,8 +9,8 @@ const Register = ({ onClose, loginPopupOpen }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [gender, setGender] = useState(''); 
 
-    
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -20,7 +20,8 @@ const Register = ({ onClose, loginPopupOpen }) => {
             username,
             email,
             password,
-            confirmPassword
+            confirmPassword,
+            gender 
         });
 
         onClose();
@@ -29,9 +30,16 @@ const Register = ({ onClose, loginPopupOpen }) => {
     return (
         <div className='register-overlay'>
             <div className='register-popup'>
-                <button className='register-close-button' onClick={onClose}>×</button>
+                {/* Close button with X icon */}
+                <button className='register-close-button' onClick={onClose}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-x">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
                 <h2>Register</h2>
                 <form onSubmit={handleSubmit}>
+                <div className='register-two-div'>
                     <input
                         type="text"
                         placeholder="Full Name"
@@ -39,20 +47,17 @@ const Register = ({ onClose, loginPopupOpen }) => {
                         onChange={(e) => setFullName(e.target.value.trimStart())}
                         onBlur={() => setFullName(fullName.trim())}
                     />
-                    <input
-                        type="date"
-                        placeholder="Date of birth"
-                        value={dateOfBirth}
-                        onChange={(e) => setDateOfBirth(e.target.value)}
-                    />
+                   
                     <input
                         type="text"
                         placeholder="Username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value.trimStart())}
-                        onBlur={() => setUsername(username.trim())}
+                        onBlur={() => setUsername(username.trim())}                       
                         required
+                        className="register-input-username"
                     />
+                      </div>
                     <input
                         type="email"
                         placeholder="Email"
@@ -60,6 +65,27 @@ const Register = ({ onClose, loginPopupOpen }) => {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
+                  
+                    <div className='register-two-div'>
+                    <input
+                        type="date"
+                        placeholder="Date of birth"
+                        value={dateOfBirth}
+                        onChange={(e) => setDateOfBirth(e.target.value)}
+                    />
+
+                    {/* Gender Dropdown */}
+                    <select 
+                        value={gender} 
+                        onChange={(e) => setGender(e.target.value)} 
+                        required
+                    >
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    </div>
+                    <div className='register-two-div'>
                     <input
                         type="password"
                         placeholder="Password"
@@ -74,6 +100,7 @@ const Register = ({ onClose, loginPopupOpen }) => {
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
                     />
+                    </div>
                     <button className='register-button' type="submit">Register</button>  
                 </form>
                 <div className='register-signup-section'>

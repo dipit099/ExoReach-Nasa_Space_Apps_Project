@@ -1,0 +1,138 @@
+.exoshowdown-container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 2.5rem;
+    text-align: center;
+    color: var(--text-high);
+}
+
+.remaining-time {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.5rem;
+    color: var(--accent-color01);
+}
+
+.ongoing-competition {
+    margin: 30px 0;
+    background-color: var(--background-color02);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ongoing-competition h2 {
+    text-align: center;
+    color: var(--text-high);
+    margin-bottom: 20px;
+}
+
+.ongoing-competition form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ongoing-competition input[type="text"],
+.ongoing-competition textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    border: 2px solid var(--text-low);
+    border-radius: 5px;
+}
+
+.submit-button {
+    padding: 12px 30px;
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--accent-color02);
+}
+
+.join-button {
+    padding: 12px 30px;
+    background-color: var(--accent-color02);
+    color: var(--text-same);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.past-competitions {
+    margin-top: 40px;
+}
+
+.past-competitions h2 {
+    text-align: center;
+    color: var(--text-high);
+}
+
+.competition {
+    margin-bottom: 40px;
+}
+
+.art-gallery {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.winner-card {
+    background-color: var(--background-color02);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.winner-card img {
+    max-width: 200px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.winner-card h4 {
+    font-size: 1.2rem;
+    color: var(--text-high);
+}
+
+.winner-card p {
+    font-size: 1rem;
+    color: var(--text-normal);
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: var(--text-same);
+}
+
+.badge.winner {
+    background-color: gold;
+}
+
+.badge.rising-star {
+    background-color: silver;
+}
+
+.badge.first-submission {
+    background-color: #cd7f32; /* Bronze */
+}
