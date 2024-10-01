@@ -1,66 +1,143 @@
-.community-forum-container {
-    display: flex;
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+/* Top Section for Asking Questions */
+.ask-question-section {   
+    padding: 25px;
+    background-color: var(--background-color02);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    text-align: center;
 }
 
+.ask-question-section h3 {
+    font-size: 1.8rem;
+    color: var(--text-high);
+    margin-bottom: 15px;
+}
+
+.ask-question-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ask-question-section input,
+.ask-question-section textarea {
+    width: 80%;
+    margin-bottom: 15px;
+    padding: 12px;
+    border: 2px solid var(--text-low);
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: black;
+    font-size: 1.1rem;
+}
+
+.ask-question-section button {
+    padding: 12px 20px;
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.ask-question-section button:hover {
+    background-color: var(--accent-color02);
+}
+
+/* Container Layout */
+.community-forum-container {
+    display: flex;
+    gap: 30px;
+    padding: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    font-family: 'Glacial', sans-serif;
+}
+
+/* Left Section for Filters */
 .forum-filter {
     width: 20%;
     background-color: var(--background-color02);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-family: 'Glacial';
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .filter-button {
     display: block;
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    background-color: var(--accent-color02);
+    padding: 14px;
+    margin: 15px 0;
+    background-color: var(--accent-color01);
     color: var(--text-same);
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: var(--accent-color02);
 }
 
 .filter-button.active {
-    background-color: green;
+    background-color: var(--accent-color02);
     color: var(--text-diff);
 }
 
-.forum-sections {
-    width: 80%;
+/* Right Section */
+.right-sections {
+    width: 75%;
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    font-family: 'Glacial';
+    flex-direction: column;
+    gap: 25px;
 }
 
+/* Recently Viewed and Created Forums */
 .forum-section {
-    width: 48%;
     background-color: var(--background-color02);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    max-height: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-height: 500px;
     overflow-y: auto;
+}
+
+.forum-section h3 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: var(--text-high);
 }
 
 .forum-card {
     background-color: var(--background-color02);
-    border: 1px solid var(--footer-color);
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--text-low);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
-.forum-caption, .forum-description {
+.forum-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--primary-color);
+}
+
+.forum-caption {
+    font-size: 1.3rem;
+    color: var(--text-high);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.forum-description {
     color: var(--text-normal);
+    margin-bottom: 12px;
 }
 
 .forum-info {
@@ -73,4 +150,5 @@
 
 .forum-link {
     text-decoration: none;
+    color: inherit;
 }
