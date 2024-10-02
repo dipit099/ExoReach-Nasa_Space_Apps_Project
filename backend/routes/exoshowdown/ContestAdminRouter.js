@@ -2,10 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const { caption, description, start_date, end_date } = req.body;
+    const { caption, description, startDate, endDate } = req.body;
     console.log(req.body);
 
-    if (!caption || !description || !start_date || !end_date) {
+    if (!caption || !description || !startDate || !endDate) {
         return res.status(400).json({
             success: false,
             message: 'Please provide all required fields: caption, description, start_date, end_date.'
@@ -20,8 +20,8 @@ router.post('/', async (req, res) => {
         return `${year}-${month}-${day}`;
     };
 
-    const formattedStartDate = formatDate(start_date);
-    const formattedEndDate = formatDate(end_date);
+    const formattedStartDate = formatDate(startDate);
+    const formattedEndDate = formatDate(endDate);
 
     try {
         const query = `
