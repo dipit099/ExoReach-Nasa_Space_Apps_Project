@@ -1,11 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db')
-const loginRouter = require('./routes/login/LoginRouter');
-const registerRouter = require('./routes/login/RegisterRouter');
+const loginRouter = require('./routes/login/login');
+const registerRouter = require('./routes/login/register');
 
 const app = express();
-const PORT = 8000;
+const PORT = 5000;
 
 
 app.use(express.json());
