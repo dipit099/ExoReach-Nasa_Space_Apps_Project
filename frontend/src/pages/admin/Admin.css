@@ -1,0 +1,76 @@
+/* Admin login container */
+.admin-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f9f9f9;
+  }
+  
+  .admin-login h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .admin-login input {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 250px;
+    background-color: #fff;
+  }
+  
+  .admin-login button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-login button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Authenticated container */
+  .admin-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .admin-container nav {
+    margin-bottom: 20px;
+  }
+  
+  .admin-container nav button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .admin-container nav button:hover {
+    background-color: #45a049;
+  }
+  
+  .admin-container h2 {
+    color: #333;
+  }
+  
+  .admin-container .forum-content {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Add more styles as needed for each section */
+  
