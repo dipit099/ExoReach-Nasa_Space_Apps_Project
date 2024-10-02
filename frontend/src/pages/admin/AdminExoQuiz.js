@@ -69,13 +69,12 @@ const AdminExoQuiz = () => {
 
     // Send quiz data to server
     try {
-      const response = await axios.post(`${SERVER_URL}/submit-quiz`, quizData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+
+      console.log('ExoQuiz data:', quizData);
+      // const response = await axios.post(`${SERVER_URL}/exoquiz/admin`, quizData, {       
+      // });
       alert("Quiz data submitted successfully!");
-      console.log("Server response:", response.data);
+      // console.log("Server response:", response.data);
     } catch (error) {
       console.error("Error submitting quiz data:", error);
       alert("There was an error submitting the quiz. Please try again.");
