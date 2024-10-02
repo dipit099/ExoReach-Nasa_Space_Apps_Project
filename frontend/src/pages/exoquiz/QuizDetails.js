@@ -1,161 +1,154 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './QuizDetails.css'; 
-import Navbar from '../../components/navbar/Navbar';
-import Footer from '../../components/footer/Footer';
-import SERVER_URL from '../../config/SERVER_URL';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SERVER_URL from '../../config/SERVER_URL';
+import './QuizDetails.css';  // Importing the CSS file
 
-function QuizDetails() {
-    const { quizId } = useParams();
-    const [quizData, setQuizData] = useState(null);
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [userAnswers, setUserAnswers] = useState({}); // Track user answers
-    const [timeRemaining, setTimeRemaining] = useState(0);
-    const [score, setScore] = useState(0);
-    const [quizEnded, setQuizEnded] = useState(false);
-    const [loading, setLoading] = useState(true); // Loading state
-    const userId = "USER_ID";  // Replace with actual user ID
+const QuizDetails = () => {
+  const { quizId, userID } = useParams();  // Getting quizId and userID from the URL params
+  const [quiz, setQuiz] = useState(null);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [score, setScore] = useState(0);
+  const [timer, setTimer] = useState(60);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [userAnswers, setUserAnswers] = useState([]); // To store user's answers
 
-    useEffect(() => {
-        fetchQuizData();
-    }, []);
+  useEffect(() => {
+    fetchQuizDetails();
+  }, []);
 
-    const fetchQuizData = async () => {
-        try {
-            const response = await axios.post(`${SERVER_URL}/exoquiz/quizzing`, { quizId });
-            if (response.data) {
-                setQuizData(response.data);
-                setTimeRemaining(response.data.numQuestions * 60); // Assuming 60 seconds per question
-                setLoading(false); // Stop loading when data is fetched
-            } else {
-                toast.error('Failed to load quiz data.');
-            }
-        } catch (error) {
-            console.error('Error fetching quiz data:', error);
-            toast.error('Error fetching quiz data.');
-            setLoading(false); // Stop loading even on error
-        }
-    };
+  useEffect(() => {
+    if (timer > 0 && !isSubmitted) {
+      const countdown = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+      return () => clearInterval(countdown);
+    } else if (timer === 0 && !isSubmitted) {
+      handleNextQuestion();
+    }
+  }, [timer, isSubmitted]);
 
-    useEffect(() => {
-        if (timeRemaining > 0 && !quizEnded) {
-            const timer = setInterval(() => {
-                setTimeRemaining((prevTime) => prevTime - 1);
-            }, 1000);
-            return () => clearInterval(timer);
-        } else if (timeRemaining === 0 && !quizEnded) {
-            handleSubmitQuiz();
-        }
-    }, [timeRemaining, quizEnded]);
+  const fetchQuizDetails = async () => {
+    try {
+      const response = await axios.post(`${SERVER_URL}/exoquiz/quizzing`, { quizId });
+      setQuiz(response.data);
+    } catch (error) {
+      toast.error('Failed to fetch quiz details');
+    }
+  };
 
-    const handleAnswerChange = (questionId, selectedOption) => {
-        setUserAnswers({
-            ...userAnswers,
-            [questionId]: selectedOption, // Save the user's selected answer for the question
-        });
-    };
+  const handleOptionSelect = (index) => {
+    setSelectedOption(index);
+  };
 
-    const handleSubmitQuiz = async () => {
-        setQuizEnded(true);  // Stop countdown when quiz ends
-        let totalScore = 0;
-        quizData.questions.forEach((question) => {
-            if (userAnswers[question.questionId] === question.correctOption) {
-                totalScore += 1; // Increment score if the user's answer is correct
-            }
-        });
-        setScore(totalScore);
+  const handleNextQuestion = () => {
+    // Store the user's selected answer
+    setUserAnswers([...userAnswers, selectedOption]);
 
-        // Sending quizId, userId, and score to the server
-        try {
-            await axios.post(`${SERVER_URL}/exoquiz/submit-quiz-result`, {
-                quizId,
-                userId,
-                score: totalScore
-            });
-            toast.success('Quiz submitted successfully!');
-        } catch (error) {
-            console.error('Error submitting quiz data:', error);
-            toast.error('Error submitting quiz data.');
-        }
-    };
-
-    if (loading) {
-        return (
-            <div className="loading-bar-container">
-                <div className="loading-bar"></div>
-                <p>Loading quiz...</p>
-            </div>
-        );
+    if (selectedOption === quiz.questions[currentQuestionIndex].correctOption) {
+      setScore(score + 1);
     }
 
-    return (
+    if (currentQuestionIndex < quiz.questions.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setSelectedOption(null);
+      setTimer(60);  // reset timer for the next question
+    } else {
+      setIsSubmitted(true);
+      toast.success('Quiz submitted!');
+    }
+  };
+
+  const handleSubmit = async () => {
+    // Store the last answer
+    setUserAnswers([...userAnswers, selectedOption]);
+
+    if (selectedOption === quiz.questions[currentQuestionIndex].correctOption) {
+      setScore(score + 1);
+    }
+    setIsSubmitted(true);
+    setTimer(0);
+
+    // Send data to the server (optional)
+    // try {
+    //   await axios.post(`${SERVER_URL}/exoquiz/submit`, {
+    //     userId: userID,
+    //     quizId: quizId,
+    //     totalMarks: score,
+    //   });
+    //   toast.success('Quiz submitted successfully!');
+    // } catch (error) {
+    //   toast.error('Failed to submit quiz');
+    // }
+    toast.success('Quiz submitted successfully!');
+  };
+
+  if (!quiz) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="quiz-container">
+      <h1 className="quiz-title">{quiz.title}</h1>
+      <p className="quiz-description">{quiz.description}</p>
+      
+      {!isSubmitted ? (
         <>
-            <Navbar />
-            <div className="quiz-details-container">
-                <h1>{quizData.title}</h1>
-                <p>{quizData.description}</p>
-                {!quizEnded && <p className="time-remaining">Time Remaining: {timeRemaining}s</p>}
+          <div className="question-container">
+            <p className="question-status">Question {currentQuestionIndex + 1} of {quiz.numQuestions}</p>
+            <h2 className="question-text">{quiz.questions[currentQuestionIndex].questionText}</h2>
+            <ul className="options">
+              {quiz.questions[currentQuestionIndex].options.map((option, index) => (
+                <li key={index}>
+                  <input
+                    type="radio"
+                    id={`option-${index}`}
+                    name="option"
+                    value={index}
+                    checked={selectedOption === index}
+                    onChange={() => handleOptionSelect(index)}
+                  />
+                  <label htmlFor={`option-${index}`} className="option-label">{option}</label>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-                {quizData.questions && quizData.questions.length > 0 && !quizEnded ? (
-                    <div className="quiz-questions">
-                        <h3>{quizData.questions[currentQuestionIndex].questionText}</h3>
-                        {quizData.questions[currentQuestionIndex].options.map((option, index) => (
-                            <div key={index}>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name={`question-${currentQuestionIndex}`}
-                                        value={option}
-                                        checked={userAnswers[quizData.questions[currentQuestionIndex].questionId] === option || false}
-                                        onChange={() => handleAnswerChange(quizData.questions[currentQuestionIndex].questionId, option)}
-                                    />
-                                    {option}
-                                </label>
-                            </div>
-                        ))}
+          <div className="timer">
+            Time left: {timer} seconds
+          </div>
 
-                        {currentQuestionIndex > 0 && (
-                            <button onClick={() => setCurrentQuestionIndex(currentQuestionIndex - 1)}>
-                                Previous
-                            </button>
-                        )}
-                        {currentQuestionIndex < quizData.questions.length - 1 ? (
-                            <button onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)}>
-                                Next
-                            </button>
-                        ) : (
-                            <button onClick={handleSubmitQuiz}>
-                                Submit Quiz
-                            </button>
-                        )}
-                    </div>
-                ) : (
-                    <div>
-                        <h3 className="score">Your Score: {score}</h3>
-                        {quizData.questions.map((question, index) => (
-                            <div key={index} className="result-card">
-                                <p>
-                                    <strong>Q: {question.questionText}</strong>
-                                    <br />
-                                    <span className={`user-answer ${userAnswers[question.questionId] === question.correctOption ? 'correct' : 'wrong'}`}>
-                                        Your Answer: {userAnswers[question.questionId]}
-                                    </span>
-                                    <br />
-                                    <span className="correct-answer">
-                                        Correct Answer: {question.correctOption}
-                                    </span>
-                                </p>
-                            </div>
-                        ))}
-                    </div>
-                )}
-            </div>
-            <Footer />
+          <button className="next-button" onClick={handleNextQuestion} disabled={selectedOption === null}>
+            {currentQuestionIndex < quiz.numQuestions - 1 ? "Next Question" : "Submit Quiz"}
+          </button>
         </>
-    );
-}
+      ) : (
+        <div className="quiz-results">
+          <h2 className="results-title">Quiz Completed!</h2>
+          <p className="results-score">Your Score: {score} / {quiz.numQuestions}</p>
+          <h3 className="correct-answers-title">Your Answers vs Correct Answers:</h3>
+          <ul className="correct-answers-list">
+            {quiz.questions.map((q, index) => (
+              <li key={index} className="correct-answer-item">
+                <p className="question-text">{q.questionText}</p>
+                <p>
+                  Your Answer: <span className={userAnswers[index] === q.correctOption ? 'correct' : 'wrong'}>
+                    {q.options[userAnswers[index]] || "Not answered"}
+                  </span>
+                </p>
+                <p>
+                  Correct Answer: <span className="correct">{q.options[q.correctOption]}</span>
+                </p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export default QuizDetails;
