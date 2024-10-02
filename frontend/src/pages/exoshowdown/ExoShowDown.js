@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './ExoShowDown.css';
 import Navbar from '../../components/navbar/Navbar';
+import SERVER_URL from '../../config/SERVER_URL';  // Import SERVER_URL
 
 function ExoShowDown() {
     const [caption, setCaption] = useState('');
@@ -19,20 +20,24 @@ function ExoShowDown() {
         fetchUpcomingCompetitions();
     }, []);
 
-    // Fetch ongoing competition from the database
     const fetchOngoingCompetition = async () => {
         try {
-            const response = await axios.get('/exoshowdown/ongoing-competition');
-            setLiveCompetition(response.data);
+            console.log("sending posts");
+            const response = await axios.post(`${SERVER_URL}/exoshowdown/ongoing-showdown`, {
+               
+            });
+            console.log('Ongoing competition:', response.data);
         } catch (error) {
             console.error('Error fetching ongoing competition:', error);
         }
     };
+    
 
     const fetchPastCompetitions = async () => {
         try {
-            const response = await axios.get('/exoshowdown/past-competitions');
-            setPastCompetitions(response.data);
+            const response = await axios.post(`${SERVER_URL}/exoshowdown/past-showdown`);
+            //setPastCompetitions(response.data);
+            console.log('Past competitions:', response.data);
         } catch (error) {
             console.error('Error fetching past competitions:', error);
         }
@@ -40,8 +45,9 @@ function ExoShowDown() {
 
     const fetchUpcomingCompetitions = async () => {
         try {
-            const response = await axios.get('/exoshowdown/upcoming-competitions');
-            setUpcomingCompetitions(response.data);
+            const response = await axios.post(`${SERVER_URL}/exoshowdown/upcoming-showdown`);
+            //setUpcomingCompetitions(response.data);
+            console.log('Upcoming competitions:', response.data);
         } catch (error) {
             console.error('Error fetching upcoming competitions:', error);
         }
@@ -59,7 +65,7 @@ function ExoShowDown() {
         formData.append('artFile', artFile);
 
         try {
-            await axios.post('/api/upload-art', formData);
+            await axios.post(`${SERVER_URL}/api/upload-art`, formData);
             alert('Art uploaded successfully!');
             setCaption('');
             setDescription('');
