@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
+const { getDownloadURL, uploadBytesResumable, ref } = require('firebase/storage');
+const { storage } = require('../../config/firebaseConfig');
 
 
 router.post('/', async (req, res) => {

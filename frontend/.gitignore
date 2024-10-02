@@ -7,6 +7,9 @@
 # testing
 /coverage
 
+
+/frontend/src/config/SECRET_KEY.js
+/frontend/src/config/firebaseConfig.js
 # production
 /build
 
