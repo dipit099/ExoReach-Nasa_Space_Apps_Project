@@ -1,0 +1,122 @@
+.quiz-details-container {
+    padding: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: var(--background-color01  );
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Glacial', sans-serif;
+}
+
+.quiz-details-header {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.quiz-details-description {
+    color: var(--text-normal);
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.quiz-questions {
+    background-color: var(--background-color01);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.quiz-question-title {
+    color: var(--text-high);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.quiz-answer-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.quiz-button {
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Glacial', sans-serif;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quiz-button:hover {
+    background-color: var(--accent-color02);
+    transform: scale(1.05);
+}
+
+.quiz-results-container {
+    background-color: var(--background-color02);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.quiz-results-header {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.result-card {
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: var(--background-color02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-card p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.user-answer {
+    font-size: 1.1rem;
+}
+
+.user-answer.correct {   
+    color: green;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.user-answer.wrong {
+  
+    color: red;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.correct-answer {
+    color: green;
+    font-size: 1.1rem;
+}
+
+.quiz-score {
+    color: var(--primary-color);
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.time-remaining {
+    font-size: 1.3rem;
+    color: var(--accent-color01);
+    text-align: center;
+    margin-bottom: 20px;
+}

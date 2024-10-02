@@ -3,7 +3,7 @@ import axios from 'axios';
 import './ExoShowDown.css';
 import Navbar from '../../components/navbar/Navbar';
 import SERVER_URL from '../../config/SERVER_URL';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function ExoShowDown() {
@@ -115,8 +115,7 @@ function ExoShowDown() {
 
     return (
         <>
-        <Navbar />
-        <ToastContainer />
+        <Navbar />       
         <div className="exoshowdown-container">
             <h1 className="title">ExoShowDown: Art Competition</h1>
 

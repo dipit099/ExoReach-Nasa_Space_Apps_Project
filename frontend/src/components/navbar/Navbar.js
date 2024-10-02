@@ -9,6 +9,7 @@ import Register from '../login/Register'; // Import the CreateAccount component
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
 import { AuthContext } from '../../context/AuthContext'; // Import the AuthContext
+import { toast } from 'react-toastify';
 
 function Navbar() {
     const { isLoggedIn, logout } = useContext(AuthContext); // Use AuthContext
@@ -37,7 +38,8 @@ function Navbar() {
         return location.pathname === path ? 'nav-link active' : 'nav-link';
     };
 
-    const handleLogout = () => {        
+    const handleLogout = () => {
+        toast.success('Logged out successfully'); // Show success message        
         logout(); // Call logout from AuthContext
     };
 
