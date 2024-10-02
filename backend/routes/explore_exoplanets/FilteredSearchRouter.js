@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-
 router.get('/', async (req, res) => {
     const { planetTypes, discoveryMethods, telescopes, facilities } = req.query;
 
@@ -85,6 +84,5 @@ router.get('/', async (req, res) => {
     }
 });
 
-module.exports = {
-    router    
-};
+module.exports = router    
+
