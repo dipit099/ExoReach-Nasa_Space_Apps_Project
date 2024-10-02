@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import "./HomeExoCards.css";
 import { Link } from "react-router-dom";
 import LargeButton from "../largebutton/LargeButton";
-import planet1 from "../../assets/planet1.png";
-import planet2 from "../../assets/planet2.png";
-import planet3 from "../../assets/planet3.png";
+import planet1 from "../../../assets/planet1.png";
+import planet2 from "../../../assets/planet2.png";
+import planet3 from "../../../assets/planet3.png";
 
 const HomeExoCards = () => {
   const cardRefs = [useRef(null), useRef(null), useRef(null)];
