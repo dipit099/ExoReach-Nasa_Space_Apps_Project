@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AdminExoQuiz from './AdminExoQuiz';
+import AdminExoShowdown from './AdminExoShowdown';
 
 const AdminPage = () => {
   const [password, setPassword] = useState('');
@@ -50,7 +51,7 @@ const AdminPage = () => {
             {activeTab === 'exoshowdown' && (
               <div>
                 <h2>ExoShowdown</h2>
-                <p>This is the ExoShowdown content.</p>
+                <AdminExoShowdown/>
                 {/* Add your ExoShowdown functionality here */}
               </div>
             )}
