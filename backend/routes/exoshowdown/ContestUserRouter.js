@@ -7,9 +7,9 @@ const getCurrentDate = () => {
     return today; 
 };
 
-router.get('/past_showdowns', async (req, res) => {
+router.post('/past-showdown', async (req, res) => {
     const currentDate = getCurrentDate();
-
+    console.log("hi")
     const query = `
         SELECT * FROM contest
         WHERE end_date < $1
@@ -17,6 +17,7 @@ router.get('/past_showdowns', async (req, res) => {
 
     try {
         const result = await req.pool.query(query, [currentDate]);
+        console.log(result)
         res.status(200).json({
             success: true,
             contests: result.rows,
@@ -31,9 +32,10 @@ router.get('/past_showdowns', async (req, res) => {
     }
 });
 
-router.get('/ongoing_showdowns', async (req, res) => {
+router.post('/ongoing-showdown', async (req, res) => {
     const currentDate = getCurrentDate();
-
+    console.log("hi")
+    console.log(req.query.message)
     const query = `
         SELECT * FROM contest
         WHERE start_date <= $1 AND end_date >= $1
@@ -41,6 +43,7 @@ router.get('/ongoing_showdowns', async (req, res) => {
 
     try {
         const result = await req.pool.query(query, [currentDate]);
+        console.log(result)
         res.status(200).json({
             success: true,
             contests: result.rows,
@@ -55,9 +58,9 @@ router.get('/ongoing_showdowns', async (req, res) => {
     }
 });
 
-router.get('/future_showdowns', async (req, res) => {
+router.post('/upcoming-showdown', async (req, res) => {
     const currentDate = getCurrentDate();
-
+    console.log("hi")
     const query = `
         SELECT * FROM contest
         WHERE start_date > $1
@@ -65,10 +68,11 @@ router.get('/future_showdowns', async (req, res) => {
 
     try {
         const result = await req.pool.query(query, [currentDate]);
+        console.log(result)
         res.status(200).json({
             success: true,
             contests: result.rows,
-            status: "Soon"
+            status: "Upcoming"
         });
     } catch (error) {
         console.error('Error fetching future contests:', error);
@@ -79,9 +83,10 @@ router.get('/future_showdowns', async (req, res) => {
     }
 });
 
-router.get('/all_showdowns', async (req, res) => {
+router.post('/all_showdowns', async (req, res) => {
     const currentDate = getCurrentDate();
-
+    console.log("hi")
+    console.log(result)
     const query = `
         SELECT * FROM contest
     `;
@@ -95,7 +100,7 @@ router.get('/all_showdowns', async (req, res) => {
             const contestStartDate = new Date(contest.start_date);
             const contestEndDate = new Date(contest.end_date);
 
-            let status = 'Soon'; 
+            let status = 'Upcoming'; 
 
             if (contestEndDate < currentDate) {
                 status = 'Ended';  
