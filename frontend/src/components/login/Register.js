@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Register.css';  
-
+import axios from 'axios';
 const Register = ({ onClose, loginPopupOpen }) => {
     
     const [fullName, setFullName] = useState('');
@@ -11,21 +11,38 @@ const Register = ({ onClose, loginPopupOpen }) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [gender, setGender] = useState(''); 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
 
-        console.log({
-            fullName,
-            dateOfBirth,
-            username,
-            email,
-            password,
-            confirmPassword,
-            gender 
-        });
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
-        onClose();
+    const userData = {
+        fullName,
+        dateOfBirth,
+        username,
+        email,
+        password,
+        confirmPassword,
+        gender 
     };
+
+    try {
+        const response = await axios.post('http://localhost:5000/register', userData);
+        console.log('Registration successful:', response.data);
+    } catch (error) {
+        if (error.response) {
+            console.error('Registration error:', error.response.data.message);
+            alert(`Error: ${error.response.data.message}`);
+        } else if (error.request) {
+            console.error('No response received:', error.request);
+            alert('Error: No response from the server. Please try again later.');
+        } else {
+            console.error('Error in setup:', error.message);
+            alert(`Error: ${error.message}`);
+        }
+    }
+    onClose();
+};
+
 
     return (
         <div className='register-overlay'>
@@ -81,8 +98,8 @@ const Register = ({ onClose, loginPopupOpen }) => {
                         required
                     >
                         <option value="">Select Gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
                     </select>
                     </div>
                     <div className='register-two-div'>

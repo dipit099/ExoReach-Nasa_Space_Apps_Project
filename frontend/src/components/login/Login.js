@@ -14,7 +14,7 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
   useEffect(() => {
     const identification = localStorage.getItem('identification');
     if (identification === SECRET_KEY) {
-      setIsLoggedIn(true); // User is logged in
+      setIsLoggedIn(true); 
     }
   }, []);
 
@@ -25,13 +25,13 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
       const response = await axios.post(`${SECRET_KEY}/login`, { username, password });
 
       const { data } = response;
-
+      console.log(data)
       if (data.success) {
-        toast.success('Login successful!');
+        toast.success(data.message);
         localStorage.setItem('identification', data.identification);
-        setIsLoggedIn(true); // Update logged-in state
+        setIsLoggedIn(true); 
       } else {
-        toast.error('Login failed, please try again.');
+        toast.error('Login failed: ' + data.message);
       }
 
     } catch (error) {
