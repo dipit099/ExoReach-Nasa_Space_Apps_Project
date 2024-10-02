@@ -1,16 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const middleware = (pool) => {
-    return (req, res, next) => {
-        req.pool = pool;
-        next();
-    };
-};
 
 router.post('/', async (req, res) => {
     console.log(req.body);
-    const { fullName, dateOfBirth, username, email, password, confirmPassword } = req.body;
+    const { fullName, dateOfBirth, username, email, password, confirmPassword, gender} = req.body;
     if (!fullName || !username || !email || !password || !confirmPassword || !dateOfBirth) {
         return res.status(400).json({
             success: false,
@@ -39,9 +33,9 @@ router.post('/', async (req, res) => {
         }
 
         await req.pool.query(
-            `INSERT INTO users (username, email, password, full_name, date_of_birth) 
-             VALUES ($1, $2, $3, $4, $5)`,
-            [username, email, password, fullName, dateOfBirth]
+            `INSERT INTO users (username, email, password, full_name, date_of_birth, gender) 
+             VALUES ($1, $2, $3, $4, $5, $6)`,
+            [username, email, password, fullName, dateOfBirth, gender]
         );
 
         return res.status(201).json({
@@ -59,9 +53,6 @@ router.post('/', async (req, res) => {
 });
 
 module.exports = {
-    middleware,
-    router
-
-    
+    router    
 };
 

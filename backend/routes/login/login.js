@@ -1,14 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-// Define your login logic here
 router.post('/', async (req, res) => {
     const { username, password } = req.body;
-    console.log(username);
-    
+
     try {
         const userQuery = await req.pool.query(
-            'SELECT * FROM users WHERE username = $1 AND password = crypt($2, password)',
+            `SELECT * FROM users WHERE username = $1 AND password = crypt($2, password)`,
             [username, password]
         );
 
@@ -21,14 +19,21 @@ router.post('/', async (req, res) => {
 
         const user = userQuery.rows[0];
 
+        delete user.password;
+        delete user.id;
+        delete user.created_at;
+        delete user.updated_at;
+
+        Object.keys(user).forEach(key => {
+            if (user[key] === null || user[key] === undefined || user[key] === '') {
+                user[key] = '---';
+            }
+        });
+
         return res.status(200).json({
             success: true,
-            message: 'Login successful',
-            user: {
-                userId: user.id, 
-                username: user.username,
-                email: user.email
-            }
+            message: 'Login successful!',
+            user
         });
 
     } catch (error) {
@@ -42,6 +47,5 @@ router.post('/', async (req, res) => {
 
 module.exports = {
     router    
-    
 };
 
