@@ -191,6 +191,5 @@ router.put('/view_increment/:planet_name', async (req, res) => {
 });
 
 
-module.exports = {
-    router    
-};
+module.exports = router    
+
