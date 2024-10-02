@@ -31,6 +31,17 @@ app.use('/forum/recently-viewed', require('./routes/forum/RecentlyViewedRouter')
 app.use('/exoquiz/admin', require('./routes/exoquiz/ExoquizAdminRouter'));
 app.use('/exoquiz/quizzing', require('./routes/exoquiz/ParticipateInQuizRouter'))
 app.use('/exoquiz', require('./routes/exoquiz/ExoquizUserRouter'))
+
+app.use('/profile/art-info', require('./routes/profile/ArtInfoRouter'))
+app.use('/profile/exocard-collection', require('./routes/profile/ExocardsCollectionRouter'))
+app.use('/profile/quiz-info', require('./routes/profile/QuizInfoRouter'))
+app.use('/profile/forum-collection', require('./routes/profile/ForumCollection'))
+app.use('/profile/profile-info', require('./routes/profile/ProfileInfoRouter'))
+
+app.use('/follow', require('./routes/follow/FollowRouter'))
+app.use('/user', require('./routes/follow/UserRouter'))
+app.use('/people-you-may-know', require('./routes/follow/PeopleYouMayKnowRouter'))
+
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}...`);
 });
