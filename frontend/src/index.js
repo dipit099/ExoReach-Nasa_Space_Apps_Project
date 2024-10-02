@@ -11,7 +11,7 @@ root.render(
   <BrowserRouter>
     <ToastContainer 
     //  theme='dark' // Dark theme
-      autoClose={3000} // Closes toast after 1 second
+      autoClose={1500} // Closes toast after 1 second
      />
     <App />
   </BrowserRouter>

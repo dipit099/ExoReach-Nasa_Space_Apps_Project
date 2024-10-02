@@ -37,7 +37,7 @@ function Navbar() {
         return location.pathname === path ? 'nav-link active' : 'nav-link';
     };
 
-    const handleLogout = () => {
+    const handleLogout = () => {        
         logout(); // Call logout from AuthContext
     };
 

@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
 import './Login.css';
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
 import SERVER_URL from '../../config/SERVER_URL';
 import { AuthContext } from '../../context/AuthContext'; // Import the AuthContext
 
@@ -20,6 +22,7 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
       console.log(response);
 
       if (data.success) {
+        //alert(data.message);
         toast.success(data.message); // Show success message
         // Assuming data contains user_id along with the success message
         const { user_id } = data; // Extract user_id from response
@@ -37,22 +40,12 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
     onClose();
   };
 
-  const handleLogout = () => {
-    logout(); // Call logout from AuthContext
-    toast.info('Logged out successfully!'); // Show logout message
-    onClose(); // Optionally close the popup on logout
-  };
+  
 
   return (
     <div className="login-overlay">
       <div className="login-popup">
-        <button className="close-button" onClick={onClose}>×</button>
-        {isLoggedIn ? (
-          <>          
-            <button className="logout-button" onClick={handleLogout}>Sign Out</button>
-          </>
-        ) : (
-          <>
+        <button className="close-button" onClick={onClose}>×</button>        
             <h2>Login</h2>
             <form onSubmit={handleLogin} className='form'>
               <input 
@@ -76,10 +69,9 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
               <p>Don't have an account?
               <button className="create-account-button" onClick={() => { onClose(); createAccountPopupOpen(); }}>Create Account</button></p>
             </div>
-          </>
-        )}
-      </div>
-      <ToastContainer />
+          
+       
+      </div>    
     </div>
   );
 };
