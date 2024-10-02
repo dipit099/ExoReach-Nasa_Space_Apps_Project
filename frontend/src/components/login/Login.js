@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Login.css';
 import axios from 'axios';
-import SERVER_URL from '../../config/SERVER_URL';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SECRET_KEY from '../../config/SERVER_URL';
-
 
 const Login = ({ onClose, createAccountPopupOpen }) => {
 
@@ -24,7 +22,7 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${SERVER_URL}/login`, { username, password });
+      const response = await axios.post(`${SECRET_KEY}/login`, { username, password });
 
       const { data } = response;
 
