@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     const { quizId } = req.body;
-    console.log(quizId)
+    console.log("quizid=",quizId)
     try {
         const quizQuery = `
             SELECT title, description
@@ -44,6 +44,7 @@ router.post('/', async (req, res) => {
         };
 
         res.status(200).json(responseData);
+        console.log(responseData);
 
     } catch (error) {
         console.error('Error fetching quiz data:', error);

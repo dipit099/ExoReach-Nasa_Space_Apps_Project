@@ -17,21 +17,24 @@ import ExoplanetDetail from './pages/exoplanet_detail/ExoplanetDetail';
 import QuizDetails from './pages/exoquiz/QuizDetails';
 
 function App() {
+  const username= localStorage.getItem('username');
+
+  
   return (
     <AuthProvider> 
       <div>
         <Routes>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/" element={<Home />} />
-          <Route path="/exovision" element={<ExoVision />} />
           
           <Route path="exoquiz" element={<ExoQuiz />} />
           <Route path="/exoquiz/:quizId" element={<QuizDetails/>} />
-
           <Route path="community" element={<CommunityForum />} />
-          <Route path="exploreexoplanets" element={<ExploreExoplanets />} />
           <Route path="exoshowdown" element={<ExoShowDown />} />
 
+
+          <Route path="exploreexoplanets" element={<ExploreExoplanets />} />         
+          <Route path="/exovision" element={<ExoVision />} />
           
           <Route path="exoquiz/admin" element={<AdminExoQuiz />} />
           <Route path="exoshowdown/admin" element={<AdminExoShowdown />} />
