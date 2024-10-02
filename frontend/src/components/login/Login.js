@@ -3,7 +3,8 @@ import './Login.css';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SECRET_KEY from '../../config/SERVER_URL';
+import SERVER_URL from '../../config/SERVER_URL';
+import SECRET_KEY from '../../config/SECRET_KEY';
 
 const Login = ({ onClose, createAccountPopupOpen }) => {
 
@@ -22,10 +23,9 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${SECRET_KEY}/login`, { username, password });
-
+      const response = await axios.post(`${SERVER_URL}/login`, { username, password });
       const { data } = response;
-      console.log(data)
+      
       if (data.success) {
         toast.success(data.message);
         localStorage.setItem('identification', data.identification);
@@ -35,6 +35,7 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
       }
 
     } catch (error) {
+      toast.error('Error during login. Please try again.');
       console.error('Error during login:', error);
     }
 
@@ -43,7 +44,7 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('identification');
-    setIsLoggedIn(false); // Update state to logged out
+    setIsLoggedIn(false);
     toast.info('Logged out successfully!');
   };
 
@@ -52,9 +53,8 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
       <div className="login-popup">
         <button className="close-button" onClick={onClose}>×</button>
         {isLoggedIn ? (
-          <>
-            <h2>Welcome Back!</h2>
-            <button className="logout-button" onClick={handleLogout}>Logout</button>
+          <>          
+            <button className="logout-button" onClick={handleLogout}>Sign Out</button>
           </>
         ) : (
           <>
