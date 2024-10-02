@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
+    console.log('Login request received:', req.body);
     const { username, password } = req.body;
 
     try {
@@ -29,6 +30,7 @@ router.post('/', async (req, res) => {
                 user[key] = '---';
             }
         });
+        console.log('Login successful:', user);
 
         return res.status(200).json({
             success: true,
