@@ -10,9 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <ToastContainer 
-    //theme="dark"   
-    autoClose={1000}   
-    />
+    //  theme='dark' // Dark theme
+      autoClose={3000} // Closes toast after 1 second
+     />
     <App />
   </BrowserRouter>
 );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import '../variables.css';
@@ -8,9 +8,10 @@ import Login from '../login/Login'; // Import the Login component
 import Register from '../login/Register'; // Import the CreateAccount component
 import { MdDarkMode } from "react-icons/md";
 import { MdOutlineLightMode } from "react-icons/md";
-
+import { AuthContext } from '../../context/AuthContext'; // Import the AuthContext
 
 function Navbar() {
+    const { isLoggedIn, logout } = useContext(AuthContext); // Use AuthContext
     const [theme, setTheme] = useState('dark');  // Set default theme to 'dark'
     const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
     const [isCreateAccountPopupOpen, setIsCreateAccountPopupOpen] = useState(false);
@@ -36,6 +37,10 @@ function Navbar() {
         return location.pathname === path ? 'nav-link active' : 'nav-link';
     };
 
+    const handleLogout = () => {
+        logout(); // Call logout from AuthContext
+    };
+
     return (
         <nav className="navbar">
             <div className="navbar-left">
@@ -48,8 +53,9 @@ function Navbar() {
             </div>
             <div className="navbar-right">
                 <Link to="/" className={getLinkClass('/')}>Home</Link>
-                <Link to="/community" className={getLinkClass('/about')}>Community</Link>
-                <Link to="/profile" className={getLinkClass('/services')}>Profile</Link>
+                <Link to="/community" className={getLinkClass('/community')}>Community</Link>
+                <Link to="/profile" className={getLinkClass('/profile')}>Profile</Link>
+                {/* Theme toggle button if needed */}
                 {/* <button onClick={toggleTheme} className="theme-toggle-button">
                     {theme === 'light' ? (
                         <MdDarkMode className="theme-icon" />
@@ -57,7 +63,11 @@ function Navbar() {
                         <MdOutlineLightMode className="theme-icon" />
                     )}
                 </button> */}
-                <button onClick={openLoginPopup} className="login-button1">Login</button>
+                {isLoggedIn ? (
+                    <button onClick={handleLogout} className="login-button1">Logout</button> // Change to Logout
+                ) : (
+                    <button onClick={openLoginPopup} className="login-button1">Login</button> // Login button
+                )}
             </div>
             {isLoginPopupOpen && <Login onClose={closeLoginPopup} createAccountPopupOpen={openCreateAccountPopup} />}
             {isCreateAccountPopupOpen && <Register onClose={closeCreateAccountPopup} loginPopupOpen={openLoginPopup} />}

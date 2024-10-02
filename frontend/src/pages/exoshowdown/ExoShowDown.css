@@ -1,88 +1,109 @@
 .exoshowdown-container {
-    padding: 20px;
+    padding: 30px;
     max-width: 1200px;
     margin: 0 auto;
+    background-color: var(--background-color);
+    border-radius: 10px;
 }
 
 .title {
     font-size: 2.5rem;
     text-align: center;
     color: var(--text-high);
+    margin-bottom: 30px;
 }
 
-.remaining-time {
-    text-align: center;
-    margin: 20px 0;
-    font-size: 1.5rem;
-    color: var(--accent-color01);
-}
-
-.ongoing-competition {
-    margin: 30px 0;
+.ongoing-competition, .past-competitions, .upcoming-competitions {
     background-color: var(--background-color02);
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.ongoing-competition h2, .past-competitions h2, .upcoming-competitions h2 {
+    text-align: center;
+    color: var(--text-high);
+}
+
+.competition {
+    margin: 20px 0;
+    background-color: var(--background-color02);
+    padding: 20px;
+    border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.ongoing-competition h2 {
-    text-align: center;
+.competition h3 {
+    font-size: 1.6rem;
     color: var(--text-high);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.ongoing-competition form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.competition p {
+    font-size: 1.1rem;
+    color: var(--text-normal);
+    margin-bottom: 10px;
 }
 
-.ongoing-competition input[type="text"],
-.ongoing-competition textarea {
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 100%;
-    max-width: 400px;
-    border: 2px solid var(--text-low);
-    border-radius: 5px;
-}
-
-.submit-button {
+.join-button, .submit-button, .leaderboard-button {
     padding: 12px 30px;
     background-color: var(--accent-color01);
     color: var(--text-same);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    margin-top: 10px;
 }
 
-.submit-button:hover {
+.join-button:hover, .submit-button:hover, .leaderboard-button:hover {
     background-color: var(--accent-color02);
 }
 
-.join-button {
-    padding: 12px 30px;
-    background-color: var(--accent-color02);
-    color: var(--text-same);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.past-competitions {
-    margin-top: 40px;
-}
-
-.past-competitions h2 {
+.popup-content {
+    background-color: var(--background-color);
+    padding: 30px;
+    border-radius: 10px;
+    position: relative;
+    width: 500px;
     text-align: center;
+}
+
+.popup-content h2 {
     color: var(--text-high);
 }
 
-.competition {
-    margin-bottom: 40px;
+.popup-content input[type="text"], .popup-content textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid var(--text-low);
+    border-radius: 5px;
+    color: var(--text-high);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--accent-color01);
 }
 
 .art-gallery {
@@ -107,7 +128,7 @@
 }
 
 .winner-card h4 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--text-high);
 }
 
@@ -117,10 +138,8 @@
 }
 
 .badge {
-    display: inline-block;
     padding: 5px 10px;
     border-radius: 5px;
-    margin-top: 5px;
     font-size: 0.9rem;
     color: var(--text-same);
 }
@@ -137,3 +156,21 @@
     background-color: #cd7f32; /* Bronze */
 }
 
+.competition-toggle {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.toggle-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.toggle-button.active {
+    background-color: var(--accent-color02);
+}

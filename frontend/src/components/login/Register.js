@@ -100,6 +100,7 @@ const handleSubmit = async (e) => {
                         <option value="">Select Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
+                        <option value="Female">Rather not say</option>
                     </select>
                     </div>
                     <div className='register-two-div'>
@@ -118,11 +119,12 @@ const handleSubmit = async (e) => {
                         required
                     />
                     </div>
+                    <br />
                     <button className='register-button' type="submit">Register</button>  
                 </form>
                 <div className='register-signup-section'>
-                    <p>Already have an account?</p>
-                    <button className='register-login-button' onClick={() => { onClose(); loginPopupOpen(); }}>Login</button>
+                    <p>Already have an account?
+                    <button className='register-login-button' onClick={() => { onClose(); loginPopupOpen(); }}>Log in</button></p>
                 </div>
             </div>
         </div>

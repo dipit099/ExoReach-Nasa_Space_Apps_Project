@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';  // Import Axios for API calls
 import './ExoQuiz.css';  // Custom CSS for styling
 import Navbar from '../../components/navbar/Navbar';
-import Footer from '../../components/footer/Footer'
+import Footer from '../../components/footer/Footer';
+import SERVER_URL from '../../config/SERVER_URL';
 
 function ExoQuiz() {
     const [liveQuizzes, setLiveQuizzes] = useState([]);
-    const [pastQuizzes, setPastQuizzes] = useState([]);
-    const [upcomingQuizzes, setUpcomingQuizzes] = useState([]);
+    const [pastQuizzes, setPastQuizzes] = useState([]);   
     const [filteredQuizzes, setFilteredQuizzes] = useState([]);
     const [selectedQuiz, setSelectedQuiz] = useState(null);
     const [userAnswers, setUserAnswers] = useState({});
@@ -26,16 +26,11 @@ function ExoQuiz() {
     // Fetch all quizzes
     const fetchQuizzes = async () => {
         try {
-            const liveResponse = await axios.get('/api/live-quizzes');  // Live quizzes
-            const pastResponse = await axios.get('/api/past-quizzes');  // Past quizzes
-            const upcomingResponse = await axios.get('/api/upcoming-quizzes');  // Upcoming quizzes
-
-            setLiveQuizzes(liveResponse.data);
-            setPastQuizzes(pastResponse.data);
-            setUpcomingQuizzes(upcomingResponse.data);
-
-            // Set default filtered quizzes to live
-            setFilteredQuizzes(liveResponse.data);
+            const liveResponse = await axios.post(`${SERVER_URL}/submit-quiz/${selectedQuiz.id}`);  // Live quizzes
+            const pastResponse = await axios.post(`${SERVER_URL}/submit-quiz/${selectedQuiz.id}`);  // Past quizzes
+           // setLiveQuizzes(liveResponse.data);
+           // setPastQuizzes(pastResponse.data);
+           // setFilteredQuizzes(liveResponse.data);  // Set default filtered quizzes to live
         } catch (error) {
             console.error('Error fetching quizzes:', error);
         }
@@ -62,7 +57,7 @@ function ExoQuiz() {
     // Submit quiz and fetch results
     const handleSubmitQuiz = async () => {
         try {
-            const response = await axios.post(`/api/submit-quiz/${selectedQuiz.id}`, {
+            const response = await axios.post(`${SERVER_URL}/submit-quiz/${selectedQuiz.id}`, {
                 answers: userAnswers,
             });
             setScore(response.data.score);
@@ -80,9 +75,7 @@ function ExoQuiz() {
             setFilteredQuizzes(liveQuizzes);
         } else if (filterType === 'past') {
             setFilteredQuizzes(pastQuizzes);
-        } else if (filterType === 'upcoming') {
-            setFilteredQuizzes(upcomingQuizzes);
-        }
+        } 
     };
 
     return (
@@ -98,12 +91,6 @@ function ExoQuiz() {
                         className={`filter-button ${filter === 'live' ? 'active' : ''}`}
                     >
                         Live Quizzes
-                    </button>
-                    <button
-                        onClick={() => handleFilterChange('upcoming')}
-                        className={`filter-button ${filter === 'upcoming' ? 'active' : ''}`}
-                    >
-                        Upcoming Quizzes
                     </button>
                     <button
                         onClick={() => handleFilterChange('past')}
@@ -122,9 +109,6 @@ function ExoQuiz() {
                             <p className="quiz-description">{quiz.description}</p>
                             {filter === 'live' && !selectedQuiz && (
                                 <button className="quiz-button" onClick={() => setSelectedQuiz(quiz)}>Take Quiz</button>
-                            )}
-                            {filter === 'upcoming' && (
-                                <p className="quiz-start-time">Quiz starts on: {new Date(quiz.startTime).toLocaleString()}</p>
                             )}
                             {filter === 'past' && (
                                 <>

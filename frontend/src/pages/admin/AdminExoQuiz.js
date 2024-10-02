@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import axios from "axios"; // To send data to the server
-import SERVER_URL from "../../config/SERVER_URL"; // Importing backend URL
+import axios from "axios"; 
+import SERVER_URL from "../../config/SERVER_URL"; 
+import DatePicker from "react-datepicker"; 
+import "react-datepicker/dist/react-datepicker.css"; 
+
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
 import "./AdminExoQuiz.css";
 
 const AdminExoQuiz = () => {
@@ -8,6 +15,7 @@ const AdminExoQuiz = () => {
   const [description, setDescription] = useState("");
   const [numQuestions, setNumQuestions] = useState("");
   const [questions, setQuestions] = useState([]);
+  const [endDate, setEndDate] = useState(null); 
 
   const handleNumQuestionsChange = (e) => {
     const value = parseInt(e.target.value, 10);
@@ -26,7 +34,7 @@ const AdminExoQuiz = () => {
       setNumQuestions("");
       setQuestions([]);
     } else {
-      alert("Please enter a valid number of questions (1-25).");
+      toast.error("Please enter a valid number of questions (1-25).");
     }
   };
 
@@ -52,40 +60,33 @@ const AdminExoQuiz = () => {
       questions.some(
         (q) =>
           !q.questionText || q.options.some((opt) => !opt) || !q.correctOption
-      )
+      ) ||
+      !endDate
     ) {
-      alert("Please fill in all fields.");
+      toast.error("Please fill in all fields.");
       return;
     }
 
     const quizData = {
       title,
       description,
-      numQuestions, // Sending the number of questions
+      numQuestions,
       questions,
+      endDate, 
     };
 
-    console.log(JSON.stringify(quizData)); // Log quiz data before sending
-
-    // Send quiz data to server
     try {
-
-
       console.log('ExoQuiz data:', quizData);
-      // const response = await axios.post(`${SERVER_URL}/exoquiz/admin`, quizData, {       
-      // });
-
       const response = await axios.post(`${SERVER_URL}/exoquiz/admin`, quizData, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
-      alert("Quiz data submitted successfully!");
-      // console.log("Server response:", response.data);
+      toast.success("Quiz data submitted successfully!");
+     // console.log(response.data);
     } catch (error) {
       console.error("Error submitting quiz data:", error);
-      alert("There was an error submitting the quiz. Please try again.");
+      toast.error("There was an error submitting the quiz. Please try again.");
     }
   };
 
@@ -168,8 +169,21 @@ const AdminExoQuiz = () => {
             </div>
           </div>
         ))}
+
+        <div className="form-group">
+          <label>Quiz End Date:</label>
+          <DatePicker
+            selected={endDate}
+            onChange={(date) => setEndDate(date)}
+            className="form-datepicker"
+            required
+            dateFormat="yyyy/MM/dd"
+            placeholderText="Select End Date"
+          />
+        </div>
+
         <button type="submit" className="form-submit-btn">Submit Quiz</button>
-      </form>
+      </form>      
     </div>
   );
 };

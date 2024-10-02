@@ -77,13 +77,16 @@
     background-color: var(--accent-color02);
     padding: 6px 12px;
     border-radius: 5px;
+    border: none;
     font-weight: bold;
+    font-size: 20px;
+    font-family: 'Glacial';
 }
 
 .login-button1:hover {
     background-color: var(--accent-color01);
     color: var(--text-same);
-    /*increase size*/transform: scale(1.1);
+    cursor: pointer;
 
 }
 
