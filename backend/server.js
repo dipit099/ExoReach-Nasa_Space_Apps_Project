@@ -21,6 +21,11 @@ app.use('/exoplanet', require('./routes/exoplanet/ExoplanetInfoRouter'));
 app.use('/exoshowdown/admin', require('./routes/exoshowdown/ContestAdminRouter'));
 app.use('/exoshowdown', require('./routes/exoshowdown/ContestUserRouter'));
 app.use('/exoquiz/admin', require('./routes/exoquiz/ExoquizAdminRouter'));
+app.use('/forum/admin', require('./routes/forum/ForumAdminRouter'));
+app.use('/forum', require('./routes/forum/ForumUserRouter'))
+app.use('/forum/recently-created', require('./routes/forum/RecentlyCreatedRouter'))
+app.use('/forum/recently-viewed', require('./routes/forum/RecentlyViewedRouter'))
+app.use('/exoquiz/quizzing', require('./routes/exoquiz/ParticipateInQuizRouter'))
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}...`);
