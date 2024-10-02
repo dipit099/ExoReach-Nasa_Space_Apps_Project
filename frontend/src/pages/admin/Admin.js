@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import SERVER_URL from '../../config/SERVER_URL'; 
 import axios from 'axios';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
 import './Admin.css';
 
 const AdminPage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+ 
 
   // Handles login with server request using axios
   const handleLogin = async () => {
     try {
+      console.log(username,password,SERVER_URL);
       const response = await axios.post(`${SERVER_URL}/login/admin`, {
         username: username,
         password: password,
@@ -32,8 +35,7 @@ const AdminPage = () => {
   };
 
   return (
-    <div className="admin-page">
-      <ToastContainer />
+    <div className="admin-page">     
       {!isAuthenticated ? (
         <div className="admin-login">
           <h2>Admin Login</h2>
@@ -53,12 +55,13 @@ const AdminPage = () => {
         </div>
       ) : (
         <div className="admin-content">
-          <nav className="admin-nav">
-            <Link to="/exoquiz/admin">ExoQuiz</Link>
-            <Link to="/exoshowdown/admin">ExoShowdown</Link>
-            <Link to="/forum/admin">Forum</Link>
-          </nav>
-        </div>
+        <nav className="admin-nav">
+          <Link to="/exoquiz/admin" target="_blank" rel="noopener noreferrer">ExoQuiz</Link>
+          <Link to="/exoshowdown/admin" target="_blank" rel="noopener noreferrer">ExoShowdown</Link>
+          <Link to="/forum/admin" target="_blank" rel="noopener noreferrer">Forum</Link>
+        </nav>
+      </div>
+      
       )}
     </div>
   );
