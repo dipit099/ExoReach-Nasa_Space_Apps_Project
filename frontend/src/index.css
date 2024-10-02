@@ -34,7 +34,7 @@ body {
   color: var(--text-low);
 }
 
-button{
+/* button{
   font-size: 20px;
   padding: 10px 20px;
   border-radius: 5px;
@@ -47,4 +47,4 @@ button{
 }
 button:hover{
   background-color: var(--secondary-color);
-}
+} */
