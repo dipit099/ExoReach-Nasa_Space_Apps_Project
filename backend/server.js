@@ -1,13 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const pool = require('./db')
-const loginRouter = require('./routes/login/login');
-const registerRouter = require('./routes/login/register');
-const homeRouter = require('./routes/home/home')
-const exploreExoplanetRouter  = require ('./routes/explore_exoplanets/filtered_search')
-const exoplanetDataRouter = require('./routes/exoplanet/exoplanet_info')
-const exoshowdownAdminRouter = require('./routes/exoshowdown/contest_admin')
-const exoshowdownUserRouter = require('./routes/exoshowdown/contest_user') 
+const loginRouter = require('./routes/login/LoginRouter');
+const registerRouter = require('./routes/login/RegisterRouter');
+const homeRouter = require('./routes/home/HomeRouter')
+const exploreExoplanetRouter  = require ('./routes/explore_exoplanets/FilteredSearchRouter')
+const exoplanetDataRouter = require('./routes/exoplanet/ExoplanetInfoRouter')
+const exoshowdownAdminRouter = require('./routes/exoshowdown/ContestAdminRouter')
+const exoshowdownUserRouter = require('./routes/exoshowdown/ContestUserRouter') 
 const app = express();
 
 
