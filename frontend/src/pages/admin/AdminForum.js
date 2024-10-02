@@ -41,9 +41,8 @@ const AdminForum = () => {
   };
 
   return (
-    <div className="admin-forum">
-      <ToastContainer />
-      <h2>Pending Forum Questions</h2>
+    <div className="admin-forum">      
+      {/* <h2>Pending Forum Questions</h2>
       {pendingQuestions.length === 0 ? (
         <p>No pending questions at the moment.</p>
       ) : (
@@ -63,7 +62,7 @@ const AdminForum = () => {
             </li>
           ))}
         </ul>
-      )}
+      )} */}
     </div>
   );
 };
