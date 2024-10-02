@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "./HomeQuiz.css";
 import { Link } from "react-router-dom";
 import LargeButton from "../largebutton/LargeButton";
-import Quiz from "../../assets/Quiz.png";
+import Quiz from "../../../assets/Quiz.png";
 
 const HomeQuiz = () => {
   const imageRef = useRef(null);
