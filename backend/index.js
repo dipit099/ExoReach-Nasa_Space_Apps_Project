@@ -19,6 +19,7 @@ app.use('/register', require('./routes/login/RegisterRouter'));
 app.use('/home', require('./routes/home/HomeRouter'));
 
 app.use('/explore_exoplanets', require('./routes/explore_exoplanets/FilteredSearchRouter'));
+app.use('/explore_exoplanets/with-card-attributes', require('./routes/explore_exoplanets/FilteredSearchWithCardAttributesRouter'))
 app.use('/exoplanet', require('./routes/exoplanet/ExoplanetInfoRouter'));
 app.use('/exoshowdown/admin', require('./routes/exoshowdown/ContestAdminRouter'));
 app.use('/exoshowdown', require('./routes/exoshowdown/ContestUserRouter'));
