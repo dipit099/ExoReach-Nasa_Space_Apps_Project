@@ -22,6 +22,8 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+
+  
   // Login function to update state and localStorage
   const login = (username, id) => {
     setIsLoggedIn(true);
