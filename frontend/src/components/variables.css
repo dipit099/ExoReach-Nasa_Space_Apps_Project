@@ -1,15 +1,16 @@
 :root {
-    --background-color: #E0F3FF; /* Complement of #022555 (soft light blue) */
-    --background-color02: #F0F8FF; /* Complement of #020e21 (very light grey) */
-    --footer-color: #DDDDDD; /* Light grey for the footer */
-    --primary-color: #2E1700; /* Complement of #D1E8D6 (warm dark brown) */
-    --secondary-color: #582800; /* Complement of #A7D7C5 (deep brown) */
-    --accent-color01: #0042A7; /* Complement of #ffbe58 (bold blue) */
-    --accent-color02: #FFCC33; /* Complement of #7933FF (golden yellow) */
-    --text-high: #587aae; /* Dark blue complement of #ffbe58 */
-    --text-low: #6f77a6; /* Soft light blue, complement of dark text */
-    --text-normal: #001F33; /* Dark navy blue for main text */
-    --text-same: #ffffff; /* Dark navy blue */
+    --background-color: #022555;
+    --background-color02: #020e21;
+    --footer-color: #222222;
+    --primary-color: #D1E8D6;
+    --secondary-color: #A7D7C5;
+    --accent-color01: #ffbe58;
+    --accent-color02: #A7D7C5;    
+    --text-high: #ffbe58;
+    /* --text-low: #020e21;  */
+    --text-low : #e0f3ff;
+    --text-normal: #ffffff;
+    --text-same: #000000;
 }
 
 
