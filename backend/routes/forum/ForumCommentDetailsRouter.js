@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
     const { forumId } = req.body;  
-
+    
     if (!forumId) {
         return res.status(400).json({ success: false, message: 'Missing required forumId' });
     }
