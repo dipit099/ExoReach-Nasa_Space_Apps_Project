@@ -34,7 +34,7 @@ const HomeExoCards = () => {
 
   return (
     <div>
-      <div className="anton-regular-homexo">EXOCARDS</div>
+      <div className="anton-regular-homexo">EXOFLEX</div>
       <br />
       <br />
       <div className="exocards-section">
@@ -65,15 +65,13 @@ const HomeExoCards = () => {
         </div>
 
         <div className="exocards-section-right">
-          Explore key facts about exoplanets and add it to your collection.
-          Get ready for <Link to='/exoshowdown' className="link-exoshowdown"> <span className="highlight-text">ExoShowdown</span></Link>, where you can use your cards in exciting
-          battles!
+          Explore key facts about exoplanets and add them to your collection. Get ready for <Link to='/exoflex' className="link-exoshowdown"> <span className="highlight-text">ExoFlex</span></Link>, where you can select cards and dive into thrilling solo challenges, putting your knowledge and strategy to the test!
           <br />
           <br />
           <br />
           <br />
           <div className="button-wrap-homexo">
-            <LargeButton text="COLLECT" link="/exocards" />
+            <LargeButton text="PLAY NOW" link="/exocards" />
           </div>
         </div>
       </div>

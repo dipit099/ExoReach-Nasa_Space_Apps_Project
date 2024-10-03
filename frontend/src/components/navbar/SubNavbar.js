@@ -4,7 +4,7 @@ import './SubNavbar.css';
 
 const SubNavbar = () => {
 
-  const items = ['Overview','Explore Exoplanets', 'ExoVision', 'ExoShowdown', 'ExoQuiz'];
+  const items = ['Overview','Explore Exoplanets','ExoShowdown', 'ExoQuiz'];
   const location = useLocation();
 
   return (

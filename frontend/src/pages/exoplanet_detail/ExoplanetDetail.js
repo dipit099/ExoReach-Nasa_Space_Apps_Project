@@ -9,10 +9,12 @@ import Loading from "../../components/loading/Loading";
 
 const ExoplanetDetail = () => {
   const { pl_name } = useParams();
+
   const [exoplanet, setExoplanet] = useState(null);
   const [showMore, setShowMore] = useState(false); // State to control the visibility of additional list items
 
   const formattedPlName = pl_name.replace(/_/g, " ");
+  
 
   console.log(pl_name);
 
@@ -24,8 +26,8 @@ const ExoplanetDetail = () => {
         );
         console.log(response.data);
         if (response.data.success) {
-          console.log(response.data.planet);
           setExoplanet(response.data.planet); // Set the exoplanet data
+          await incrementPlanetViews(response.data.planet.pl_name);
         }
       } catch (error) {
         console.error("Error fetching exoplanet details:", error);
@@ -37,6 +39,18 @@ const ExoplanetDetail = () => {
   // Toggle function for Show More / Show Less
   const toggleShowMore = () => {
     setShowMore(!showMore);
+  };
+  const incrementPlanetViews = async (planetName) => {
+    try {
+      const response = await axios.post(`${SERVER_URL}/exoplanet/view_increment`, {
+        planetName
+      });
+      if (response.data.success) {
+        console.log(response.data.message); // Success message from the server
+      }
+    } catch (error) {
+      console.error("Error incrementing planet views:", error);
+    }
   };
 
   // Render the details only if exoplanet data is available
