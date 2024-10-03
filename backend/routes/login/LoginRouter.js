@@ -21,7 +21,6 @@ router.post('/', async (req, res) => {
         const user = userQuery.rows[0];
 
         delete user.password;
-        delete user.id;
         delete user.created_at;
         delete user.updated_at;
 
