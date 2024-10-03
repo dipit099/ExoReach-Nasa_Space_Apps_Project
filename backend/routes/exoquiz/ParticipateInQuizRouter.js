@@ -36,6 +36,7 @@ router.post('/', async (req, res) => {
         }));
 
         const responseData = {
+            success: true,
             title: quiz.title,
             description: quiz.description,
             numQuestions: questions.length,
@@ -52,7 +53,7 @@ router.post('/', async (req, res) => {
 
 router.post('/submit-quiz-result', async (req, res) => {
     const { userId, quizId, score } = req.body;
-
+    console.log(req.body)
     if (!userId || !quizId || score === undefined) {
         return res.status(400).json({ success: false, message: 'Missing required fields (userId, quizId, score)' });
     }
@@ -61,8 +62,7 @@ router.post('/submit-quiz-result', async (req, res) => {
         const insertQuery = `
             INSERT INTO user_quiz_results (user_id, quiz_id, score)
             VALUES ($1, $2, $3)
-            ON CONFLICT (user_id, quiz_id) DO UPDATE
-            SET score = EXCLUDED.score, completion_date = CURRENT_DATE;
+            ON CONFLICT (user_id, quiz_id) DO NOTHING;
         `;
 
         await req.pool.query(insertQuery, [userId, quizId, score]);

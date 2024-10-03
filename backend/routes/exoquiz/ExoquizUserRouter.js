@@ -22,7 +22,7 @@ router.post('/past-quiz', async (req, res) => {
 
         const result = await req.pool.query(query, [userId]);
 
-        res.status(200).json(result.rows);
+        res.status(200).json({ success: true, data: result.rows });
     } catch (error) {
         console.error('Error fetching past quizzes:', error);
         res.status(500).json({ success: false, message: 'Internal server error' });
@@ -50,7 +50,7 @@ router.post('/ongoing-quiz', async (req, res) => {
 
         const result = await req.pool.query(query, [userId]);
 
-        res.status(200).json(result.rows);
+        res.status(200).json({ success: true, data: result.rows });
     } catch (error) {
         console.error('Error fetching ongoing quizzes:', error);
         res.status(500).json({ success: false, message: 'Internal server error' });
@@ -58,5 +58,3 @@ router.post('/ongoing-quiz', async (req, res) => {
 });
 
 module.exports = router;
-
-

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/details/:planet_name', async (req, res) => {
+router.post('/details/:planet_name', async (req, res) => {
     const planetName = req.params.planet_name;
 
     try {
