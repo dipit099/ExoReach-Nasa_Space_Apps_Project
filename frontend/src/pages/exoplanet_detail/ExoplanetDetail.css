@@ -1,9 +1,10 @@
 @import '../../components/variables.css';
 
-.bg-all{
-    background-color: var(--background-color01);
+.bg-all {
+    background-color: var(--background-color01); /* Using the correct background color variable */
 }
-.exoplanet-name{
+
+.exoplanet-name {
     font-family: 'Anton';
     color: var(--text-high);
     font-size: 4.5rem;
@@ -13,50 +14,76 @@
 
 /* Container for the details section */
 .details-container {
-    background-color: #1e1e1e; /* Dark background */
-    color: #ffffff; /* Light text color */
+    background-color: var(--footer-color); /* Using footer color for dark background */
+    color: var(--text-normal); /* Light text color */
     padding: 2rem; /* Padding around the content */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-    width: 80%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Subtle shadow for depth */
+    width: 70%;
     margin: 0 auto;
     font-family: 'Glacial';
-  }
-  
-  /* Style for the header */
-  .details-container h2 {
-    font-size: 2rem; /* Font size for the header */
+    background-color: var(--background-color02);
+}
+
+/* Style for the header */
+.details-container h2 {
+    font-size: 2.5rem; /* Font size for the header */
     margin-bottom: 1rem; /* Space below the header */
     text-align: center; /* Center the header */
-    color: #ffd700; /* Gold color for the header */
-  }
-  
-  /* Style for the unordered list */
-  .details-container ul {
+    color: var(--accent-color01); /* Gold color for the header */
+}
+
+/* Style for the unordered list */
+.details-container ul {
     list-style-type: none; /* Remove default bullet points */
     padding: 0; /* Remove padding */
-  }
-  
-  /* Style for each list item */
-  .details-container li {
+}
+
+/* Style for each list item */
+.details-container li {
     display: flex; /* Flexbox for alignment */
     justify-content: space-between; /* Space between label and value */
     padding: 0.5rem 0; /* Vertical padding for list items */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light separator */
-  }
-  
-  /* Style for strong elements */
-  .details-container li strong {
-    color: #ffd700; /* Gold color for labels */
-  }
-  
-  /* Style for the link */
-  .details-container a {
+}
+
+/* Style for strong elements */
+.details-container li strong {
+    color: var(--accent-color02); /* Gold color for labels */
+}
+
+/* Style for the link */
+.details-container a {
     color: #00ccff; /* Light blue color for links */
     text-decoration: none; /* Remove underline */
-  }
-  
-  .details-container a:hover {
+}
+
+.details-container a:hover {
     text-decoration: underline; /* Underline on hover */
-  }
-  
+}
+.toggle-button {
+  background-color: var(--accent-color01); /* Using accent color 01 */
+  color: var(--text-normal); /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding for spacing */
+  font-size: 16px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin: 20px auto; /* Center the button and add margin on top */
+  display: block; /* Make the button a block-level element to center it */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  font-size: 1.1rem;
+  width: 100%;
+  font-weight: bold;
+  font-family: 'Glacial';
+  color: var(--background-color02);
+}
+
+.toggle-button:hover {
+  background-color: var(--accent-color02); /* Change to secondary accent color on hover */
+}
+
+.toggle-button:focus {
+  outline: none; /* Remove default button outline */
+  box-shadow: 0 0 5px var(--accent-color02); /* Subtle glow effect */
+}

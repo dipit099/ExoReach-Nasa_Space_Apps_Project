@@ -1,0 +1,48 @@
+.pagination {
+    display: flex;
+    justify-content: center; /* Centers the pagination horizontally */
+    align-items: center;
+    margin: 2rem 0 20px; /* Adjusted to add 2rem margin above and keep 20px below */
+    padding: 0; /* Ensure there's no additional padding */
+  }
+  
+  .page-button {
+    background-color: var(--accent-color01); /* Button background color */
+    color: var(--text-normal); /* Text color */
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 99, 71, 0.4);
+    font-family: 'Glacial', sans-serif; /* Consistent font */
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .page-button:hover {
+    background-color: var(--accent-color02); /* Background color on hover */
+    box-shadow: 0 4px 12px rgba(255, 99, 71, 0.6); /* Shadow on hover */
+  }
+  
+  .page-button.active {
+    background-color: var(--primary-color); /* Active page button background */
+    color: var(--text-same); /* Active page button text color */
+  }
+  
+  /* Specific styles for Prev and Next buttons */
+  .prev-button,
+  .next-button {
+    font-weight: bold; /* Make the text bold */
+    padding: 10px 20px; /* Increase padding for better click area */
+    background: transparent;
+  }
+  
+  .prev-button:disabled,
+  .next-button:disabled {
+    background-color: transparent; /* Disabled button background */
+    color: var(--text-low); /* Disabled button text color */
+    cursor: not-allowed; /* Change cursor style */
+  }
+  
