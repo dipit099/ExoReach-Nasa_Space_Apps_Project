@@ -47,15 +47,13 @@ router.post('/', async (req, res) => {
             }
 
             if (telescopes) {
-                const telescopeList = telescopes.split(',');
-                queryParams.push(telescopeList);
-                query += ` AND disc_telescope = ANY($${queryParams.length}) `;
+                queryParams.push(`%${telescopes}%`);
+                query += ` AND disc_telescope ILIKE $${queryParams.length} `;
             }
 
             if (facilities) {
-                const facilityList = facilities.split(',');
-                queryParams.push(facilityList);
-                query += ` AND disc_facility = ANY($${queryParams.length}) `;
+                queryParams.push(`%${facilities}%`);
+                query += ` AND disc_facility ILIKE $${queryParams.length} `;
             }
 
             if (plName) {
@@ -65,7 +63,6 @@ router.post('/', async (req, res) => {
         }
 
         const result = await req.pool.query(query, queryParams);
-
 
         const planets = result.rows.map(planet => ({
             pl_image: planet.pl_image || '----',
