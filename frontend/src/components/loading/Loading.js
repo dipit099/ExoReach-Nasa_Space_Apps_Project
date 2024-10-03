@@ -1,9 +1,11 @@
 import React from 'react';
-import './Loading.css'; // Ensure to link to your CSS file containing the animations
+import './Loading.css';
 
 const Loading = () => {
   return (
-    <span className="loader"></span>
+    <div className="center-loader">
+      <span className="loader"></span>
+    </div>
   );
 };
 

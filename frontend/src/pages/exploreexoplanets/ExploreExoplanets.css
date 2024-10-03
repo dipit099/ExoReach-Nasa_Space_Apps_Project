@@ -1,0 +1,155 @@
+@import "../../components/variables.css";
+
+.explore-title {
+    font-family: 'Anton';
+    color: var(--text-high);
+    font-size: 4.5rem;
+    padding: 2.5rem 0;
+    text-align: center;
+}
+
+.filter-section {
+  display: flex;
+  flex-direction: column;
+  background-color: var(
+    --background-color02
+  ); /* Dark background for container */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  width: 80%;
+  margin: 20px auto;
+}
+.filter-title {
+  color: var(--text-normal);
+  font-weight: bold;
+  font-family: "Norwester";
+  margin-left: 2.5rem;
+  margin-top: 2rem;
+  font-size: 2rem;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.classy-input {
+  background: var(--background-color); /* Dark input background */
+  color: var(--text-normal); /* White text for input */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1.39rem;
+  outline: none;
+  transition: background 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  font-family: "Glacial", sans-serif;
+}
+
+.classy-input:focus {
+  background: var(--accent-color02);
+  color: black;
+  /* Change to accent color on focus */
+}
+
+.classy-select {
+    background: var(--background-color); /* Dark background for select */
+    color: var(--text-normal); /* White text for select */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1.39rem;
+    outline: none;
+    transition: background 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    font-family: 'Glacial', sans-serif;
+  }
+  
+  /* Custom styles for select dropdown */
+  .classy-select::-ms-expand {
+    display: none; /* Hide default arrow for IE */
+  }
+  
+  /* Style the options */
+  .classy-select option {
+    background: var(--background-color02); /* Dark background for options */
+    color: var(--text-normal); /* White text for options */
+  }
+  
+  /* Optional: You may also add styles for hovering effects on options */
+  .classy-select:hover {
+    background: var(--accent-color02);
+    color: black; /* Lighten the background on hover */
+  }
+  
+
+.classy-button {
+  background: var(--accent-color01); /* Button with accent color */
+  color: var(--text-same); /* Black text for button */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 190, 88, 0.4); /* Lighter accent shadow */
+  font-family: "Glacial", sans-serif;
+}
+
+.classy-button:hover {
+  background: var(
+    --accent-color02
+  ); /* Hover state changes to secondary accent color */
+  box-shadow: 0 4px 12px rgba(167, 215, 197, 0.6); /* Softer shadow on hover */
+}
+
+.loading-text,
+.no-planets-text {
+  text-align: center;
+  color: var(--text-normal); /* Normal text color */
+  font-size: 1.9rem;
+  margin-top: 10rem;
+  font-weight: bold;
+}
+
+.planets-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows cards to wrap to next line */
+  gap: 30px; /* Space between cards */
+  justify-content: center; /* Center align cards */
+  margin-top: 5rem;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .page-button {
+    background-color: var(--accent-color01); /* Button background color */
+    color: var(--text-normal); /* Text color */
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 99, 71, 0.4);
+    font-family: 'Glacial', sans-serif; /* Consistent font */
+  }
+  
+  .page-button:hover {
+    background-color: var(--accent-color02); /* Background color on hover */
+    box-shadow: 0 4px 12px rgba(255, 99, 71, 0.6); /* Shadow on hover */
+  }
+  
+  .page-button.active {
+    background-color: var(--primary-color); /* Active page button background */
+    color: var(--text-same); /* Active page button text color */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* Shadow for active button */
+  }
+  
