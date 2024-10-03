@@ -7,7 +7,7 @@ import SERVER_URL from '../../config/SERVER_URL';
 import './QuizDetails.css';  // Importing the CSS file
 
 const QuizDetails = () => {
-  const { quizId, userID } = useParams();  // Getting quizId and userID from the URL params
+  const { quizId } = useParams();  // Getting quizId and userID from the URL params
   const [quiz, setQuiz] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -15,6 +15,7 @@ const QuizDetails = () => {
   const [timer, setTimer] = useState(60);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [userAnswers, setUserAnswers] = useState([]); // To store user's answers
+  const userID = localStorage.getItem('user_id');
 
   useEffect(() => {
     fetchQuizDetails();
@@ -44,7 +45,7 @@ const QuizDetails = () => {
     setSelectedOption(index);
   };
 
-  const handleNextQuestion = () => {
+  const handleNextQuestion = async () => {
     // Store the user's selected answer
     setUserAnswers([...userAnswers, selectedOption]);
 
@@ -58,33 +59,41 @@ const QuizDetails = () => {
       setTimer(60);  // reset timer for the next question
     } else {
       setIsSubmitted(true);
-      toast.success('Quiz submitted!');
+      //toast.success('Quiz submitted!');
+      // Send data to the server      
+    try {
+      console.log('Submitting quiz result...');
+      console.log('userID:', userID);
+      console.log('quizId:', quizId);
+      console.log('totalMarks:', score);
+     const response = await axios.post(`${SERVER_URL}/exoquiz/quizzing/submit-quiz-result`, {
+        userId: userID,
+        quizId: quizId,
+        totalMarks: score,
+      });
+      if(response.data.success){
+        toast.success('Quiz submitted successfully!');
+      }
+      
+    } catch (error) {
+      toast.error('Failed to submit quiz');
+    }  
     }
   };
 
-  const handleSubmit = async () => {
-    // Store the last answer
-    setUserAnswers([...userAnswers, selectedOption]);
+  // const handleSubmit = async () => {
+  //   // Store the last answer
+  //   setUserAnswers([...userAnswers, selectedOption]);
 
-    if (selectedOption === quiz.questions[currentQuestionIndex].correctOption) {
-      setScore(score + 1);
-    }
-    setIsSubmitted(true);
-    setTimer(0);
+  //   if (selectedOption === quiz.questions[currentQuestionIndex].correctOption) {
+  //     setScore(score + 1);
+  //   }
+  //   setIsSubmitted(true);
+  //   setTimer(0);
 
-    // Send data to the server (optional)
-    // try {
-    //   await axios.post(`${SERVER_URL}/exoquiz/submit`, {
-    //     userId: userID,
-    //     quizId: quizId,
-    //     totalMarks: score,
-    //   });
-    //   toast.success('Quiz submitted successfully!');
-    // } catch (error) {
-    //   toast.error('Failed to submit quiz');
-    // }
-    toast.success('Quiz submitted successfully!');
-  };
+
+    
+  // };
 
   if (!quiz) {
     return <div>Loading...</div>;

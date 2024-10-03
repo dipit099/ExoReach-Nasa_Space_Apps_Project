@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import SERVER_URL from '../../config/SERVER_URL';
-import { AuthContext } from '../../context/AuthContext'; // Import the AuthContext
+import { AuthContext } from '../../config/AuthContext'; // Import the AuthContext
 
 const Login = ({ onClose, createAccountPopupOpen }) => {
   const { login, isLoggedIn, logout } = useContext(AuthContext); // Use AuthContext
@@ -21,13 +21,18 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
       const { data } = response;
       console.log(response);
 
-      if (data.success) {
-        //alert(data.message);
-        toast.success(data.message); // Show success message
+      if (data.success) {    
+       
+        toast.success("hello !!"); // Show success message
+        console.log("in Login.js",data);
         // Assuming data contains user_id along with the success message
-        const { user_id } = data; // Extract user_id from response
+        const user_id = data.user.id;
+        const username = data.user.username;
+        console.log("user_id",user_id);
+        console.log("username",username);
+       
         login(username, user_id); // Call login from AuthContext with the username and user_id
-        console.log(data)
+       
       } else {
         toast.error('Login failed: ' + data.message); // Show error message
       }

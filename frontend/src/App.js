@@ -12,12 +12,14 @@ import AdminPage from './pages/admin/Admin';
 import AdminExoQuiz from './pages/admin/AdminExoQuiz';
 import AdminExoShowdown from './pages/admin/AdminExoShowdown';
 import AdminForum from './pages/admin/AdminForum';
-import { AuthProvider } from './context/AuthContext'; 
+import { AuthProvider } from './config/AuthContext'; 
 import ExoplanetDetail from './pages/exoplanet_detail/ExoplanetDetail';
 import QuizDetails from './pages/exoquiz/QuizDetails';
+import Profile from './pages/profile/Profile';
 
 function App() {
   const username= localStorage.getItem('username');
+  const user_id= localStorage.getItem('user_id');
 
   
   return (
@@ -26,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/" element={<Home />} />
+          <Route path="/profile/:userId" element={<Profile />} />
           
           <Route path="exoquiz" element={<ExoQuiz />} />
           <Route path="/exoquiz/:quizId" element={<QuizDetails/>} />

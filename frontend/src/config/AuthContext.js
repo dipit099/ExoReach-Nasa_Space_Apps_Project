@@ -23,11 +23,12 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   // Login function to update state and localStorage
-  const login = (user, id) => {
+  const login = (username, id) => {
     setIsLoggedIn(true);
-    setUsername(user);
+    setUsername(username);
     setUserId(id); // Set user_id in state
-    localStorage.setItem('username', user);
+   
+    localStorage.setItem('username', username);
     localStorage.setItem('user_id', id); // Save user_id to localStorage
     localStorage.setItem('isLoggedIn', 'true');
   };
