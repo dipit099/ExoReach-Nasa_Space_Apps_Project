@@ -16,6 +16,8 @@ import { AuthProvider } from './config/AuthContext';
 import ExoplanetDetail from './pages/exoplanet_detail/ExoplanetDetail';
 import QuizDetails from './pages/exoquiz/QuizDetails';
 import Profile from './pages/profile/Profile';
+import ForumDetail from './pages/community/ForumDetail';
+
 
 function App() {
   const username= localStorage.getItem('username');
@@ -33,6 +35,8 @@ function App() {
           <Route path="exoquiz" element={<ExoQuiz />} />
           <Route path="/exoquiz/:quizId" element={<QuizDetails/>} />
           <Route path="community" element={<CommunityForum />} />
+          <Route path="/forum/:forum_id" element={<ForumDetail />} />
+
           <Route path="exoshowdown" element={<ExoShowDown />} />
 
 
