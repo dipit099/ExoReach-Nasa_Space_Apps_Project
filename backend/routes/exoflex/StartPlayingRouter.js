@@ -33,39 +33,50 @@ router.post('/', async (req, res) => {
             });
         }
 
-        const serverPlanets = result.rows; 
+        const serverPlanets = result.rows.map(planet => ({
+            pl_name: planet.pl_name || '----',
+            pl_category: planet.pl_category || '----',
+            pl_rade: planet.pl_rade ? planet.pl_rade : '----',
+            pl_cmasse: planet.pl_cmasse  ? planet.pl_cmasse : '----',
+            sy_dist: planet.sy_dist  ? planet.sy_dist : '----',
+            pl_image: planet.pl_image || '----'
+        }));
+
         const roundResults = [];
 
         for (let i = 0; i < 3; i++) {
             let userPlanet = planetInfo[i];
             let randomPlanet = serverPlanets[i];
 
+            let userRade = userPlanet.pl_rade === '----' ? null : userPlanet.pl_rade;
+            let userCmasse = userPlanet.pl_cmasse === '----' ? null : userPlanet.pl_cmasse;
+            let userSyDist = userPlanet.sy_dist === '----' ? null : userPlanet.sy_dist;
+
             if (i === 0) {
-                // If either pl_rade is null, user wins the round
-                if (userPlanet.pl_rade === null || randomPlanet.pl_rade === null) {
+                if (userRade === null || randomPlanet.pl_rade === '----') {
                     roundResults.push(1);
                 } else {
-                    roundResults.push(userPlanet.pl_rade > randomPlanet.pl_rade ? 1 : 0);
+                    roundResults.push(userRade > randomPlanet.pl_rade ? 1 : 0);
                 }
             } else if (i === 1) {
-                // If either pl_cmasse is null, user wins the round
-                if (userPlanet.pl_cmasse === null || randomPlanet.pl_cmasse === null) {
+        
+                if (userCmasse === null || randomPlanet.pl_cmasse === '----') {
                     roundResults.push(1);
                 } else {
-                    roundResults.push(userPlanet.pl_cmasse > randomPlanet.pl_cmasse ? 1 : 0);
+                    roundResults.push(userCmasse > randomPlanet.pl_cmasse ? 1 : 0);
                 }
             } else if (i === 2) {
-                // If either sy_dist is null, user wins the round
-                if (userPlanet.sy_dist === null || randomPlanet.sy_dist === null) {
+                
+                if (userSyDist === null || randomPlanet.sy_dist === '----') {
                     roundResults.push(1);
                 } else {
-                    roundResults.push(userPlanet.sy_dist < randomPlanet.sy_dist ? 1 : 0);
+                    roundResults.push(userSyDist < randomPlanet.sy_dist ? 1 : 0);
                 }
             }
         }
 
         const resultScore = roundResults.reduce((acc, curr) => acc + curr, 0);
-        const finalResult = resultScore >= 2 ? 1 : 0; 
+        const finalResult = resultScore >= 2 ? 1 : 0;
 
         const updateQuery = `
             UPDATE users 
