@@ -2,25 +2,35 @@ import React, { useState, useEffect } from 'react';
 import './MostClicked.css'; 
 import PlanetCard from '../planetcard/PlanetCard'; 
 import LargeButton from '../home_elements/largebutton/LargeButton';
-// TODO: data from backend
-
-const imgsrc = 'https://images.unsplash.com/photo-1708257106455-3bffdd9aae64?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
-const exoplanetData = [
-  { name: 'Kepler-22b', sy_dist: 620, pl_masse: 2.4, disc_year: 2011, clicks: 120, img: imgsrc },
-  { name: 'Proxima Centauri b', sy_dist: 4.2, pl_masse: 1.27, disc_year: 2016, clicks: 95, img: imgsrc },
-  { name: 'Kepler-22b', sy_dist: 620, pl_masse: 2.4, disc_year: 2011, clicks: 120, img: imgsrc },
-  { name: 'Kepler-22b', sy_dist: 620, pl_masse: 2.4, disc_year: 2011, clicks: 120, img: imgsrc },
-  { name: 'Kepler-22b', sy_dist: 620, pl_masse: 2.4, disc_year: 2011, clicks: 120, img: imgsrc }
-];
-
+import axios from 'axios'; // Import axios
+import SERVER_URL from '../../config/SERVER_URL';
 
 const MostClickedExoplanets = () => {
   const [mostClicked, setMostClicked] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const sortedExoplanets = exoplanetData.sort((a, b) => b.clicks - a.clicks);
-    setMostClicked(sortedExoplanets);
+    // Fetch data from the backend
+    const fetchMostClickedExoplanets = async () => {
+      try {
+        const response = await axios.post(`${SERVER_URL}/home/most_viewed`); // Make the GET request
+        if (response.data.success) {
+          setMostClicked(response.data.data); // Set the data from the response
+        } else {
+          setError('Failed to fetch exoplanet data');
+        }
+      } catch (err) {
+        console.error('Error fetching most clicked exoplanets:', err);
+        setError('An error occurred while fetching data');
+      }
+    };
+
+    fetchMostClickedExoplanets();
   }, []);
+
+  if (error) {
+    return <div>{error}</div>; // Display an error message if something goes wrong
+  }
 
   return (
     <div className="most-clicked-section">
@@ -30,13 +40,13 @@ const MostClickedExoplanets = () => {
       <div className="most-clicked-list">
         {mostClicked.map((planet, index) => (
           <PlanetCard 
-          key={index} 
-          pl_name={planet.name} 
-          sy_dist={planet.sy_dist} 
-          pl_masse={planet.pl_masse} 
-          disc_year={planet.disc_year}
-          imageSrc={planet.img}
-        />
+            key={index} 
+            pl_name={planet.pl_name} // Use the fetched pl_name
+            sy_dist={planet.sy_dist || 'Unknown'} // Optional: Handle missing data
+            pl_masse={planet.pl_masse || 'Unknown'} 
+            disc_year={planet.disc_year || 'Unknown'} 
+            imageSrc={planet.pl_image || 'default_image_url'} // Use the image from the backend or a default
+          />
         ))}
       </div>
       <div className="button-wrap">

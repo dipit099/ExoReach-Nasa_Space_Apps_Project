@@ -13,7 +13,7 @@ npm start
 ```bash
 cd backend
 npm install
-nodemon index
+nodemon server
 ```
 
 
@@ -35,3 +35,16 @@ git pull origin main
 To Open md files in vscode - `Ctrl + Shift + V`
 
 
+
+
+## For firebase
+    
+    ```bash
+    cd frontend
+    npm install -g firebase-tools
+    firebase login
+    firebase init
+
+    npm run build
+    firebase deploy
+    ```

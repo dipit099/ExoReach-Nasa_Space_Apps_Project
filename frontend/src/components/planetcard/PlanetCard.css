@@ -1,45 +1,66 @@
 @import '../variables.css';
+
 .most-clicked-card {
     position: relative;
-    width: 15.2375rem; 
-    height: 21.75rem; 
+    width: 17.2375rem; 
+    height: 24rem; 
     background: linear-gradient(to bottom, rgba(224, 243, 255, 0.7), rgba(92, 23, 232, 0.7));
     border-radius: 1.45rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .most-clicked-card:hover {
+    text-decoration: none; /* Remove underline from Link */
+    color: inherit; /* Inherit text color from parent */
+}
+
+.most-clicked-card:hover {
     transform: scale(1.03); 
     box-shadow: 0 0 20px rgba(255, 190, 88, 0.9), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
-  .card-content {
+
+.card-content {
     position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-  }
-  
-  .image-container {
-    width: 12rem;
-    height: 12rem;
-    margin: 1rem auto;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid #818cf8;
-  }
-  
-  .planet-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .planet-name {
+}
+
+.image-container {
+    width: 12rem;               /* Width of the circular container */
+    height: 12rem;              /* Height of the circular container */
+    margin: 1rem auto;          /* Centering the container */
+    border-radius: 50%;         /* This ensures it's circular */
+    overflow: hidden;           /* Prevents overflow */
+    border: 4px solid #818cf8;  /* Border color */
+}
+
+.planet-image {
+    width: 100%;                /* Make sure the image fills the container */
+    height: 100%;               /* Make sure the image fills the container */
+    object-fit: cover;          /* Ensures the image maintains its aspect ratio */
+    border-radius: 50%;        /* Ensures the image itself is clipped to a circle */
+}
+
+.planet-name {
     text-align: center;
-    color: var(--text-same);
-    font-size: 1.45rem; /* 18px */
+    color: var(--text-same); /* Ensure this variable is defined in variables.css */
+    font-size: 1.8rem;
     font-weight: bold;
     font-family: 'Norwester';
-  }
+    white-space: nowrap;       /* Prevents the text from wrapping */
+    overflow: hidden;          /* Hides any overflowing text */
+    text-overflow: ellipsis;   /* Adds an ellipsis (...) if the text overflows */
+    max-width: 90%;            /* Ensures it doesn’t overflow the card width */
+    margin-left: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.planet-details {
+    color: var(--text-secondary); /* Ensure this variable is defined in variables.css */
+    text-align: left;
+    margin: auto 1rem;
+    font-size: 1.1rem; /* Adjust based on your preference */
+    font-family: 'Glacial';          /* Allows for flexible layout */
+    flex-direction: column;  /* Ensures content stays in a vertical stack */
+    justify-content: center; /* Vertically centers the details */
+}

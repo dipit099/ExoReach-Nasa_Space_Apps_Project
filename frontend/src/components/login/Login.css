@@ -10,15 +10,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(5px); /* Blurs the background */
+    backdrop-filter: blur(7px); /* Blurs the background */
     z-index: 1000; /* Ensures it is on top */
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .login-popup {
     background: var(--background-color); /* Use background color from variables */
     padding: 20px;
     border-radius: 8px;
-    width: 300px;
+    width: 400px;
+    height: 300px;
     position: relative;
 }
 
@@ -28,14 +30,18 @@
     right: 10px;
     border: none;
     background: transparent;
-    color: var(--text-high); /* Close button color */
-    font-size: 1.5rem;
+    color: var(--text-low); /* Close button color */
+    font-size: 2.5rem;
     cursor: pointer;
+}
+.close-button:hover{
+    color: var(--text-high);
 }
 
 .login-popup h2 {
-    margin: 0 0 20px;
+    margin: 0 0 35px;
     color: var(--text-normal); /* Heading color */
+    font-family: 'Norwester';
 }
 
 .login-popup form {
@@ -52,16 +58,19 @@
     color: black; /* Input text color */
 }
 
-.login-popup button {
+.login-button {
     padding: 10px;
-    background-color: var(--accent-color02); /* Button background color */
+    background-color: var(--accent-color01); /* Button background color */
     color: var(--text-same); /* Button text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Glacial';
+    font-size: 22px;
+    font-weight: bold;
 }
 
-.login-popup button:hover {
+.login-button:hover {
     background-color: var(--accent-color02); /* Hover background color */
     color: var(--text-same);
 }
@@ -73,18 +82,27 @@
 .signup-section {
     margin-top: 20px;
     text-align: center;
+    font-size: 20px;
 }
 
 .create-account-button {
     padding: 10px;
-    background-color: var(--accent-color01); /* Button background color */
+    background-color: transparent; /* Button background color */
     color: var(--text-normal); /* Button text color */
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Glacial';
+    font-size: 20px;
+    text-decoration: underline;
 }
 
 .create-account-button:hover {
-    background-color: var(--accent-color02); /* Hover background color */
-    color: black;
+    color: var(--text-high);
+
+}
+
+.form input{
+    font-size: 1rem;
+    font-family: 'Glacial';
 }
