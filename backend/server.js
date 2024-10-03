@@ -22,12 +22,15 @@ app.use('/explore_exoplanets', require('./routes/explore_exoplanets/FilteredSear
 app.use('/exoplanet', require('./routes/exoplanet/ExoplanetInfoRouter'));
 app.use('/exoshowdown/admin', require('./routes/exoshowdown/ContestAdminRouter'));
 app.use('/exoshowdown', require('./routes/exoshowdown/ContestUserRouter'));
+app.use('/exoshowdown/leaderboard', require('./routes/exoshowdown/ContestLeaderboardRouter'))
 
 app.use('/forum/admin', require('./routes/forum/ForumAdminRouter'));
 app.use('/forum/details', require('./routes/forum/ForumDetailsRouter'))
 app.use('/forum/submit-forum', require('./routes/forum/ForumPostingRouter'))
 app.use('/forum/recently-created', require('./routes/forum/RecentlyCreatedRouter'))
 app.use('/forum/recently-viewed', require('./routes/forum/RecentlyViewedRouter'))
+app.use('/forum/comment/details', require('./routes/forum/ForumCommentDetailsRouter'))
+app.use('/forum/comment/submit-comment', require('./routes/forum/ForumCommentPostingRoute'))
 
 app.use('/exoquiz/admin', require('./routes/exoquiz/ExoquizAdminRouter'));
 app.use('/exoquiz/quizzing', require('./routes/exoquiz/ParticipateInQuizRouter'))
