@@ -9,11 +9,10 @@
 }
 
 .exovision-title {
-    font-size: 3rem;
-    color: var(--accent-color01);
-    margin: 0;  /* Remove any default margin from the h1 element */
-    padding-top: 10px;  /* Add a small padding for breathing space */
-    animation: fadeIn 2s ease-in-out;
+    font-family: 'Anton';
+    color: var(--text-high);
+    font-size: 4.5rem;
+    text-align: center;
 }
 
 .exovision-iframe-container {
@@ -36,10 +35,14 @@
 
 .exovision-description {
     margin-top: 20px;
-    font-size: 1.5rem;
+    font-size: 1.65rem;
     color: var(--text-low);
     animation: fadeIn 3s ease-in-out;
     font-family: 'Glacial';
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    line-height: 1.49;
 }
 
 .exovision-buttons {

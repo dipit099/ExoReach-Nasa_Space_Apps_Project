@@ -23,6 +23,7 @@
     margin: 0 auto;
     font-family: 'Glacial';
     background-color: var(--background-color02);
+    margin-top: 4rem;
 }
 
 /* Style for the header */

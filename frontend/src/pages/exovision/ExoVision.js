@@ -12,26 +12,12 @@ function ExoVision() {
         <br />
         <br />
         <p className="exovision-description">
-          Discover the wonders of distant worlds through interactive 3D models!
-          Use the controls to zoom in, rotate, and explore exoplanets in detail.
+          Step into the universe with ExoVision! Experience the beauty of
+          distant exoplanets like never before. Engage with stunning interactive
+          3D models that allow you to zoom, rotate, and delve into the
+          intricacies of these celestial bodies. Discover their unique features
+          and uncover the mysteries of the cosmos—all at your fingertips!
         </p>
-
-        <div className="exovision-buttons">
-          <button
-            className="explore-btn"
-            onClick={() => alert("Ready to Explore! 🚀")}
-          >
-            Start Your Journey 🚀
-          </button>
-          <button
-            className="learn-btn"
-            onClick={() => alert("Let's Learn More About Exoplanets 📚")}
-          >
-            {" "}
-            {/* add did u know section  */}
-            Learn More 📚
-          </button>
-        </div>
         <br />
         <br />
         <div className="exovision-iframe-container">

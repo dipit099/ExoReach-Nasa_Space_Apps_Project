@@ -59,6 +59,7 @@ function Navbar() {
             <div className="navbar-right">
                 <Link to="/" className={getLinkClass('/')}>Home</Link>
                 <Link to="/community" className={getLinkClass('/community')}>Community</Link>
+                <Link to={`/exovision`} className={getLinkClass('/profile')}>ExoVision</Link>
                 <Link to={`/profile/${user_id}`} className={getLinkClass('/profile')}>Profile</Link>
                 {/* Theme toggle button if needed */}
                 {/* <button onClick={toggleTheme} className="theme-toggle-button">
