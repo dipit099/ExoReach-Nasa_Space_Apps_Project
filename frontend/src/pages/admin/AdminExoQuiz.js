@@ -69,7 +69,7 @@ const AdminExoQuiz = () => {
 
     // Send quiz data to server
     try {
-      const response = await axios.post(`${SERVER_URL}/submit-quiz`, quizData, {
+      const response = await axios.post(`${SERVER_URL}/exoquiz/admin`, quizData, {
         headers: {
           "Content-Type": "application/json",
         },
