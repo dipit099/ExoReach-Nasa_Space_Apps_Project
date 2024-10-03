@@ -66,9 +66,9 @@ function Navbar() {
                     )}
                 </button> */}
                 {isLoggedIn ? (
-                    <button onClick={handleLogout} className="login-button1">Logout</button> // Change to Logout
+                    <button onClick={handleLogout} className="login-button1">Log out</button> // Change to Logout
                 ) : (
-                    <button onClick={openLoginPopup} className="login-button1">Login</button> // Login button
+                    <button onClick={openLoginPopup} className="login-button1">Log in</button> // Login button
                 )}
             </div>
             {isLoginPopupOpen && <Login onClose={closeLoginPopup} createAccountPopupOpen={openCreateAccountPopup} />}

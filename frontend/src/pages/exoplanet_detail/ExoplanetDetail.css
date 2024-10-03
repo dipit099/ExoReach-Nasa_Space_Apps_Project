@@ -1,3 +1,62 @@
-.exoplanet_detail{
-    background-color: aliceblue;
+@import '../../components/variables.css';
+
+.bg-all{
+    background-color: var(--background-color01);
 }
+.exoplanet-name{
+    font-family: 'Anton';
+    color: var(--text-high);
+    font-size: 4.5rem;
+    padding: 2.5rem 0;
+    text-align: center;
+}
+
+/* Container for the details section */
+.details-container {
+    background-color: #1e1e1e; /* Dark background */
+    color: #ffffff; /* Light text color */
+    padding: 2rem; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    width: 80%;
+    margin: 0 auto;
+    font-family: 'Glacial';
+  }
+  
+  /* Style for the header */
+  .details-container h2 {
+    font-size: 2rem; /* Font size for the header */
+    margin-bottom: 1rem; /* Space below the header */
+    text-align: center; /* Center the header */
+    color: #ffd700; /* Gold color for the header */
+  }
+  
+  /* Style for the unordered list */
+  .details-container ul {
+    list-style-type: none; /* Remove default bullet points */
+    padding: 0; /* Remove padding */
+  }
+  
+  /* Style for each list item */
+  .details-container li {
+    display: flex; /* Flexbox for alignment */
+    justify-content: space-between; /* Space between label and value */
+    padding: 0.5rem 0; /* Vertical padding for list items */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Light separator */
+  }
+  
+  /* Style for strong elements */
+  .details-container li strong {
+    color: #ffd700; /* Gold color for labels */
+  }
+  
+  /* Style for the link */
+  .details-container a {
+    color: #00ccff; /* Light blue color for links */
+    text-decoration: none; /* Remove underline */
+  }
+  
+  .details-container a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
