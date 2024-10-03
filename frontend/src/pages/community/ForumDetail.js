@@ -9,18 +9,19 @@ import SERVER_URL from '../../config/SERVER_URL';
 function ForumDetails() {
     const { forum_id } = useParams(); // Extract forum_id from the URL
     const [forumDetails, setForumDetails] = useState(null);
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState('');
     const [loading, setLoading] = useState(true);
+    const userID = localStorage.getItem('user_id');
 
     useEffect(() => {
         fetchForumDetails();
+        fetchComments();
     }, [forum_id]);
 
     const fetchForumDetails = async () => {
         try {
-            console.log("forumid:", forum_id);
             const response = await axios.post(`${SERVER_URL}/forum/details`, { forumId: forum_id });
-            
-            // Extract the forum object from the response
             if (response.data.success && response.data.forum) {
                 setForumDetails(response.data.forum);
             } else {
@@ -29,9 +30,45 @@ function ForumDetails() {
             setLoading(false);
             toast.success('Forum details fetched successfully');
         } catch (error) {
-            console.error('Error fetching forum details:', error);
             toast.error('Error fetching forum details');
             setLoading(false);
+        }
+    };
+
+    const fetchComments = async () => {
+        try {
+            const response = await axios.post(`${SERVER_URL}/forum/comment/details`, { forumId: forum_id });
+            if (response.data.success) {
+                setComments(response.data.comments);
+            } else {
+                toast.error('Comments not found');
+            }
+        } catch (error) {
+            toast.error('Error fetching comments');
+        }
+    };
+
+    const handleCommentSubmit = async (e) => {
+        e.preventDefault();
+        if (!newComment) {
+            toast.error('Please enter a comment.');
+            return;
+        }
+        try {
+            const response = await axios.post(`${SERVER_URL}/forum/comment/submit-comment`, {
+                forumId: forum_id,
+                comment: newComment,
+                userId: userID,
+            });
+            if (response.data.success) {
+                setNewComment('');
+                fetchComments(); // Refresh comments after submission
+                toast.success('Comment submitted successfully');
+            } else {
+                toast.error('Failed to submit comment');
+            }
+        } catch (error) {
+            toast.error('Error submitting comment');
         }
     };
 
@@ -62,10 +99,41 @@ function ForumDetails() {
                 <div className="forum-stats">
                     <span>Status: {forumDetails.status}</span>
                 </div>
+
                 <div className="comments-section">
                     <h3>Comments</h3>
-                    <p>No comments yet.</p> {/* You can add the logic for comments if available in future */}
+                    {comments.length > 0 ? (
+                        comments.map((comment) => (
+                            <div key={comment.comment_id} className="comment">
+                                <img
+                                    src={comment.commenter_profile_pic || '/default-avatar.png'}
+                                    alt="Profile"
+                                    className="commenter-pic"
+                                />
+                                <div className="comment-content">
+                                    <strong>{comment.commenter_username}:</strong>
+                                    <p>{comment.comment}</p>
+                                    <span className="comment-date">
+                                        {new Date(comment.created_at).toLocaleString()}
+                                    </span>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No comments yet.</p>
+                    )}
                 </div>
+
+                <form onSubmit={handleCommentSubmit} className="comment-form">
+                    <textarea
+                        placeholder="Add your comment"
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                        required
+                        className="comment-textarea"
+                    />
+                    <button type="submit" className="submit-btn">Submit</button>
+                </form>
             </div>
         </>
     );

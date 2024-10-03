@@ -8,12 +8,14 @@ import SERVER_URL from '../../config/SERVER_URL';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
 function ExoQuiz() {
     const [liveQuizzes, setLiveQuizzes] = useState({ success: false, data: [] });
     const [pastQuizzes, setPastQuizzes] = useState({ success: false, data: [] });
     const [filteredQuizzes, setFilteredQuizzes] = useState({ success: false, data: [] });
     const [filter, setFilter] = useState('live');
+    const [leaderboard, setLeaderboard] = useState([]);
+    const [selectedQuiz, setSelectedQuiz] = useState(null);
+    const [showLeaderboardModal, setShowLeaderboardModal] = useState(false);
 
     useEffect(() => {
         fetchQuizzes();
@@ -40,6 +42,27 @@ function ExoQuiz() {
         } else if (filterType === 'past') {
             setFilteredQuizzes(pastQuizzes);
         }
+    };
+
+    const fetchLeaderboard = async (quizId) => {
+        try {
+            const response = await axios.post(`${SERVER_URL}/exoquiz/leaderboard`, { quizId });
+            if (response.data.success) {
+                setLeaderboard(response.data.top_scorers);
+                setSelectedQuiz(quizId);
+                setShowLeaderboardModal(true);
+            } else {
+                toast.error('Error loading leaderboard');
+            }
+        } catch (error) {
+            console.error('Error fetching leaderboard:', error);
+            toast.error('Error fetching leaderboard');
+        }
+    };
+
+    const closeModal = () => {
+        setShowLeaderboardModal(false);
+        setLeaderboard([]);
     };
 
     return (
@@ -72,10 +95,37 @@ function ExoQuiz() {
                             <Link to={`/exoquiz/${quiz.quiz_id}`} target='_blank'>
                                 <button className="quiz-button">Start Your Quiz</button>
                             </Link>
+                            <button className="leaderboard-button" onClick={() => fetchLeaderboard(quiz.quiz_id)}>
+                                Show Leaderboard
+                            </button>
                         </div>
                     ))}
                 </section>
             </div>
+
+            {/* Leaderboard Modal */}
+            {showLeaderboardModal && (
+                <div className="modal">
+                    <div className="modal-content">
+                        <h2>Leaderboard</h2>
+                        <button className="close-modal" onClick={closeModal}>Close</button>
+                        <ul className="leaderboard-list">
+                            {leaderboard.length > 0 ? (
+                                leaderboard.map((user) => (
+                                    <li key={user.user_id} className="leaderboard-item">
+                                        <img src={user.profile_pic || '/default-avatar.png'} alt="Profile" className="leaderboard-avatar" />
+                                        <span className="leaderboard-username">{user.username}</span>
+                                        <span className="leaderboard-score">{user.score}</span>
+                                    </li>
+                                ))
+                            ) : (
+                                <p>No scores available yet.</p>
+                            )}
+                        </ul>
+                    </div>
+                </div>
+            )}
+
             <Footer />
         </>
     );
