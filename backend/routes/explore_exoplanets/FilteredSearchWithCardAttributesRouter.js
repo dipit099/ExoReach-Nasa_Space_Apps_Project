@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const { plName, discYear, plCategory } = req.query;
+    const { plName, discYear, plCategory } = req.body;
     try {
         let query = '';
         const queryParams = [];
