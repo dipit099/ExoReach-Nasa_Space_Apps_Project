@@ -22,11 +22,12 @@ router.post('/', async (req, res) => {
                    u.profile_pic AS forum_creator_profile_pic
             FROM forum f
             JOIN public.users u ON f.user_id = u.id
-            WHERE f.user_id IN (
+            WHERE (f.user_id IN (
                 SELECT user_id
                 FROM followers
                 WHERE follower_id = $1
-            ) AND f.status = 'Accepted'
+            ) OR f.user_id = $1)  -- Include user's own posts
+            AND f.status = 'Accepted'
             ORDER BY f.updated_at DESC;
         `;
         const friendsResult = await req.pool.query(friendsQuery, [userId]);

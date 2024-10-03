@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/submit-forum', async (req, res) => {
-    const { user_id, caption, description } = req.body;  
-
-    if (!user_id || !caption || !description) {
+router.post('/', async (req, res) => {
+    const { userId, caption, description } = req.body;  
+    console.log(req.body)
+    if (!userId || !caption || !description) {
         return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
 
@@ -14,7 +14,7 @@ router.post('/submit-forum', async (req, res) => {
             VALUES ($1, $2, $3)
             RETURNING *;  -- Returning the newly created row
         `;
-        const result = await req.pool.query(query, [user_id, caption, description]);
+        const result = await req.pool.query(query, [userId, caption, description]);
         res.status(201).json({ success: true, forum: result.rows[0] });
     } catch (error) {
         console.error('Error inserting forum data:', error);
