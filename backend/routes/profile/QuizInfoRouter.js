@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
-    const { user_id } = req.body; 
-
-    if (!user_id) {
+    const { userId } = req.body; 
+    console.log('quiz')
+    console.log(userId)
+    if (!userId) {
         return res.status(400).json({ success: false, message: 'User ID is required' });
     }
 
@@ -31,16 +32,12 @@ router.post('/', async (req, res) => {
                 uqr.completion_date DESC
         `;
 
-        const result = await req.pool.query(query, [user_id]);
-
-        if (result.rows.length === 0) {
-            return res.status(404).json({ success: false, message: 'No quiz results found for this user' });
-        }
+        const result = await req.pool.query(query, [userId]);
         res.status(200).json({ success: true, quizzes: result.rows });
 
     } catch (error) {
         console.error('Error fetching quiz results:', error);
-        res.status(500).json({ success: false, message: 'Internal server error' });
+        res.status(500).json({ success: true, message: 'Internal server error' });
     }
 });
 

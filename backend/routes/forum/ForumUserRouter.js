@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/submit-forum', async (req, res) => {
     const { user_id, caption, description } = req.body;  
 
     if (!user_id || !caption || !description) {

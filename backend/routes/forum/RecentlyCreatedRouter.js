@@ -6,20 +6,27 @@ router.post('/', async (req, res) => {
     
     try {
         const publicQuery = `
-            SELECT * FROM forum
-            ORDER BY created_at DESC;
+            SELECT f.id AS forum_id, f.caption, f.description, f.created_at, f.updated_at, f.status,
+                   u.id AS forum_creator_id, u.username AS forum_creator_username, u.profile_pic AS forum_creator_profile_pic, 
+                   u.full_name AS forum_creator_full_name
+            FROM forum f
+            JOIN public.users u ON f.user_id = u.id
+            WHERE f.status = 'Accepted'
+            ORDER BY f.created_at DESC;
         `;
         const publicResult = await req.pool.query(publicQuery);
 
-
         const friendsQuery = `
-            SELECT f.id, f.user_id, f.caption, f.description, f.created_at, f.updated_at
+            SELECT f.id AS forum_id, f.user_id AS forum_creator_id, f.caption, f.description, f.created_at, f.updated_at, f.status,
+                   u.username AS forum_creator_username, u.profile_pic AS forum_creator_profile_pic, 
+                   u.full_name AS forum_creator_full_name
             FROM forum f
+            JOIN public.users u ON f.user_id = u.id
             WHERE f.user_id IN (
                 SELECT user_id
                 FROM followers
                 WHERE follower_id = $1
-            )
+            ) AND f.status = 'Accepted'
             ORDER BY f.created_at DESC;
         `;
         const friendsResult = await req.pool.query(friendsQuery, [userId]);
