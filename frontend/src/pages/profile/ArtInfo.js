@@ -34,6 +34,19 @@ function ArtInfo({ userId }) {
         fetchArtInfo();
     }, [userId]);
 
+    // Function to render winning category with animation applied to each letter
+    const renderWinningCategory = (winningCategory) => {
+        return (
+            <p className="art-winning-category">
+                {winningCategory.split("").map((letter, index) => (
+                    <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+                        {letter}
+                    </span>
+                ))}
+            </p>
+        );
+    };
+
     const renderContentSection = (title, contentArray) => (
         <>
             {contentArray.length > 0 && (
@@ -55,15 +68,9 @@ function ArtInfo({ userId }) {
                                     </p>
                                 )}
                                 {item.contest_caption && (
-                                    <p className="art-contest">
-                                        {item.contest_caption}
-                                    </p>
+                                    <p className="art-contest">{item.contest_caption}</p>
                                 )}
-                                {item.winning_category && (
-                                    <p className="art-winning-category">
-                                        {item.winning_category}
-                                    </p>
-                                )}
+                                {item.winning_category && renderWinningCategory(item.winning_category)}
                             </div>
                         ))}
                     </div>

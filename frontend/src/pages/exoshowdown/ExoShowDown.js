@@ -180,7 +180,7 @@ function ExoShowDown() {
                         <div className="popup-content">
                             <button className="close-button" onClick={closePopup}>×</button>
                             <h2>Submit Your Art</h2>
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} className='popup-form'>
                                 <input
                                     type="text"
                                     placeholder="Enter caption"
