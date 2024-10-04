@@ -57,10 +57,51 @@
     color: var(--text-high);
 }
 
-.art-winning-category {
+/* .art-winning-category {
     font-size: 18px;
     text-align: center;
     color: rgb(194, 1, 1);
+} */
+
+.art-winning-category {
+    font-size: 22px;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    /* Ensure it takes full width of the container */
+}
+
+.art-winning-category span {
+    display: inline-block;
+    animation: waveColorChange 1.5s infinite;
+}
+
+
+@keyframes waveColorChange {
+    0% {
+        color: red;
+        /* Red */
+    }
+
+    25% {
+        color: yellow;
+        /* Yellow */
+    }
+
+    50% {
+        color: orange;
+        /* Orange */
+    }
+
+    75% {
+        color: green;
+        /* Green */
+    }
+
+    100% {
+        color: red;
+        /* Back to Red */
+    }
 }
 
 .art-info-section .no-art-message {
