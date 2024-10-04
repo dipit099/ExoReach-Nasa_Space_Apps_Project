@@ -1,4 +1,5 @@
 const express = require('express');
+const pool = require('../../db');
 const router = express.Router();
 
 router.post('/', async (req, res) => {
@@ -18,8 +19,9 @@ router.post('/', async (req, res) => {
             });
         }
 
-        const user = userQuery.rows[0];
 
+        const user = userQuery.rows[0];
+        await req.pool.query(`SELECT add_random_planets_to_user_cards();`);
         delete user.password;
         delete user.created_at;
         delete user.updated_at;

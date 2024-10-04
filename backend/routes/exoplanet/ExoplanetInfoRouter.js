@@ -157,9 +157,9 @@ router.post('/details/:planet_name', async (req, res) => {
     }
 });
 
-router.put('/view_increment/:planet_name', async (req, res) => {
-    const planetName = req.params.planet_name;
-
+router.post('/view_increment', async (req, res) => {
+    const {planetName} = req.body;
+    console.log(planetName)
     try {
         const query = `
             UPDATE exoplanet_data 
