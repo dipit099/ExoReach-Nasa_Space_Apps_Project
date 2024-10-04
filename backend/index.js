@@ -25,6 +25,7 @@ app.use('/exoshowdown/admin', require('./routes/exoshowdown/ExoshowdownAdminRout
 app.use('/exoshowdown', require('./routes/exoshowdown/ExoshowdownUserRouter'));
 app.use('/exoshowdown/leaderboard', require('./routes/exoshowdown/ExoshowdownLeaderboardRouter'))
 app.use('/exoshowdown/upload-content', require('./routes/upload-file/UploadContentRouter'))
+app.use('/exoshowdown/upvote', require('./routes/upvote/UpvoteRouter'))
 
 app.use('/forum/admin', require('./routes/forum/ForumAdminRouter'));
 app.use('/forum/details', require('./routes/forum/ForumDetailsRouter'))
@@ -51,6 +52,8 @@ app.use('/people-you-may-know', require('./routes/follow/PeopleYouMayKnowRouter'
 
 app.use('/exoflex/play', require('./routes/exoflex/StartPlayingRouter'))
 app.use('/exoflex/user-cards', require('./routes/exoflex/GetUserCardsRouter'))
+
+app.use('/did-you-know', require('./routes/didyouknow/DidYouKnowRouter'))
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}...`);
