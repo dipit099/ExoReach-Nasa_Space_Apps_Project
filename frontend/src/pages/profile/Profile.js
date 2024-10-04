@@ -7,6 +7,7 @@ import QuizInfo from './QuizInfo';
 import ForumCollection from './ForumCollection';
 import Navbar from '../../components/navbar/Navbar';
 import './Profile.css'; // Import the CSS for Profile component
+import Footer from '../../components/footer/Footer';
 
 function Profile() {
     const { userId } = useParams();
@@ -32,44 +33,47 @@ function Profile() {
     };
 
     return (
-        <div className="profile-page">
-            <Navbar />
-            {/* ProfileInfo is always displayed */}
-            <ProfileInfo userId={userId} isCurrentUser={isCurrentUser} />
+        <>
+            <div className="profile-page">
+                <Navbar />
+                {/* ProfileInfo is always displayed */}
+                <ProfileInfo userId={userId} isCurrentUser={isCurrentUser} loggedInUserId={loggedInUserId} />
 
-            {/* Sub-navbar for tab switching */}
-            <div className="sub-navbar">
-                <button 
-                    className={`tab-btn ${activeTab === 'art' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('art')}
-                >
-                    Art
-                </button>
-                {/* <button 
+                {/* Sub-navbar for tab switching */}
+                <div className="sub-navbar">
+                    <button
+                        className={`tab-btn ${activeTab === 'art' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('art')}
+                    >
+                        Art
+                    </button>
+                    {/* <button 
                     className={`tab-btn ${activeTab === 'cards' ? 'active' : ''}`}
                     onClick={() => setActiveTab('cards')}
                 >
                     Cards
                 </button> */}
-                <button 
-                    className={`tab-btn ${activeTab === 'quiz' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('quiz')}
-                >
-                    Quiz
-                </button>
-                <button 
-                    className={`tab-btn ${activeTab === 'forum' ? 'active' : ''}`}
-                    onClick={() => setActiveTab('forum')}
-                >
-                    Forum
-                </button>
-            </div>
+                    <button
+                        className={`tab-btn ${activeTab === 'quiz' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('quiz')}
+                    >
+                        Quiz
+                    </button>
+                    <button
+                        className={`tab-btn ${activeTab === 'forum' ? 'active' : ''}`}
+                        onClick={() => setActiveTab('forum')}
+                    >
+                        Forum
+                    </button>
+                </div>
 
-            {/* Display content based on active tab */}
-            <div className="profile-content">
-                {renderContent()}
+                {/* Display content based on active tab */}
+                <div className="profile-content">
+                    {renderContent()}
+                </div>
             </div>
-        </div>
+            <Footer />
+        </>
     );
 }
 

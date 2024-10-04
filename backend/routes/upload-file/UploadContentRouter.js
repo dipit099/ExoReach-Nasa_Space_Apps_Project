@@ -1,37 +1,31 @@
-const express = require('express');
+const express = require("express");
+const router = express.Router();
 const multer = require('multer');
-const firebaseAdmin = require('firebase-admin');
-const path = require('path');
-
-firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.applicationDefault(),
-  storageBucket: 'exoreach-e8718.appspot.com'
-});
-const storage = firebaseAdmin.storage().bucket();
-
+const { getDownloadURL, uploadBytesResumable, ref } = require('firebase/storage');
+const { storage } = require('../../config/firebaseConfig');
 const upload = multer({ storage: multer.memoryStorage() });
 
-const router = express.Router();
-
-router.post('/', upload.single('contentPic'), async (req, res) => {
+router.post('/', upload.single('artFile'), async (req, res) => {
   const { userId, caption, description, contestId } = req.body;
-
+  console.log("wweeeeeeeeee")
+    console.log(req.body)
   if (!userId || !caption || !description || !req.file || !contestId) {
     return res.status(400).json({ message: 'Missing required fields' });
   }
 
   try {
     const currentDate = new Date().toISOString().split('T')[0];
-    const filePath = `content-uploads/${userId}/${userId}_${currentDate}_${req.file.originalname}`;
-
-    const fileUpload = storage.file(filePath);
-
-    await fileUpload.save(req.file.buffer, {
-      metadata: { contentType: req.file.mimetype }
-    });
-
-    const downloadURL = `https://storage.googleapis.com/${storage.name}/${fileUpload.name}`;
-
+    const filePath = `uploads/${userId + " " + currentDate}`;
+    
+    const storageRef = ref(storage, filePath);
+    const metadata = {
+      contentType: req.file.mimetype,
+    };
+    
+    const snapshot = await uploadBytesResumable(storageRef, req.file.buffer, metadata);
+    
+    const downloadURL = await getDownloadURL(snapshot.ref);
+    console.log(downloadURL)
     const contentResult = await req.pool.query(
       'INSERT INTO content (user_id, caption, description, url_for_content) VALUES ($1, $2, $3, $4) RETURNING id',
       [userId, caption, description, downloadURL]
@@ -39,11 +33,13 @@ router.post('/', upload.single('contentPic'), async (req, res) => {
 
     const newContentId = contentResult.rows[0].id;
 
+ 
     await req.pool.query(
       'INSERT INTO content_in_contest (content_id, contest_id) VALUES ($1, $2)',
       [newContentId, contestId]
     );
 
+  
     return res.status(201).json({
       success: true,
       message: 'Content created successfully and added to contest',

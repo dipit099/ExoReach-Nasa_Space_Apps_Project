@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         const updateQuery = `SELECT update_contest_winners();`
         const updateResult =  await req.pool.query(updateQuery);
         const query = `
-            SELECT cw.contest_id, cw.content_id, cw.winning_category, cw.obtained_votes, 
+            SELECT cw.contest_id, cw.content_id, cw.winning_category, cw.obtained_votes, c.url_for_content, 
                    u.id AS user_id, u.username, u.full_name, u.profile_pic
             FROM contest_winner cw
             JOIN content c ON cw.content_id = c.id
@@ -25,7 +25,7 @@ router.post('/', async (req, res) => {
         const result = await req.pool.query(query, [contestId]);
 
         if (result.rows.length === 0) {
-            return res.status(404).json({ success: false, message: 'No winners found for this contest' });
+            return res.status(404).json({ success: true, message: 'No winners found for this contest' });
         }
 
         res.status(200).json({ success: true, winners: result.rows });
