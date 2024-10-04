@@ -58,8 +58,8 @@ function Navbar() {
             </div>
             <div className="navbar-right">
                 <Link to="/" className={getLinkClass('/')}>Home</Link>
+                <Link to={`/exovision`} className={getLinkClass('/exovision')} id='jumping-link'>ExoVision</Link>
                 <Link to="/community" className={getLinkClass('/community')}>Community</Link>
-                <Link to={`/exovision`} className={getLinkClass('/exovision')}>ExoVision</Link>
                 <Link to={`/profile/${user_id}`} className={getLinkClass(`/profile/${user_id}`)}>Profile</Link>
                 {/* Theme toggle button if needed */}
                 {/* <button onClick={toggleTheme} className="theme-toggle-button">

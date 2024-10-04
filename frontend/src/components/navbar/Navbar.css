@@ -98,3 +98,32 @@
     padding: 0;
     margin-right: 10px;
 }
+
+
+@keyframes jump {
+    0% {
+        transform: translateY(-5px);
+        /* Initial position */
+    }
+
+    50% {
+        transform: translateY(5px);
+        /* Moves the link upwards */
+    }
+
+    100% {
+        transform: translateY(-5px);
+        /* Moves the link downwards */
+    }
+}
+
+#jumping-link {
+    display: inline-block;
+    /* Needed to apply transform animations */
+    font-size: 20px;
+    /* Optional: Adjust text size */
+    text-decoration: none;
+    position: relative;
+    animation: jump 1s ease-in-out infinite;
+    /* 1s animation loop */
+}

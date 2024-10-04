@@ -27,7 +27,7 @@
   }
   
   .page-button.active {
-    background-color: var(--primary-color); /* Active page button background */
+    background-color: var(--accent-color02); /* Active page button background */
     color: var(--text-same); /* Active page button text color */
   }
   
