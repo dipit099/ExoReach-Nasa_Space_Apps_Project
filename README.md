@@ -13,9 +13,6 @@ npm start
 ```bash
 cd backend
 npm install
-# Then create a .env file in the backend folder and add the following:
-DB_PASSWORD="your_postgres_password"
-# Then run the following commands:
 nodemon server
 ```
 
@@ -51,3 +48,16 @@ To Open md files in vscode - `Ctrl + Shift + V`
     npm run build
     firebase deploy
     ```
+
+
+```bash
+for firebase upload pictures,
+first setup firebaseConfig.js and then in firebase console, update the rules section to allow read and write
+```
+```bash
+router.post('/update', upload.single('profilePicture'), async (req, res) => { })
+    #here , profilePicture is the name of the file in the frontend formData
+    #and upload.single('profilePicture') is the middleware to upload the file
+    #and in the frontend, the file is sent as formData
+    ```
+
