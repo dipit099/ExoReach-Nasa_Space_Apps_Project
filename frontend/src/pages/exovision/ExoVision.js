@@ -8,7 +8,7 @@ function ExoVision() {
     <>
       <Navbar />
       <div className="exovision-container">
-        <h1 className="exovision-title">ExoVision</h1>
+      <div className="explore-title">ExoVision</div>
         <br />
         <br />
         <p className="exovision-description">

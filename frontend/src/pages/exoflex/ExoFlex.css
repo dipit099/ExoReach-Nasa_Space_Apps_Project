@@ -1,0 +1,199 @@
+@import '../../components/variables.css';
+.exo-card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 3.5rem;
+  margin-left: 150px;
+  margin-right: 150px;
+  padding: 1rem;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.select-button,
+.deselect-button {
+  padding: 10px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.select-button {
+  background-color: #4caf50;
+  color: white;
+  font-family: "Glacial";
+  font-size: 0.9rem;
+}
+
+.select-button:hover {
+  background-color: #45a049;
+}
+
+.deselect-button {
+  background-color: #f44336;
+  color: white;
+}
+
+.deselect-button:hover {
+  background-color: #e53935;
+}
+
+.exoflex-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .start-game-button {
+    padding: 10px 20px;
+    background-color: var(--accent-color01);
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Glacial';
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  .start-game-button:hover {
+    background-color: var(--accent-color02);
+  }
+  
+
+.start-game-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.game-rules {
+  padding: 20px;
+  margin: 20px 0;
+  text-align: left;
+  margin-left: 100px;
+  margin-right: 100px;
+  font-family: "Glacial";
+  font-size: 1rem;
+}
+
+
+.game-rules h3, .game-rules h2 {
+    font-size: 2rem; /* Large title font size */
+    font-weight: bold; /* Or a heavier weight */
+}
+
+.game-rules p, .game-rules ul, .game-rules li {
+    font-size: 1.35rem; /* Smaller body font size */
+}
+
+.acknowledge-rules-button {
+    padding: 10px 20px;
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Glacial';
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    float: right;
+}
+
+.acknowledge-rules-button:hover {
+    background-color: var(--accent-color02);
+    color: var(--text-same);
+}
+
+
+.anton-regular-exoflex {
+  font-family: "Anton", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  margin-top: 3rem;
+  text-align: left;
+}
+
+.selection-instruction {
+    padding: 10px;
+    font-family: 'Glacial'; /* Consistent with other text */
+    font-size: 1rem; /* Adjust size as needed */
+    color: var(--text-normal); /* White text for contrast */
+    text-align: center; /* Center align the text */
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold;
+}
+
+.exo-flex-results {
+    background-color: var(--background-color02);
+    color: var(--text-normal);
+    padding: 20px;
+    margin-left: 220px;
+    margin-right: 220px;
+    gap:2rem;
+}
+
+.round-results-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--accent-color01);
+    margin-bottom: 15px;
+}
+
+.round-result {
+    background-color: var(--footer-color);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.result-comparison {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.user-card,
+.computer-card,.round-text {
+    flex: 1;
+    text-align: left;
+    font-family: 'Glacial';
+    font-weight: bold;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;  
+}
+
+.round-text{
+    font-size: 1.25rem;
+}
+
+.vs-container {
+    flex: 0 0 50px; /* Fixed width for the VS text */
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--text-high);
+    font-family: 'Norwester';
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.final-result-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: var(--text-high);
+    font-family: 'Glacial';
+    text-align: center;
+}
