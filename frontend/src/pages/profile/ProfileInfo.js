@@ -24,18 +24,24 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
                 toast.error('Error fetching profile info');
             }
         };
+
         fetchProfileInfo();
     }, [userId]);
 
     const handleFollow = async () => {
         if (loggedInUserId && loggedInUserId !== userId) {
             try {
-                const response = await axios.post(`/follow`, {
-                    follower_Id: userId,
-                    user_Id: loggedInUserId,
+                const response = await axios.post(`${SERVER_URL}/follow`, {
+                    followerId: loggedInUserId,
+                    userId: userId,
                 })
                 if(response.data && response.data.success) {
-                    setIsFollowing(true);
+                    if(response.data.following) {
+                        setIsFollowing(true);
+                    } else {
+                        setIsFollowing(false);
+                    }
+                    toast.success(response.data.message);
                 } else {
                     setIsFollowing(false);
                 }
