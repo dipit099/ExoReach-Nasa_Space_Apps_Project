@@ -99,7 +99,8 @@
 }
 
 .quiz-container .quiz-button,
-.quiz-container .submit-button .quiz-container .leaderboard-button {
+.quiz-container .submit-button,
+.quiz-container .leaderboard-button {
     background-color: var(--accent-color01);
     color: var(--text-same);
     padding: 12px 30px;
@@ -112,10 +113,12 @@
 }
 
 .quiz-container .quiz-button:hover,
-.quiz-container .submit-button:hover .quiz-container .leaderboard-button:hover {
-    background-color: var(--accent-color02);
-    transform: scale(1.05);
+.quiz-container .submit-button:hover,
+.quiz-container .leaderboard-button:hover {
+    background-color: var(--accent-color02) !important;
+    transform: scale(1.05) !important;
 }
+
 
 .quiz-container .quiz-results {
     background-color: var(--background-color02);

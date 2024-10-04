@@ -5,8 +5,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './ProfileInfo.css'; // Import the CSS for ProfileInfo component
 
-function ProfileInfo({ userId, isCurrentUser }) {
+function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
     const [profile, setProfile] = useState(null);
+    const [isFollowing, setIsFollowing] = useState(false);
 
     useEffect(() => {
         const fetchProfileInfo = async () => {
@@ -25,6 +26,24 @@ function ProfileInfo({ userId, isCurrentUser }) {
         };
         fetchProfileInfo();
     }, [userId]);
+
+    const handleFollow = async () => {
+        if (loggedInUserId && loggedInUserId !== userId) {
+            try {
+                const response = await axios.post(`/follow`, {
+                    follower_Id: userId,
+                    user_Id: loggedInUserId,
+                })
+                if(response.data && response.data.success) {
+                    setIsFollowing(true);
+                } else {
+                    setIsFollowing(false);
+                }
+            } catch (error) {
+                console.error('Error following the user', error);
+            }
+        }
+    }
 
     if (!profile) return <p className="loading-message">Loading profile...</p>;
 
@@ -45,7 +64,9 @@ function ProfileInfo({ userId, isCurrentUser }) {
             )}
             {profile.bio && <p className="profile-bio">{profile.bio}</p>}
             {!isCurrentUser && (
-                <button className="follow-btn" onClick={() => handleFollow(userId)}>Follow</button>
+                (isFollowing ?
+                    <button className="follow-btn" onClick={() => handleFollow()}>Follow</button> :
+                    <button className="follow-btn" onClick={() => handleFollow()}>Unfollow</button> )
             )}
         </div>
     );

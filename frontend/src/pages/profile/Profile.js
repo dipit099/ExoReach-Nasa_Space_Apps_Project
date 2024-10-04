@@ -37,7 +37,7 @@ function Profile() {
             <div className="profile-page">
                 <Navbar />
                 {/* ProfileInfo is always displayed */}
-                <ProfileInfo userId={userId} isCurrentUser={isCurrentUser} />
+                <ProfileInfo userId={userId} isCurrentUser={isCurrentUser} loggedInUserId={loggedInUserId} />
 
                 {/* Sub-navbar for tab switching */}
                 <div className="sub-navbar">
