@@ -1,17 +1,11 @@
-const express = require('express');
-const multer = require('multer');
-const firebaseAdmin = require('firebase-admin');
-const path = require('path');
-
-firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.applicationDefault(),
-  storageBucket: 'exoreach-e8718.appspot.com'
-});
-const storage = firebaseAdmin.storage().bucket();
-
-const upload = multer({ storage: multer.memoryStorage() });
-
+const express = require("express");
 const router = express.Router();
+const multer = require('multer');
+const { getDownloadURL, uploadBytesResumable, ref } = require('firebase/storage');
+const { storage } = require('../../config/firebaseConfig');
+const cors = require("cors");
+const path = require('path');
+const upload = multer({ storage: multer.memoryStorage() });
 
 router.post('/', upload.single('contentPic'), async (req, res) => {
   const { userId, caption, description, contestId } = req.body;
@@ -22,16 +16,15 @@ router.post('/', upload.single('contentPic'), async (req, res) => {
 
   try {
     const currentDate = new Date().toISOString().split('T')[0];
-    const filePath = `content-uploads/${userId}/${userId}_${currentDate}_${req.file.originalname}`;
-
-    const fileUpload = storage.file(filePath);
-
-    await fileUpload.save(req.file.buffer, {
-      metadata: { contentType: req.file.mimetype }
-    });
-
-    const downloadURL = `https://storage.googleapis.com/${storage.name}/${fileUpload.name}`;
-
+    const filePath = `uploads/${userId}_${currentDate}`;
+    
+      const storageRef = ref(storage, filePath);
+      const metadata = {
+          contentType: req.file.mimetype,
+      };
+      
+    const snapshot = await uploadBytesResumable(storageRef,metadata);
+    const downloadURL = await getDownloadURL(snapshot.ref);
     const contentResult = await req.pool.query(
       'INSERT INTO content (user_id, caption, description, url_for_content) VALUES ($1, $2, $3, $4) RETURNING id',
       [userId, caption, description, downloadURL]
@@ -54,6 +47,7 @@ router.post('/', upload.single('contentPic'), async (req, res) => {
   } catch (error) {
     console.error('Error uploading content:', error);
     return res.status(500).json({ message: 'Internal server error' });
+  
   }
 });
 

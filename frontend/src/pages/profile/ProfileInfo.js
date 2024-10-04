@@ -25,8 +25,21 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
             }
         };
 
+        const fetchFollowingStatus = async () => {
+            try {
+                const response = await axios.post(`${SERVER_URL}/follow/is-following`, {
+                    followerId: loggedInUserId,
+                    userId: userId,
+                })
+                setIsFollowing(response.data.isFollowing)
+            } catch (error) {
+                console.error('Error checking follow status', error);
+            }
+        }
+
         fetchProfileInfo();
-    }, [userId]);
+        fetchFollowingStatus();
+    }, [userId, loggedInUserId]);
 
     const handleFollow = async () => {
         if (loggedInUserId && loggedInUserId !== userId) {
@@ -36,12 +49,9 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
                     userId: userId,
                 })
                 if(response.data && response.data.success) {
-                    if(response.data.following) {
-                        setIsFollowing(true);
-                    } else {
-                        setIsFollowing(false);
-                    }
-                    toast.success(response.data.message);
+                    setIsFollowing(response.data.following)
+                    console.log(response.data.following)
+                    toast.success(response.data.following ? 'Followed successfully!' : 'Unfollowed successfully!');
                 } else {
                     setIsFollowing(false);
                 }
@@ -70,7 +80,7 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
             )}
             {profile.bio && <p className="profile-bio">{profile.bio}</p>}
             {!isCurrentUser && (
-                (isFollowing ?
+                (!isFollowing ?
                     <button className="follow-btn" onClick={() => handleFollow()}>Follow</button> :
                     <button className="follow-btn" onClick={() => handleFollow()}>Unfollow</button> )
             )}
