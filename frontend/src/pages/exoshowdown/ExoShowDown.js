@@ -220,9 +220,13 @@ function ExoShowDown() {
                                 <div key={competition.contest_id} className="competition">
                                     <h3>{competition.caption}</h3>
                                     <p>{competition.description}</p>
-                                    <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
-                                    <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p>
-                                    <button className="leaderboard-button" onClick={() => window.open(`/leaderboard/${competition.contest_id}`, '_blank')}>Show Leaderboard</button>
+                                    <div className='time-leaderboard'>
+                                        <div>
+                                            <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
+                                            <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p>
+                                        </div>
+                                        <button className="leaderboard-button" onClick={() => window.open(`/leaderboard/${competition.contest_id}`, '_blank')}>Show Leaderboard</button>
+                                    </div>
                                 </div>
                             ))
                         ) : (
