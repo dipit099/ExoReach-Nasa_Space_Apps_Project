@@ -3,6 +3,7 @@ import axios from 'axios';
 import SERVER_URL from '../../config/SERVER_URL';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './ProfileInfo.css'; // Import the CSS for ProfileInfo component
 
 function ProfileInfo({ userId, isCurrentUser }) {
     const [profile, setProfile] = useState(null);
@@ -25,18 +26,24 @@ function ProfileInfo({ userId, isCurrentUser }) {
         fetchProfileInfo();
     }, [userId]);
 
-    if (!profile) return <p>Loading profile...</p>;
+    if (!profile) return <p className="loading-message">Loading profile...</p>;
 
     return (
-        <div className="profile-info">
+        <div className="profile-info-section">
             {profile.profile_pic ? (
                 <img src={profile.profile_pic} alt="Profile" className="profile-pic" />
             ) : (
                 <div className="profile-pic-placeholder">No Image</div>
             )}
-            <h2>{profile.full_name || 'No name available'}</h2>
-            <p>@{profile.username}</p>
-            <p>{profile.bio || 'No bio available'}</p>
+            <h2 className="profile-name">{profile.full_name || 'No name available'}</h2>
+            <p className="profile-username">@{profile.username}</p>
+            <p className="profile-email">Email: {profile.email}</p>
+            {profile.date_of_birth && (
+                <p className="profile-dob">
+                    <strong>Date of Birth:</strong> {new Date(profile.date_of_birth).toLocaleDateString()}
+                </p>
+            )}
+            {profile.bio && <p className="profile-bio">{profile.bio}</p>}
             {!isCurrentUser && (
                 <button className="follow-btn" onClick={() => handleFollow(userId)}>Follow</button>
             )}

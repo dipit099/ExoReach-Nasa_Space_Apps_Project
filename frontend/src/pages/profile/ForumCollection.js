@@ -4,36 +4,41 @@ import SERVER_URL from '../../config/SERVER_URL';
 import {toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function ForumCollection({ userId }) {
-    const [forumPosts, setForumPosts] = useState([]);
+function QuizInfo({ userId }) {
+    const [quizData, setQuizData] = useState([]);
 
     useEffect(() => {
-        const fetchForumCollection = async () => {
+        const fetchQuizInfo = async () => {
             try {
-                const response = await axios.post(`${SERVER_URL}/profile/forum-collection`, { userId });
-                console.log("forum-collection",response.data);
-                toast.success('Forum collection fetched successfully');
-                //setForumPosts(response.data);
+                // const response = await axios.post(`${SERVER_URL}/profile/quiz-info`, { userId });
+                // toast.success('Quiz info fetched successfully');
+                const response = await axios.get(`${SERVER_URL}/forum/${userId}`);
+                console.log("forum collection",response.data);
+                
+               
             } catch (error) {
-                console.error('Error fetching forum collection', error);
+                console.error('Error fetching quiz info:', error.response?.data || error.message);
+                toast.error('Error fetching quiz info');
             }
         };
-        fetchForumCollection();
+        fetchQuizInfo();
     }, [userId]);
 
-    if (!forumPosts.length) return <p>No forum posts available</p>;
+    if (!quizData.length) return <p className="no-quiz-message">No quiz info available</p>;
 
     return (
-        <div className="forum-collection">
-            <h3>Forum Posts</h3>
-            {forumPosts.map((post) => (
-                <div key={post.id} className="forum-post">
-                    <p>{post.title}</p>
-                    <p>{post.content}</p>
-                </div>
-            ))}
+        <div className="quiz-info-section">
+            <h3 className="section-title">Quiz Info</h3>
+            <div className="quiz-items-grid">
+                {quizData.map((quiz) => (
+                    <div key={quiz.quizId} className="quiz-item-card">
+                        <p className="quiz-title">{quiz.title}</p>
+                        <p className="quiz-score">Score: {quiz.score}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
 
-export default ForumCollection;
+export default QuizInfo;

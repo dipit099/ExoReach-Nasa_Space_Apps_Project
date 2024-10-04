@@ -11,9 +11,8 @@ function ArtInfo({ userId }) {
         const fetchArtInfo = async () => {
             try {
                 const response = await axios.post(`${SERVER_URL}/profile/art-info`, { userId });
-                console.log("art-info",response.data);
                 toast.success('Art info fetched successfully');
-               // setArt(response.data);
+                // setArt(response.data);
             } catch (error) {
                 console.error('Error fetching art info', error);
             }
@@ -21,17 +20,19 @@ function ArtInfo({ userId }) {
         fetchArtInfo();
     }, [userId]);
 
-    if (!art.length) return <p>No art info available</p>;
+    if (!art.length) return <p className="no-art-message">No art info available</p>;
 
     return (
-        <div className="art-info">
-            <h3>Art Info</h3>
-            {art.map((item) => (
-                <div key={item.id} className="art-item">
-                    <img src={item.artImage} alt="Art" />
-                    <p>{item.title}</p>
-                </div>
-            ))}
+        <div className="art-info-section">
+            <h3 className="section-title">Art Info</h3>
+            <div className="art-items-grid">
+                {art.map((item) => (
+                    <div key={item.id} className="art-item-card">
+                        <img src={item.artImage} alt="Art" className="art-image" />
+                        <p className="art-title">{item.title}</p>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

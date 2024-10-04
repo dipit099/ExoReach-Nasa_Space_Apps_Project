@@ -1,0 +1,44 @@
+@import '../../components/variables.css';
+
+.profile-page {
+    padding: 20px;
+    background-color: var(--background-color);
+}
+
+.sub-navbar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    background-color: var(--background-color02);
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tab-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--text-normal);
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color02);
+    border-radius: 5px;
+}
+
+.tab-btn.active {
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    border-radius: 5px;
+}
+
+.profile-content {
+    margin-top: 20px;
+}
