@@ -26,6 +26,7 @@ app.use('/exoshowdown', require('./routes/exoshowdown/ExoshowdownUserRouter'));
 app.use('/exoshowdown/leaderboard', require('./routes/exoshowdown/ExoshowdownLeaderboardRouter'))
 app.use('/exoshowdown/upload-content', require('./routes/upload-file/UploadContentRouter'))
 app.use('/exoshowdown/upvote', require('./routes/upvote/UpvoteRouter'))
+app.use('/exoshowdown/gallery', require('./routes/exoshowdown/ExoshowdownGalleryRouter'))
 
 app.use('/forum/admin', require('./routes/forum/ForumAdminRouter'));
 app.use('/forum/details', require('./routes/forum/ForumDetailsRouter'))
