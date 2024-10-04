@@ -85,8 +85,8 @@ function ForumDetails() {
             <div className="forum-details-container">
                 <h2>{forumDetails.caption}</h2>
                 <p className="forum-description">{forumDetails.description}</p>
-                <div className="forum-creator-info">
-                    <div>
+                <div className="forumDetails-creator-info">
+                    <div className='forum-creator'>
                         <img
                             src={forumDetails.forum_creator_profile_pic || '/default-avatar.png'}
                             alt="Profile"

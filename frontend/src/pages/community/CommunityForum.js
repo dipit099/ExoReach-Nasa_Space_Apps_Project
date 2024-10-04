@@ -62,7 +62,7 @@ function CommunityForum() {
                 description,
                 userId
             });
-            console.log('Submit forum response:', response.data);            
+            console.log('Submit forum response:', response.data);
             toast.success('Question submitted successfully');
             setCaption('');
             setDescription('');
@@ -134,22 +134,26 @@ function CommunityForum() {
                                         <Link to={`/forum/${forum.forum_id}`} className="forum-link" target='_blank'>
                                             <h4 className="forum-caption">{forum.caption}</h4>
                                             <p className="forum-description">{forum.description}</p>
-                                            <div className="forum-creator-info">
-                                                <img
-                                                    src={forum.forum_creator_profile_pic || '/default-avatar.png'}
-                                                    alt="Profile"
-                                                    className="forum-creator-pic"
-                                                />
-                                                <span className="forum-creator-username">
-                                                    {forum.forum_creator_username}
-                                                </span>
+                                            <div className='communityForum-details'>
+                                                <div>
+                                                    <div className="forum-creator-info">
+                                                        <img
+                                                            src={forum.forum_creator_profile_pic || '/default-avatar.png'}
+                                                            alt="Profile"
+                                                            className="forum-creator-pic"
+                                                        />
+                                                        <span className="forum-creator-username">
+                                                            {forum.forum_creator_username}
+                                                        </span>
+                                                    </div>
+                                                    <p className="forum-created-date">
+                                                        Created on: {formatDate(forum.created_at)}
+                                                    </p>
+                                                </div>
+                                                <button className="show-forum-btn">
+                                                    Show Forum
+                                                </button>
                                             </div>
-                                            <p className="forum-created-date">
-                                                Created on: {formatDate(forum.created_at)}
-                                            </p>
-                                            <button className="show-forum-btn">
-                                                Show Forum
-                                            </button>
                                         </Link>
                                     </div>
                                 ))

@@ -56,12 +56,12 @@ function ArtInfo({ userId }) {
                                 )}
                                 {item.contest_caption && (
                                     <p className="art-contest">
-                                        Contest: {item.contest_caption}
+                                        {item.contest_caption}
                                     </p>
                                 )}
                                 {item.winning_category && (
                                     <p className="art-winning-category">
-                                        Winning Category: {item.winning_category}
+                                        {item.winning_category}
                                     </p>
                                 )}
                             </div>

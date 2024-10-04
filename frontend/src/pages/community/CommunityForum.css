@@ -163,3 +163,50 @@
     text-decoration: none;
     color: inherit;
 }
+
+.show-forum-btn {
+    background-color: var(--accent-color01);
+    /* Use your theme's accent color */
+    color: var(--text-same);
+    /* Text color based on your theme */
+    padding: 10px 20px;
+    /* Padding for the button */
+    border: none;
+    /* Remove default border */
+    border-radius: 5px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Button text size */
+    cursor: pointer;
+    /* Changes cursor to pointer when hovering */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    /* Smooth hover effects */
+    height: 40px !important;
+    margin: auto 5px;
+}
+
+.show-forum-btn:hover {
+    background-color: var(--accent-color02);
+    /* Change background color on hover */
+    transform: translateY(-3px);
+    /* Slight lift effect on hover */
+}
+
+.show-forum-btn:active {
+    transform: translateY(0px);
+    /* Return to original position when clicked */
+    background-color: var(--primary-color);
+    /* Active state color */
+}
+
+.show-forum-btn:focus {
+    outline: none;
+    /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(255, 190, 88, 0.6);
+    /* Add custom focus outline */
+}
+
+.communityForum-details {
+    display: flex;
+    justify-content: space-between;
+}
