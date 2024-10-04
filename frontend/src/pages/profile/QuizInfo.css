@@ -19,12 +19,12 @@
 
 .quiz-items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
     gap: 25px;
 }
 
 .quiz-item-card {
-    background-color: var(--secondary-color);
+    background-color: rgb(8, 32, 84);
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
@@ -43,8 +43,10 @@
     font-size: 22px;
     color: var(--text-high);
     margin-bottom: 15px;
+    margin-top: 10px;
     font-weight: bold;
     letter-spacing: 0.5px;
+    padding: 5px;
 }
 
 .quiz-description {
