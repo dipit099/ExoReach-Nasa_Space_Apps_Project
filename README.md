@@ -13,6 +13,9 @@ npm start
 ```bash
 cd backend
 npm install
+# Then create a .env file in the backend folder and add the following:
+DB_PASSWORD="your_postgres_password"
+# Then run the following commands:
 nodemon server
 ```
 
