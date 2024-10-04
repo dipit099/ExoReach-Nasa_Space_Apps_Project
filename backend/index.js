@@ -49,6 +49,7 @@ app.use('/user', require('./routes/follow/UserRouter'))
 app.use('/people-you-may-know', require('./routes/follow/PeopleYouMayKnowRouter'))
 
 app.use('/exoflex/play', require('./routes/exoflex/StartPlayingRouter'))
+app.use('/exoflex/user-cards', require('./routes/exoflex/GetUserCardsRouter'))
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}...`);
