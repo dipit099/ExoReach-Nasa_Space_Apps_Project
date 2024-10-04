@@ -45,12 +45,12 @@ function Profile() {
                 >
                     Art
                 </button>
-                <button 
+                {/* <button 
                     className={`tab-btn ${activeTab === 'cards' ? 'active' : ''}`}
                     onClick={() => setActiveTab('cards')}
                 >
                     Cards
-                </button>
+                </button> */}
                 <button 
                     className={`tab-btn ${activeTab === 'quiz' ? 'active' : ''}`}
                     onClick={() => setActiveTab('quiz')}

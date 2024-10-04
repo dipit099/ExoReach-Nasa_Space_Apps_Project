@@ -14,7 +14,7 @@ router.post('/', async (req, res) => {
         const updateQuery = `SELECT update_contest_winners();`
         const updateResult =  await req.pool.query(updateQuery);
         const query = `
-            SELECT cw.contest_id, cw.content_id, cw.winning_category, 
+            SELECT cw.contest_id, cw.content_id, cw.winning_category, cw.obtained_votes, 
                    u.id AS user_id, u.username, u.full_name, u.profile_pic
             FROM contest_winner cw
             JOIN content c ON cw.content_id = c.id
