@@ -19,6 +19,7 @@ import Profile from './pages/profile/Profile';
 import ForumDetail from './pages/community/ForumDetail';
 import ExoFlex from './pages/exoflex/ExoFlex';
 import ScrollToTop from './components/ScrollToTop';
+import ExoShowLeaderBoard from './pages/exoshowdown/ExoShowLeaderBoard';
 
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
           <Route path="/forum/:forum_id" element={<ForumDetail />} />
 
           <Route path="exoshowdown" element={<ExoShowDown />} />
+          <Route path="/exoshowleaderboard/:exoshowdown_id" element={<ExoShowLeaderBoard />} />
+
           <Route path="exoflex" element={<ExoFlex />} />
 
           <Route path="exploreexoplanets" element={<ExploreExoplanets />} />         

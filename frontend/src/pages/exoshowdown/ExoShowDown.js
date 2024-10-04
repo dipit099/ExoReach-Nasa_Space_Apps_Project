@@ -13,7 +13,7 @@ function ExoShowDown() {
     const [description, setDescription] = useState('');
     const [artFile, setArtFile] = useState(null);
     const [liveCompetitions, setLiveCompetitions] = useState([]);
-    const [competitionJoined, setCompetitionJoined] = useState(false);
+    const [competitionJoined, setCompetitionJoined] = useState(false); // Handle competition join
     const [pastCompetitions, setPastCompetitions] = useState([]);
     const [upcomingCompetitions, setUpcomingCompetitions] = useState([]);
     const [view, setView] = useState('past');
@@ -82,19 +82,44 @@ function ExoShowDown() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!selectedCompetition || !artFile) {
+            toast.error('Please select a competition and upload an art file.');
+            return;
+        }
+
         const formData = new FormData();
         formData.append('caption', caption);
         formData.append('description', description);
         formData.append('artFile', artFile);
-        formData.append('contest_id', selectedCompetition.contest_id);
+        formData.append('contestId', selectedCompetition.contest_id);
+        formData.append('userId', localStorage.getItem('user_id'));
 
         try {
-            await axios.post(`${SERVER_URL}/api/upload-art`, formData);
-            toast.success('Art uploaded successfully!');
-            setCaption('');
-            setDescription('');
-            setArtFile(null);
+            console.log('FormData:', {
+                caption,
+                description,
+                contestId: selectedCompetition.contest_id,
+                artFile: artFile ? artFile.name : 'No file selected',
+                userId: localStorage.getItem('userId')
+            });
+
+            // Uncomment the following line to send the request
+            const  response =   await axios.post(`${SERVER_URL}/exoshowdown/upload-content`, formData, {
+               headers: { 'Content-Type': 'multipart/form-data' }
+            });
+           
+            console.log('Art upload response:', response.data);
+            
+            if(response.data.success){
+                toast.success('Art uploaded successfully!');
+                setCaption('');
+                setDescription('');
+                setArtFile(null);
+               
+            }
             closePopup();
+          
         } catch (error) {
             toast.error('Error uploading art');
             console.error('Error uploading art:', error);
@@ -109,6 +134,7 @@ function ExoShowDown() {
 
     const closePopup = () => {
         setPopupOpen(false);
+        setCompetitionJoined(false); // Reset competitionJoined to false when closing the modal
     };
 
     const handleViewChange = (newView) => {
@@ -130,8 +156,6 @@ function ExoShowDown() {
                             <div key={competition.contest_id} className="competition">
                                 <h3>{competition.caption}</h3>
                                 <p>{competition.description}</p>
-                                {/* <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
-                            <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p> */}
                                 <div className="right-side">
                                     {timeLeft && (
                                         <div className="countdown">
@@ -225,7 +249,7 @@ function ExoShowDown() {
                                             <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
                                             <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p>
                                         </div>
-                                        <button className="leaderboard-button" onClick={() => window.open(`/leaderboard/${competition.contest_id}`, '_blank')}>Show Leaderboard</button>
+                                        <button className="leaderboard-button" onClick={() => window.open(`/exoshowleaderboard/${competition.contest_id}`, '_blank')}>Show Leaderboard</button>
                                     </div>
                                 </div>
                             ))
