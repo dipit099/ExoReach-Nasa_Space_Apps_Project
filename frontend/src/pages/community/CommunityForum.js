@@ -6,6 +6,7 @@ import Navbar from '../../components/navbar/Navbar';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SERVER_URL from '../../config/SERVER_URL';
+import Footer from '../../components/footer/Footer';
 
 function CommunityForum() {
     const [recentlyViewedForums, setRecentlyViewedForums] = useState({ public: [], friends: [] });
@@ -198,6 +199,7 @@ function CommunityForum() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
