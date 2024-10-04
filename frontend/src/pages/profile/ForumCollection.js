@@ -17,8 +17,8 @@ function QuizInfo({ userId }) {
                 
                
             } catch (error) {
-                console.error('Error fetching quiz info:', error.response?.data || error.message);
-                toast.error('Error fetching quiz info');
+                console.error('Error fetching forum info:', error.response?.data || error.message);
+                toast.error('Error fetching forum info');
             }
         };
         fetchQuizInfo();
@@ -27,13 +27,13 @@ function QuizInfo({ userId }) {
     if (!quizData.length) return <p className="no-quiz-message">No quiz info available</p>;
 
     return (
-        <div className="quiz-info-section">
+        <div className="forum-info-section">
             <h3 className="section-title">Quiz Info</h3>
-            <div className="quiz-items-grid">
+            <div className="forum-items-grid">
                 {quizData.map((quiz) => (
                     <div key={quiz.quizId} className="quiz-item-card">
-                        <p className="quiz-title">{quiz.title}</p>
-                        <p className="quiz-score">Score: {quiz.score}</p>
+                        <p className="forum-title">{quiz.title}</p>
+                        <p className="forum-score">Score: {quiz.score}</p>
                     </div>
                 ))}
             </div>

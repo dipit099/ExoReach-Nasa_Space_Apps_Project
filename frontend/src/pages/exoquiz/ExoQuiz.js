@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ExoQuiz.css'; 
+import './ExoQuiz.css';
 import { Link } from 'react-router-dom';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
 import SERVER_URL from '../../config/SERVER_URL';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SubNavbar from '../../components/navbar/SubNavbar';
 
 function ExoQuiz() {
     const [liveQuizzes, setLiveQuizzes] = useState({ success: false, data: [] });
@@ -68,22 +69,23 @@ function ExoQuiz() {
     return (
         <>
             <Navbar />
+            <SubNavbar />
             <div className="quiz-container">
-                <h1 className="quiz-header">ExoQuiz: Test Your Knowledge!</h1>
+                <div className="quiz-title">ExoQuiz: Test Your Knowledge!</div>
 
-                <div className="filter-buttons">                
+                <div className="filter-buttons">
                     <button
                         onClick={() => handleFilterChange('live')}
                         className={`filter-button ${filter === 'live' ? 'active' : ''}`}
                     >
                         Live Quizzes
-                    </button>    
+                    </button>
                     <button
                         onClick={() => handleFilterChange('past')}
                         className={`filter-button ${filter === 'past' ? 'active' : ''}`}
                     >
                         Past Quizzes
-                    </button>               
+                    </button>
                 </div>
 
                 <section className="quiz-section">
@@ -92,12 +94,14 @@ function ExoQuiz() {
                         <div key={quiz.quiz_id} className="quiz-card">
                             <h3 className="quiz-title">{quiz.title}</h3>
                             <p className="quiz-description">{quiz.description}</p>
-                            <Link to={`/exoquiz/${quiz.quiz_id}`} target='_blank'>
-                                <button className="quiz-button">Start Your Quiz</button>
-                            </Link>
-                            <button className="leaderboard-button" onClick={() => fetchLeaderboard(quiz.quiz_id)}>
-                                Show Leaderboard
-                            </button>
+                            <div className='quiz-buttons'>
+                                <Link to={`/exoquiz/${quiz.quiz_id}`} target='_blank'>
+                                    <button className="quiz-button">Start Your Quiz</button>
+                                </Link>
+                                <button className="leaderboard-button" onClick={() => fetchLeaderboard(quiz.quiz_id)}>
+                                    Show Leaderboard
+                                </button>
+                            </div>
                         </div>
                     ))}
                 </section>
