@@ -9,10 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    {/* <ToastContainer 
+    <ToastContainer 
     //  theme='dark' // Dark theme
       autoClose={1500} // Closes toast after 1 second
-     /> */}
+     />
     <App />
   </BrowserRouter>
 );
