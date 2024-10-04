@@ -163,11 +163,14 @@ function ExoShowDown() {
                                             <p>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</p>
                                         </div>
                                     )}
-                                    {!competitionJoined && (
-                                        <button className="join-button" onClick={() => handleJoin(competition)}>
-                                            Register
-                                        </button>
-                                    )}
+                                    <div>
+                                        {!competitionJoined && (
+                                            <button className="join-button" onClick={() => handleJoin(competition)}>
+                                                Register
+                                            </button>
+                                        )}
+                                        <button className="leaderboard-button" onClick={() => window.open(`/exoshowGallery/${competition.contest_id}`, '_blank')}>Show Gallery</button>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -249,7 +252,7 @@ function ExoShowDown() {
                                             <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
                                             <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p>
                                         </div>
-                                        <button className="leaderboard-button" onClick={() => window.open(`/exoshowleaderboard/${competition.contest_id}`, '_blank')}>Show Leaderboard</button>
+                                        <button className="leaderboard-button" onClick={() => window.open(`/exoshowGallery/${competition.contest_id}`, '_blank')}>Show Gallery</button>
                                     </div>
                                 </div>
                             ))
