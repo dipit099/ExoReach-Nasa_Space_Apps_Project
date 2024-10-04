@@ -81,17 +81,19 @@ function ForumDetails() {
     }
 
     return (
-        <>           
+        <>
             <div className="forum-details-container">
                 <h2>{forumDetails.caption}</h2>
                 <p className="forum-description">{forumDetails.description}</p>
                 <div className="forum-creator-info">
-                    <img
-                        src={forumDetails.forum_creator_profile_pic || '/default-avatar.png'}
-                        alt="Profile"
-                        className="forum-creator-pic"
-                    />
-                    <span className="forum-creator-username">{forumDetails.forum_creator_username}</span>
+                    <div>
+                        <img
+                            src={forumDetails.forum_creator_profile_pic || '/default-avatar.png'}
+                            alt="Profile"
+                            className="forum-creator-pic"
+                        />
+                        <span className="forum-creator-username">{forumDetails.forum_creator_username}</span>
+                    </div>
                     <span className="forum-created-date">
                         Created on: {new Date(forumDetails.created_at).toLocaleString()}
                     </span>
@@ -132,7 +134,10 @@ function ForumDetails() {
                         required
                         className="comment-textarea"
                     />
-                    <button type="submit" className="submit-btn">Submit</button>
+                    <div className='forum-buttons'>
+                        <button type="submit" className="submit-btn">Submit</button>
+                        <button type='reset' className='submit-btn' onClick={() => setNewComment('')}>Clear</button>
+                    </div>
                 </form>
             </div>
         </>

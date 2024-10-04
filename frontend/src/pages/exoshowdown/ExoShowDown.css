@@ -174,7 +174,8 @@
 }
 
 .toggle-button.active {
-    background-color: var(--accent-color02);
+    background-color: rgb(10, 174, 10);
+    color: white;
 }
 
 
