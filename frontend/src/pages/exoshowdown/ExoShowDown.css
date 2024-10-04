@@ -97,7 +97,11 @@
     margin: 10px 0;
     border: 2px solid var(--text-low);
     border-radius: 5px;
-    color: var(--text-high);
+    color: black;
+}
+
+.popup-form {
+    margin-right: 30px;
 }
 
 .close-button {
