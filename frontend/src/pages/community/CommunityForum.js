@@ -86,7 +86,7 @@ function CommunityForum() {
         <>
             <Navbar />
             <div className="ask-question-section">
-                <h3>Ask a Question</h3>
+                <div className='ask-question-title'>Ask a Question</div>
                 <form onSubmit={handleSubmitQuestion}>
                     <input
                         type="text"

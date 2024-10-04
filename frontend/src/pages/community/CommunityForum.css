@@ -1,11 +1,21 @@
 /* Top Section for Asking Questions */
-.ask-question-section {   
+.ask-question-section {
     padding: 25px;
     background-color: var(--background-color02);
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 25px;
     text-align: center;
+}
+
+.ask-question-title {
+    font-family: 'Anton';
+    color: var(--text-high);
+    font-size: 4.5rem !important;
+    padding-bottom: 1rem;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .ask-question-section h3 {
@@ -86,7 +96,7 @@
 
 .filter-button.active {
     background-color: var(--accent-color02);
-    color: var(--text-diff);
+    color: black;
 }
 
 /* Right Section */
@@ -125,7 +135,8 @@
 
 .forum-card:hover {
     transform: translateY(-5px);
-    background-color: var(--primary-color);
+    background-color: var(--background-color);
+    opacity: 0.85;
 }
 
 .forum-caption {

@@ -3,7 +3,8 @@
 .profile-info-section {
     background-color: var(--background-color02);
     padding: 30px;
-    border-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
     margin-bottom: 40px;

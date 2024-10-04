@@ -157,20 +157,31 @@
 }
 
 .competition-toggle {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
 }
 
 .toggle-button {
     padding: 10px 20px;
-    margin: 0 5px;
+    margin: 0 5px !important;
     background-color: var(--accent-color01);
     color: var(--text-same);
     border: none;
-    border-radius: 5px;
+    border-radius: 25px !important;
     cursor: pointer;
 }
 
 .toggle-button.active {
     background-color: var(--accent-color02);
+}
+
+
+.exoShowdown-title {
+    font-family: 'Anton';
+    color: var(--text-high);
+    font-size: 4.5rem;
+    padding: 2.5rem 0;
+    text-align: center;
 }

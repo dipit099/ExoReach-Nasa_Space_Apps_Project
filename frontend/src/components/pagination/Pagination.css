@@ -8,7 +8,7 @@
   
   .page-button {
     background-color: var(--accent-color01); /* Button background color */
-    color: var(--text-normal); /* Text color */
+    color: black; /* Text color */
     border: none;
     padding: 10px 15px;
     margin: 0 5px;

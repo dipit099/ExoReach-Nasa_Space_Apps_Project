@@ -1,19 +1,21 @@
 .quiz-container {
     padding: 30px;
-   
+
     margin: 0 auto;
     background: linear-gradient(135deg, var(--background-light) 30%, var(--background-light-alt) 100%);
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.quiz-container .quiz-header, 
+
+
+.quiz-container .quiz-header,
 .quiz-container .leaderboard-header {
     color: var(--primary-color);
     text-align: center;
     margin-bottom: 25px;
     font-family: 'Glacial', sans-serif;
-    font-size: 2.2rem;
+    /* font-size: 2.2rem; */
     letter-spacing: 1px;
     animation: fadeIn 1s ease-in-out;
 }
@@ -22,7 +24,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    gap: 15px;
+    gap: 20px;
 }
 
 .quiz-container .filter-button {
@@ -37,7 +39,7 @@
     font-size: 1.1rem;
 }
 
-.quiz-container .filter-button.active {   
+.quiz-container .filter-button.active {
     background-color: green;
     color: #ffffff;
     transform: scale(1.05);
@@ -54,7 +56,7 @@
     animation: fadeInUp 0.8s ease-in-out;
 }
 
-.quiz-container .no-quizzes, 
+.quiz-container .no-quizzes,
 .quiz-container .no-leaderboard {
     text-align: center;
     color: var(--text-normal);
@@ -62,8 +64,8 @@
     font-size: 1.1rem;
 }
 
-.quiz-container .quiz-card, 
-.quiz-container .question-card, 
+.quiz-container .quiz-card,
+.quiz-container .question-card,
 .quiz-container .result-card {
     background-color: var(--background-color02);
     border: 1px solid var(--footer-color);
@@ -86,18 +88,18 @@
     font-size: 1.8rem;
 }
 
-.quiz-container .quiz-description, 
-.quiz-container .question-text, 
-.quiz-container .user-answer, 
-.quiz-container .correct-answer, 
+.quiz-container .quiz-description,
+.quiz-container .question-text,
+.quiz-container .user-answer,
+.quiz-container .correct-answer,
 .quiz-container .score {
     color: var(--text-normal);
     font-family: 'Glacial', sans-serif;
     font-size: 1rem;
 }
 
-.quiz-container .quiz-button, 
-.quiz-container .submit-button {
+.quiz-container .quiz-button,
+.quiz-container .submit-button .quiz-container .leaderboard-button {
     background-color: var(--accent-color01);
     color: var(--text-same);
     padding: 12px 30px;
@@ -109,8 +111,8 @@
     font-size: 1.1rem;
 }
 
-.quiz-container .quiz-button:hover, 
-.quiz-container .submit-button:hover {
+.quiz-container .quiz-button:hover,
+.quiz-container .submit-button:hover .quiz-container .leaderboard-button:hover {
     background-color: var(--accent-color02);
     transform: scale(1.05);
 }
@@ -144,8 +146,13 @@
 }
 
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeInUp {
@@ -153,6 +160,7 @@
         opacity: 0;
         transform: translateY(30px);
     }
+
     100% {
         opacity: 1;
         transform: translateY(0);
@@ -204,7 +212,7 @@
     color: var(--text-normal);
 }
 
-.quiz-modal .next-button, 
+.quiz-modal .next-button,
 .quiz-modal .previous-button,
 .quiz-modal .submit-button {
     background-color: var(--accent-color01);
@@ -218,7 +226,7 @@
     margin-top: 15px;
 }
 
-.quiz-modal .next-button:hover, 
+.quiz-modal .next-button:hover,
 .quiz-modal .submit-button:hover {
     background-color: var(--accent-color02);
     transform: scale(1.05);
@@ -239,4 +247,43 @@
 
 .quiz-modal .close-button:hover {
     background-color: var(--accent-color01);
+}
+
+
+.quiz-title {
+    font-family: 'Anton';
+    color: var(--text-high);
+    font-size: 4.5rem !important;
+    padding: 1rem 0;
+    text-align: center;
+    white-space: nowrap;
+    /* Prevents text wrapping */
+    /* overflow: hidden; */
+    /* Hides overflowed content */
+    /* text-overflow: ellipsis; */
+    /* Optionally, adds ellipsis if text overflows */
+}
+
+.quiz-buttons {
+    display: flex;
+    justify-content: center;
+    /* Centers items horizontally */
+    align-items: center;
+    /* Aligns items vertically in the center */
+    width: 100%;
+    /* Optional: ensure the flex container takes full width */
+}
+
+.quiz-buttons button {
+    background-color: var(--accent-color01);
+    color: var(--text-same);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'Glacial', sans-serif;
+    font-size: 1.1rem;
+    margin: 0 5px;
+
 }

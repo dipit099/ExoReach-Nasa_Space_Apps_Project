@@ -7,6 +7,8 @@ import Navbar from "../../components/navbar/Navbar";
 import Footer from "../../components/footer/Footer";
 import Loading from "../../components/loading/Loading";
 import Pagination from "../../components/pagination/Pagination";
+import SubNavbar from "../../components/navbar/SubNavbar";
+
 const ExploreExoplanets = () => {
   const [planetTypes, setPlanetTypes] = useState("");
   const [discoveryMethods, setDiscoveryMethods] = useState("");
@@ -62,6 +64,7 @@ const ExploreExoplanets = () => {
   return (
     <>
       <Navbar />
+      <SubNavbar />
       <div className="explore-exoplanets">
         <div className="explore-title">Explore Exoplanets</div>
         <div className="filter-section">
