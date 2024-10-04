@@ -17,6 +17,7 @@ import ExoplanetDetail from './pages/exoplanet_detail/ExoplanetDetail';
 import QuizDetails from './pages/exoquiz/QuizDetails';
 import Profile from './pages/profile/Profile';
 import ForumDetail from './pages/community/ForumDetail';
+import ExoFlex from './pages/exoflex/ExoFlex';
 
 
 function App() {
@@ -38,7 +39,7 @@ function App() {
           <Route path="/forum/:forum_id" element={<ForumDetail />} />
 
           <Route path="exoshowdown" element={<ExoShowDown />} />
-
+          <Route path="exoflex" element={<ExoFlex />} />
 
           <Route path="exploreexoplanets" element={<ExploreExoplanets />} />         
           <Route path="/exovision" element={<ExoVision />} />

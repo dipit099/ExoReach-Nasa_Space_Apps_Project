@@ -6,6 +6,7 @@ import Navbar from "../../components/navbar/Navbar";
 import "./ExoplanetDetail.css";
 import Footer from "../../components/footer/Footer";
 import Loading from "../../components/loading/Loading";
+import { Link } from "react-router-dom";
 
 const ExoplanetDetail = () => {
   const { pl_name } = useParams();
@@ -14,7 +15,6 @@ const ExoplanetDetail = () => {
   const [showMore, setShowMore] = useState(false); // State to control the visibility of additional list items
 
   const formattedPlName = pl_name.replace(/_/g, " ");
-  
 
   console.log(pl_name);
 
@@ -42,9 +42,12 @@ const ExoplanetDetail = () => {
   };
   const incrementPlanetViews = async (planetName) => {
     try {
-      const response = await axios.post(`${SERVER_URL}/exoplanet/view_increment`, {
-        planetName
-      });
+      const response = await axios.post(
+        `${SERVER_URL}/exoplanet/view_increment`,
+        {
+          planetName,
+        }
+      );
       if (response.data.success) {
         console.log(response.data.message); // Success message from the server
       }
@@ -289,7 +292,12 @@ const ExoplanetDetail = () => {
               {showMore ? "Show Less" : "Show More"}
             </button>
           </div>
-
+          <div className="exploration-message">
+            <p>
+              Interested in exploring more exoplanets? Check out our
+              <Link to="/exploreexoplanet"> Exoplanet Exploration Page</Link>!
+            </p>
+          </div>
           <div className="blank"></div>
           <Footer />
         </div>

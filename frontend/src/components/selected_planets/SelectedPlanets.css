@@ -1,0 +1,36 @@
+@import '../variables.css';
+.selected-cards-container {
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    background-color: var(--accent-color01);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+  }
+  
+  .selected-cards-container h3 {
+    margin: 0 0 10px;
+    font-family: 'Glacial';
+    font-size: 1.5rem;
+    color: var(--text-normal);
+  }
+  
+  .selected-cards-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .selected-cards-container li {
+    margin: 5px 0;
+    font-family: 'Glacial';
+    font-size: 1rem;
+    color: var(--footer-color)
+  }
+  .selected-cards-container li.warning {
+    color: red;
+    font-weight: bold;
+  }
+  
