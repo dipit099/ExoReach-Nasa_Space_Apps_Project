@@ -21,6 +21,7 @@
   align-items: center;
   width: 100vw;
   height: 100vh;
+  backdrop-filter: blur(2px);
 }
 
 /* Pulsing animations (remains unchanged) */

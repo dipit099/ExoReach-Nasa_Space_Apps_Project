@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import './fonts.css'; 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Router } from 'react-router-dom';
 import Home from './pages/home/Home';
 import ExoVision from './pages/exovision/ExoVision';
 import ExoQuiz from './pages/exoquiz/ExoQuiz';
@@ -17,6 +17,8 @@ import ExoplanetDetail from './pages/exoplanet_detail/ExoplanetDetail';
 import QuizDetails from './pages/exoquiz/QuizDetails';
 import Profile from './pages/profile/Profile';
 import ForumDetail from './pages/community/ForumDetail';
+import ExoFlex from './pages/exoflex/ExoFlex';
+import ScrollToTop from './components/ScrollToTop';
 
 
 function App() {
@@ -26,7 +28,9 @@ function App() {
   
   return (
     <AuthProvider> 
+      <ScrollToTop />
       <div>
+        
         <Routes>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/" element={<Home />} />
@@ -38,7 +42,7 @@ function App() {
           <Route path="/forum/:forum_id" element={<ForumDetail />} />
 
           <Route path="exoshowdown" element={<ExoShowDown />} />
-
+          <Route path="exoflex" element={<ExoFlex />} />
 
           <Route path="exploreexoplanets" element={<ExploreExoplanets />} />         
           <Route path="/exovision" element={<ExoVision />} />

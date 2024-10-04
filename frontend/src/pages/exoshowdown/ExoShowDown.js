@@ -3,8 +3,10 @@ import axios from 'axios';
 import './ExoShowDown.css';
 import Navbar from '../../components/navbar/Navbar';
 import SERVER_URL from '../../config/SERVER_URL';
-import {  toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SubNavbar from '../../components/navbar/SubNavbar';
+import Footer from '../../components/footer/Footer';
 
 function ExoShowDown() {
     const [caption, setCaption] = useState('');
@@ -115,119 +117,125 @@ function ExoShowDown() {
 
     return (
         <>
-        <Navbar />       
-        <div className="exoshowdown-container">
-            <h1 className="title">ExoShowDown: Art Competition</h1>
+            <Navbar />
+            <SubNavbar />
+            <div className="exoshowdown-container">
+                <div className="exoShowdown-title">ExoShowDown: Art Competition</div>
 
-            {/* Ongoing competitions */}
-            {liveCompetitions.length > 0 && (
-                <div className="ongoing-competitions">
-                    <h2>Ongoing Competitions</h2>
-                    {liveCompetitions.map((competition) => (
-                        <div key={competition.contest_id} className="competition">
-                            <h3>{competition.caption}</h3>
-                            <p>{competition.description}</p>
-                            {/* <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
+                {/* Ongoing competitions */}
+                {liveCompetitions.length > 0 && (
+                    <div className="ongoing-competitions">
+                        <h2>Ongoing Competitions</h2>
+                        {liveCompetitions.map((competition) => (
+                            <div key={competition.contest_id} className="competition">
+                                <h3>{competition.caption}</h3>
+                                <p>{competition.description}</p>
+                                {/* <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
                             <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p> */}
-                            <div className="right-side">
-                                {timeLeft && (
-                                    <div className="countdown">
-                                        <strong>Remaining Time:</strong>
-                                        <p>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</p>
-                                    </div>
-                                )}
-                                {!competitionJoined && (
-                                    <button className="join-button" onClick={() => handleJoin(competition)}>
-                                        Register
-                                    </button>
-                                )}
+                                <div className="right-side">
+                                    {timeLeft && (
+                                        <div className="countdown">
+                                            <strong>Remaining Time:</strong>
+                                            <p>{timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s</p>
+                                        </div>
+                                    )}
+                                    {!competitionJoined && (
+                                        <button className="join-button" onClick={() => handleJoin(competition)}>
+                                            Register
+                                        </button>
+                                    )}
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            )}
-
-            {/* Popup for submitting art */}
-            {popupOpen && (
-                <div className="popup-overlay">
-                    <div className="popup-content">
-                        <button className="close-button" onClick={closePopup}>×</button>
-                        <h2>Submit Your Art</h2>
-                        <form onSubmit={handleSubmit}>
-                            <input
-                                type="text"
-                                placeholder="Enter caption"
-                                value={caption}
-                                onChange={(e) => setCaption(e.target.value)}
-                                required
-                            />
-                            <textarea
-                                placeholder="Enter description"
-                                value={description}
-                                onChange={(e) => setDescription(e.target.value)}
-                                required
-                            />
-                            <input type="file" onChange={handleFileChange} accept="image/*" required />
-                            <button type="submit" className="submit-button">Submit Art</button>
-                        </form>
+                        ))}
                     </div>
-                </div>
-            )}
+                )}
 
-            {/* View toggle options */}
-            <div className="competition-toggle">
-                <button 
-                    className={`toggle-button ${view === 'past' ? 'active' : ''}`} 
-                    onClick={() => handleViewChange('past')}
-                >
-                    Past Competitions
-                </button>
-                <button 
-                    className={`toggle-button ${view === 'upcoming' ? 'active' : ''}`} 
-                    onClick={() => handleViewChange('upcoming')}
-                >
-                    Upcoming Competitions
-                </button>
+                {/* Popup for submitting art */}
+                {popupOpen && (
+                    <div className="popup-overlay">
+                        <div className="popup-content">
+                            <button className="close-button" onClick={closePopup}>×</button>
+                            <h2>Submit Your Art</h2>
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    type="text"
+                                    placeholder="Enter caption"
+                                    value={caption}
+                                    onChange={(e) => setCaption(e.target.value)}
+                                    required
+                                />
+                                <textarea
+                                    placeholder="Enter description"
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    required
+                                />
+                                <input type="file" onChange={handleFileChange} accept="image/*" required />
+                                <button type="submit" className="submit-button">Submit Art</button>
+                            </form>
+                        </div>
+                    </div>
+                )}
+
+                {/* View toggle options */}
+                <div className="competition-toggle">
+                    <button
+                        className={`toggle-button ${view === 'past' ? 'active' : ''}`}
+                        onClick={() => handleViewChange('past')}
+                    >
+                        Past Competitions
+                    </button>
+                    <button
+                        className={`toggle-button ${view === 'upcoming' ? 'active' : ''}`}
+                        onClick={() => handleViewChange('upcoming')}
+                    >
+                        Upcoming Competitions
+                    </button>
+                </div>
+
+                {/* Upcoming competitions */}
+                {view === 'upcoming' && (
+                    <div className="upcoming-competitions">
+                        <h2>Upcoming Art Competitions</h2>
+                        {upcomingCompetitions.length > 0 ? (
+                            upcomingCompetitions.map((competition) => (
+                                <div key={competition.contest_id} className="competition">
+                                    <h3>{competition.caption}</h3>
+                                    <p>{competition.description}</p>
+                                    <p><strong>Starts on:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No upcoming competitions available.</p>
+                        )}
+                    </div>
+                )}
+
+                {/* Past competitions */}
+                {view === 'past' && (
+                    <div className="past-competitions">
+                        <h2>Gallery of Champions</h2>
+                        {pastCompetitions.length > 0 ? (
+                            pastCompetitions.map((competition) => (
+                                <div key={competition.contest_id} className="competition">
+                                    <h3>{competition.caption}</h3>
+                                    <p>{competition.description}</p>
+                                    <div className='time-leaderboard'>
+                                        <div>
+                                            <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
+                                            <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p>
+                                        </div>
+                                        <button className="leaderboard-button" onClick={() => window.open(`/leaderboard/${competition.contest_id}`, '_blank')}>Show Leaderboard</button>
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No past competitions available.</p>
+                        )}
+                    </div>
+                )}
             </div>
-
-            {/* Upcoming competitions */}
-            {view === 'upcoming' && (
-                <div className="upcoming-competitions">
-                    <h2>Upcoming Art Competitions</h2>
-                    {upcomingCompetitions.length > 0 ? (
-                        upcomingCompetitions.map((competition) => (
-                            <div key={competition.contest_id} className="competition">
-                                <h3>{competition.caption}</h3>
-                                <p>{competition.description}</p>
-                                <p><strong>Starts on:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No upcoming competitions available.</p>
-                    )}
-                </div>
-            )}
-
-            {/* Past competitions */}
-            {view === 'past' && (
-                <div className="past-competitions">
-                    <h2>Gallery of Champions</h2>
-                    {pastCompetitions.length > 0 ? (
-                        pastCompetitions.map((competition) => (
-                            <div key={competition.contest_id} className="competition">
-                                <h3>{competition.caption}</h3>
-                                <p>{competition.description}</p>
-                                <p><strong>Start Date:</strong> {new Date(competition.start_date).toLocaleDateString()}</p>
-                                <p><strong>End Date:</strong> {new Date(competition.end_date).toLocaleDateString()}</p>
-                                <button className="leaderboard-button" onClick={() => window.open(`/leaderboard/${competition.contest_id}`, '_blank')}>Show Leaderboard</button>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No past competitions available.</p>
-                    )}
-                </div>
-            )}
-        </div>
+            <Footer />
         </>
     );
 }

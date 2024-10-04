@@ -11,18 +11,20 @@ router.post('/', async (req, res) => {
             ORDER BY upload_date DESC
         `;
         const allContentResult = await req.pool.query(allContentQuery, [userId]);
-
         const registeredContentQuery = `
-            SELECT c.* FROM content c
+            SELECT c.*, ct.contest_id, ct.caption AS contest_caption, ct.description AS contest_description
+            FROM content c
             JOIN content_in_contest cc ON c.id = cc.content_id
+            JOIN contest ct ON cc.contest_id = ct.contest_id
             WHERE c.user_id = $1
             ORDER BY cc.registered_in_contest DESC
         `;
         const registeredContentResult = await req.pool.query(registeredContentQuery, [userId]);
-
         const winningContentQuery = `
-            SELECT c.* FROM content c
+            SELECT c.*, cw.winning_category, ct.contest_id, ct.caption AS contest_caption, ct.description AS contest_description
+            FROM content c
             JOIN contest_winner cw ON c.id = cw.content_id
+            JOIN contest ct ON cw.contest_id = ct.contest_id
             WHERE c.user_id = $1
         `;
         const winningContentResult = await req.pool.query(winningContentQuery, [userId]);

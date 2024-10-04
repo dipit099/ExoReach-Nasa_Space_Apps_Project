@@ -32,6 +32,11 @@ const HomeExoCards = () => {
     };
   }, []);
 
+  const handleLinkClick = (event) => {
+    event.preventDefault(); // Prevent default link behavior
+    window.location.href = '/exoflex'; // Redirect to the new page and force a reload
+  };
+
   return (
     <div>
       <div className="anton-regular-homexo">EXOFLEX</div>
@@ -71,7 +76,7 @@ const HomeExoCards = () => {
           <br />
           <br />
           <div className="button-wrap-homexo">
-            <LargeButton text="PLAY NOW" link="/exocards" />
+            <LargeButton text="PLAY NOW" link="/exoflex" />
           </div>
         </div>
       </div>

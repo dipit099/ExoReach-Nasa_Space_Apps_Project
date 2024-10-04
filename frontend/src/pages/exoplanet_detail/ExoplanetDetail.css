@@ -88,3 +88,24 @@
   outline: none; /* Remove default button outline */
   box-shadow: 0 0 5px var(--accent-color02); /* Subtle glow effect */
 }
+
+.exploration-message {
+    text-align: center; 
+    margin: 2rem 0; 
+    font-family: 'Glacial'; 
+    color: var(--text-normal); 
+    font-weight: bold;
+}
+
+.exploration-message p {
+    font-size: 1.5rem; 
+}
+
+.exploration-message a {
+    color: var(--accent-color01); 
+    text-decoration: underline; 
+}
+
+.exploration-message a:hover {
+    color: var(--accent-color02); 
+}
