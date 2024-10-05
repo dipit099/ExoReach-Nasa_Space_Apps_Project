@@ -8,11 +8,11 @@ cd frontend
 npm install
 npm start
 ```
-## Setup backend:
 
+## Backend:
 ```bash
-cd backend
-npm install
-nodemon server
+Online hosted . So might be slow sometimes. Please wait with patience.
 ```
-You are good to go now. Happy coding! 
+
+
+### You are good to go now. Happy coding! 
