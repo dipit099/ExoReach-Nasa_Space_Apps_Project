@@ -21,9 +21,9 @@ app.use('/home', require('./routes/home/HomeRouter'));
 app.use('/explore_exoplanets', require('./routes/explore_exoplanets/FilteredSearchRouter'));
 app.use('/explore_exoplanets/with-card-attributes', require('./routes/explore_exoplanets/FilteredSearchWithCardAttributesRouter'))
 app.use('/exoplanet', require('./routes/exoplanet/ExoplanetInfoRouter'));
-app.use('/exoshowdown/admin', require('./routes/exoshowdown/ContestAdminRouter'));
-app.use('/exoshowdown', require('./routes/exoshowdown/ContestUserRouter'));
-app.use('/exoshowdown/leaderboard', require('./routes/exoshowdown/ContestLeaderboardRouter'))
+app.use('/exoshowdown/admin', require('./routes/exoshowdown/ExoshowdownAdminRouter'));
+app.use('/exoshowdown', require('./routes/exoshowdown/ExoshowdownUserRouter'));
+app.use('/exoshowdown/leaderboard', require('./routes/exoshowdown/ExoshowdownLeaderboardRouter'))
 app.use('/exoshowdown/upload-content', require('./routes/upload-file/UploadContentRouter'))
 
 app.use('/forum/admin', require('./routes/forum/ForumAdminRouter'));
