@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom'; // Import Link here
 import axios from 'axios';
 import './ForumDetail.css';
 import { toast } from 'react-toastify';
@@ -28,7 +28,6 @@ function ForumDetails() {
                 toast.error('Forum details not found');
             }
             setLoading(false);
-            //toast.success('Forum details fetched successfully');
         } catch (error) {
             toast.error('Error fetching forum details');
             setLoading(false);
@@ -87,12 +86,14 @@ function ForumDetails() {
                 <p className="forum-description">{forumDetails.description}</p>
                 <div className="forumDetails-creator-info">
                     <div className='forum-creator'>
-                        <img
-                            src={forumDetails.forum_creator_profile_pic || '/default-avatar.png'}
-                            alt="Profile"
-                            className="forum-creator-pic"
-                        />
-                        <span className="forum-creator-username">{forumDetails.forum_creator_username}</span>
+                        <Link to={`/profile/${forumDetails.forum_creator_id}`}> 
+                            <img
+                                src={forumDetails.forum_creator_profile_pic || '/default-avatar.png'}
+                                alt="Profile"
+                                className="forum-creator-pic"
+                            />
+                            <span className="forum-creator-username">{forumDetails.forum_creator_username}</span>
+                        </Link>
                     </div>
                     <span className="forum-created-date">
                         Created on: {new Date(forumDetails.created_at).toLocaleString()}
@@ -107,13 +108,15 @@ function ForumDetails() {
                     {comments.length > 0 ? (
                         comments.map((comment) => (
                             <div key={comment.comment_id} className="comment">
-                                <img
-                                    src={comment.commenter_profile_pic || '/default-avatar.png'}
-                                    alt="Profile"
-                                    className="commenter-pic"
-                                />
+                                <Link to={`/profile/${comment.commenter_id}`}> {/* Link to commenter's profile */}
+                                    <img
+                                        src={comment.commenter_profile_pic || '/default-avatar.png'}
+                                        alt="Profile"
+                                        className="commenter-pic"
+                                    />
+                                    <div className="forum-creator-username"><strong>{comment.commenter_username}:</strong></div>
+                                </Link>
                                 <div className="comment-content">
-                                    <strong>{comment.commenter_username}:</strong>
                                     <p>{comment.comment}</p>
                                     <span className="comment-date">
                                         {new Date(comment.created_at).toLocaleString()}
