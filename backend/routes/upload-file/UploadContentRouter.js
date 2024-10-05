@@ -1,7 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const firebaseAdmin = require('firebase-admin');
-const { ref, uploadBytesResumable, getDownloadURL } = require('firebase/storage');
 const path = require('path');
 
 firebaseAdmin.initializeApp({
@@ -14,38 +13,47 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 const router = express.Router();
 
-router.post('/content-pic', upload.single('content_pic'), async (req, res) => {
-  const { contentId, userId } = req.body;
+router.post('/', upload.single('contentPic'), async (req, res) => {
+  const { userId, caption, description, contestId } = req.body;
 
-  if (!contentId || !userId || !req.file) {
-    return res.status(400).json({ success: false, message: 'Content ID, User ID, or file missing' });
+  if (!userId || !caption || !description || !req.file || !contestId) {
+    return res.status(400).json({ message: 'Missing required fields' });
   }
 
   try {
-
     const currentDate = new Date().toISOString().split('T')[0];
+    const filePath = `content-uploads/${userId}/${userId}_${currentDate}_${req.file.originalname}`;
 
-    const filePath = `content-uploads/${userId}/${userId + "_" +  currentDate}`;
-    const storageRef = ref(storage, filePath);
-    
-    const metadata = {
-      contentType: req.file.mimetype,
-    };
+    const fileUpload = storage.file(filePath);
 
-    const snapshot = await uploadBytesResumable(storageRef, req.file.buffer, metadata);
-    const downloadURL = await getDownloadURL(snapshot.ref);
-    const query = `
-      UPDATE content
-      SET content_pic = $1
-      WHERE content_id = $2
-    `;
-    await req.pool.query(query, [downloadURL, contentId]);
+    await fileUpload.save(req.file.buffer, {
+      metadata: { contentType: req.file.mimetype }
+    });
 
-    res.status(200).json({ success: true, contentPicUrl: downloadURL });
+    const downloadURL = `https://storage.googleapis.com/${storage.name}/${fileUpload.name}`;
+
+    const contentResult = await req.pool.query(
+      'INSERT INTO content (user_id, caption, description, url_for_content) VALUES ($1, $2, $3, $4) RETURNING id',
+      [userId, caption, description, downloadURL]
+    );
+
+    const newContentId = contentResult.rows[0].id;
+
+    await req.pool.query(
+      'INSERT INTO content_in_contest (content_id, contest_id) VALUES ($1, $2)',
+      [newContentId, contestId]
+    );
+
+    return res.status(201).json({
+      success: true,
+      message: 'Content created successfully and added to contest',
+      contentId: newContentId,
+      contentPicUrl: downloadURL
+    });
 
   } catch (error) {
-    console.error('Error uploading content picture:', error);
-    res.status(500).json({ success: false, message: 'Error uploading file' });
+    console.error('Error uploading content:', error);
+    return res.status(500).json({ message: 'Internal server error' });
   }
 });
 
