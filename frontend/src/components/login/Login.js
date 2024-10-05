@@ -23,7 +23,8 @@ const Login = ({ onClose, createAccountPopupOpen }) => {
 
       if (data.success) {    
        
-        toast.success("hello !!"); // Show success message
+        toast.success('Login successful'); // Show success message
+        //alert("Login successful");
         console.log("in Login.js",data);
         // Assuming data contains user_id along with the success message
         const user_id = data.user.id;
