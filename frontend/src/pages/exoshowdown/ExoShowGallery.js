@@ -21,8 +21,10 @@ function ExoShowGallery() {
 
                 if (response.data && response.data.success) {
                     setContestDetails(response.data.contestDetails);
-                    setContentDetails(response.data.contentDetails);
-                    toast.success('Contest data fetched successfully');
+                    setContentDetails(response.data.contentDetails.map(content => ({
+                        ...content,
+                        isVoted: false // Initialize the `isVoted` flag for each content
+                    })));
                     setContestStatus(response.data.contestDetails.contestStatus);
                 } else {
                     toast.error('Failed to fetch contest data');
@@ -36,7 +38,7 @@ function ExoShowGallery() {
         fetchContestData();
     }, [exoshowdown_id]);
 
-    // Handle upvote/downvote logic (stubbed for now)
+    // Handle upvote/downvote logic
     const handleUpvote = async (contentId) => {
         try {
             const response = await axios.post(`${SERVER_URL}/exoshowdown/upvote`, {
@@ -51,6 +53,7 @@ function ExoShowGallery() {
                 } else {
                     updateContentVotes(contentId, -1); // Decrement vote
                 }
+                window.location.reload();
             } else {
                 toast.error('Failed to upvote');
             }
@@ -63,10 +66,13 @@ function ExoShowGallery() {
     const updateContentVotes = (contentId, voteChange) => {
         setContentDetails((prevContent) =>
             prevContent.map((content) =>
-                content.contentId === contentId ? { ...content, upvoteCount: parseInt(content.upvoteCount, 10) + voteChange } : content
+                content.contentId === contentId
+                    ? { ...content, upvoteCount: parseInt(content.upvoteCount, 10) + voteChange }
+                    : content
             )
         );
     };
+    
 
     // Toggle sorting by leaderboard (votes) or time submitted
     const toggleLeaderboard = () => {
@@ -115,7 +121,6 @@ function ExoShowGallery() {
                 ) : (
                     contentDetails.map((content) => (
                         <div key={content.contentId} className="art-item-card">
-                            {console.log(content)}
                             <div className='art-card-top'>
                                 <img src={content.contentUrl} alt={content.contentCaption} className="art-image" />
                                 <p className="art-title">{content.contentCaption}</p>
@@ -131,7 +136,13 @@ function ExoShowGallery() {
                             </p>
                             <div className="votes-section">
                                 {contestStatus === 'Ongoing' &&
-                                    <button className="vote-button" onClick={() => handleUpvote(content.contentId)}>Upvote</button>
+                                    <button
+                                        className="vote-button"
+                                        onClick={() => handleUpvote(content.contentId)}
+                                        disabled={content.isVoted} // Disable button after voting
+                                    >
+                                        {content.isVoted ? 'Voted' : 'Upvote'}
+                                    </button>
                                 }
                                 <span className="votes-count">{content.upvoteCount || 0}</span>
                             </div>

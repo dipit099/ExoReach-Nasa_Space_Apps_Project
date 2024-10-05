@@ -30,7 +30,7 @@ function ExoQuiz() {
             setLiveQuizzes(liveResponse.data || { success: false, data: [] });
             setPastQuizzes(pastResponse.data || { success: false, data: [] });
             setFilteredQuizzes(liveResponse.data || { success: false, data: [] });
-            toast.success('Quizzes loaded successfully!');
+            //toast.success('Quizzes loaded successfully!');
         } catch (error) {
             console.error('Error fetching quizzes:', error);
         }
@@ -78,13 +78,13 @@ function ExoQuiz() {
                         onClick={() => handleFilterChange('live')}
                         className={`filter-button ${filter === 'live' ? 'active' : ''}`}
                     >
-                        Live Quizzes
+                        Live Quizes
                     </button>
                     <button
                         onClick={() => handleFilterChange('past')}
                         className={`filter-button ${filter === 'past' ? 'active' : ''}`}
                     >
-                        Past Quizzes
+                        Past Quizes
                     </button>
                 </div>
 
@@ -112,7 +112,7 @@ function ExoQuiz() {
                 <div className="modal">
                     <div className="modal-content">
                         <h2>Leaderboard</h2>
-                        <button className="close-modal" onClick={closeModal}>Close</button>
+                        <button className="close-modal" onClick={closeModal}>X</button>
                         <ul className="leaderboard-list">
                             {leaderboard.length > 0 ? (
                                 leaderboard.map((user) => (

@@ -15,7 +15,7 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
                 const response = await axios.post(`${SERVER_URL}/profile/profile-info`, { userId });
                 if (response.data && response.data.user) {
                     setProfile(response.data.user);
-                    toast.success('Profile info fetched successfully');
+                    //toast.success('Profile info fetched successfully');
                 } else {
                     toast.error('Failed to fetch profile info');
                 }
@@ -72,7 +72,7 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
             )}
             <h2 className="profile-name">{profile.full_name || 'No name available'}</h2>
             <p className="profile-username">@{profile.username}</p>
-            <p className="profile-email">Email: {profile.email}</p>
+            <p className="profile-email"><strong>Email: </strong>{profile.email}</p>
             {profile.date_of_birth && (
                 <p className="profile-dob">
                     <strong>Date of Birth:</strong> {new Date(profile.date_of_birth).toLocaleDateString()}

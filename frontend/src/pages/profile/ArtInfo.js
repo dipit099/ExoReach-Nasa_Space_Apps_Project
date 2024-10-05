@@ -22,7 +22,7 @@ function ArtInfo({ userId }) {
                         registeredContent: response.data.registeredContent,
                         winningContent: response.data.winningContent,
                     });
-                    toast.success('Art info fetched successfully');
+                    //toast.success('Art info fetched successfully');
                 } else {
                     toast.error('Failed to fetch art info');
                 }

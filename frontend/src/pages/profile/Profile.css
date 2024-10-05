@@ -25,6 +25,7 @@
     cursor: pointer;
     margin: 0 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Glacial',sans-serif;
 }
 
 .tab-btn:hover {
@@ -37,8 +38,10 @@
     background-color: var(--accent-color01);
     color: var(--text-same);
     border-radius: 5px;
+    font-weight: bold;
 }
 
 .profile-content {
     margin-top: 20px;
+    font-family: 'Glacial';
 }
