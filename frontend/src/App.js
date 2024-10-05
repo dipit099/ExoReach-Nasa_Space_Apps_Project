@@ -36,12 +36,12 @@ function App() {
           <Route path="/exoquiz/:quizId" element={<RequireLogin><QuizDetails /></RequireLogin>} />
           <Route path="/forum/:forum_id" element={<RequireLogin><ForumDetail /></RequireLogin>} />
           <Route path="/exoshowGallery/:exoshowdown_id" element={<RequireLogin><ExoShowGallery /></RequireLogin>} />
-          <Route path="/exovision" element={<RequireLogin><ExoVision /></RequireLogin>} />
+          <Route path="/exovision" element={<ExoVision />} />
           
           {/* Routes that require login */}
           <Route path="exoquiz" element={<RequireLogin><ExoQuiz /></RequireLogin>} />
           <Route path="community" element={<RequireLogin><CommunityForum /></RequireLogin>} />
-          <Route path="exoshowdown" element={<RequireLogin><ExoShowDown /></RequireLogin>} />
+          <Route path="exoshowdown" element={<ExoShowDown />} />
 
           {/* Public routes */}
           <Route path="exoflex" element={<ExoFlex />} />
