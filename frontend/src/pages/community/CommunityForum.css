@@ -97,6 +97,7 @@
 .filter-button.active {
     background-color: var(--accent-color02);
     color: black;
+    font-weight: bold;
 }
 
 /* Right Section */

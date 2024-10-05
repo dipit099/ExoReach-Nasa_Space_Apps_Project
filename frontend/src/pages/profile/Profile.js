@@ -72,6 +72,7 @@ function Profile() {
                     {renderContent()}
                 </div>
             </div>
+            <div className="blank"></div>
             <Footer />
         </>
     );

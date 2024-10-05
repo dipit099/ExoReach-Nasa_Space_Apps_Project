@@ -42,7 +42,7 @@ function CommunityForum() {
                 friends: Array.isArray(createdResponse.data.friends) ? createdResponse.data.friends : []
             });
 
-            toast.success('Forums fetched successfully');
+            //toast.success('Forums fetched successfully');
         } catch (error) {
             console.error('Error fetching forums:', error);
             toast.error('Error fetching forums');
@@ -199,6 +199,7 @@ function CommunityForum() {
                     </div>
                 </div>
             </div>
+            <div className="blank"></div>
             <Footer />
         </>
     );

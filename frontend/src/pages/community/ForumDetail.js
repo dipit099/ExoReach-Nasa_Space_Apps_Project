@@ -28,7 +28,7 @@ function ForumDetails() {
                 toast.error('Forum details not found');
             }
             setLoading(false);
-            toast.success('Forum details fetched successfully');
+            //toast.success('Forum details fetched successfully');
         } catch (error) {
             toast.error('Error fetching forum details');
             setLoading(false);
