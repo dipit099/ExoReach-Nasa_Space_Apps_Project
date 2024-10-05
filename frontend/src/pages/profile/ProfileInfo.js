@@ -15,7 +15,6 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
                 const response = await axios.post(`${SERVER_URL}/profile/profile-info`, { userId });
                 if (response.data && response.data.user) {
                     setProfile(response.data.user);
-                    //toast.success('Profile info fetched successfully');
                 } else {
                     toast.error('Failed to fetch profile info');
                 }
@@ -30,12 +29,12 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
                 const response = await axios.post(`${SERVER_URL}/follow/is-following`, {
                     followerId: loggedInUserId,
                     userId: userId,
-                })
-                setIsFollowing(response.data.isFollowing)
+                });
+                setIsFollowing(response.data.isFollowing);
             } catch (error) {
                 console.error('Error checking follow status', error);
             }
-        }
+        };
 
         fetchProfileInfo();
         fetchFollowingStatus();
@@ -47,19 +46,20 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
                 const response = await axios.post(`${SERVER_URL}/follow`, {
                     followerId: loggedInUserId,
                     userId: userId,
-                })
-                if(response.data && response.data.success) {
-                    setIsFollowing(response.data.following)
-                    console.log(response.data.following)
-                    toast.success(response.data.following ? 'Followed successfully!' : 'Unfollowed successfully!');
+                });
+                if (response.data && response.data.success) {
+                    setIsFollowing(response.data.following);
+                    window.location.reload();
+                    //toast.success(response.data.following ? 'Followed successfully!' : 'Unfollowed successfully!');
                 } else {
-                    setIsFollowing(false);
+                    toast.error('Failed to update follow status');
                 }
             } catch (error) {
                 console.error('Error following the user', error);
+                toast.error('Error following the user');
             }
         }
-    }
+    };
 
     if (!profile) return <p className="loading-message">Loading profile...</p>;
 
@@ -80,22 +80,12 @@ function ProfileInfo({ userId, isCurrentUser, loggedInUserId }) {
             )}
             {profile.bio && <p className="profile-bio">{profile.bio}</p>}
             {!isCurrentUser && (
-                (!isFollowing ?
-                    <button className="follow-btn" onClick={() => handleFollow()}>Follow</button> :
-                    <button className="follow-btn" onClick={() => handleFollow()}>Unfollow</button> )
+                <button className="follow-btn" onClick={handleFollow}>
+                    {isFollowing ? 'Unfollow' : 'Follow'}
+                </button>
             )}
         </div>
     );
-}
-
-async function handleFollow(userId) {
-    try {
-        await axios.post(`${SERVER_URL}/profile/follow`, { userId });
-        toast.success('Followed successfully!');
-    } catch (error) {
-        console.error('Error following the user', error);
-        toast.error('Error following the user');
-    }
 }
 
 export default ProfileInfo;
