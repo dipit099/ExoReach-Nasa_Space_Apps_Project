@@ -14,7 +14,7 @@ function ForumCollection({ userId }) {
                 const response = await axios.post(`${SERVER_URL}/profile/forum-collection`, { userId });
                 if (response.data && response.data.success) {
                     setForumData(response.data.result);
-                    toast.success('Forum info fetched successfully');
+                   // toast.success('Forum info fetched successfully');
                 } else {
                     toast.error('Failed to fetch forum info');
                 }

@@ -14,7 +14,7 @@ function QuizInfo({ userId }) {
                 const response = await axios.post(`${SERVER_URL}/profile/quiz-info`, { userId });
                 if (response.data && response.data.quizzes) {
                     setQuizData(response.data.quizzes);
-                    toast.success('Quiz info fetched successfully');
+                    //toast.success('Quiz info fetched successfully');
                 } else {
                     toast.error('Failed to fetch quiz info');
                 }
