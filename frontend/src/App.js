@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import './fonts.css'; 
-import { Routes, Route, Router } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom'; // No need to import Navigate here
 import Home from './pages/home/Home';
 import ExoVision from './pages/exovision/ExoVision';
 import ExoQuiz from './pages/exoquiz/ExoQuiz';
@@ -20,40 +20,38 @@ import ForumDetail from './pages/community/ForumDetail';
 import ExoFlex from './pages/exoflex/ExoFlex';
 import ScrollToTop from './components/ScrollToTop';
 import ExoShowGallery from './pages/exoshowdown/ExoShowGallery';
+import RequireLogin from './components/RequireLogin'; // Import the new wrapper
 
-
-function App() {
-  const username= localStorage.getItem('username');
-  const user_id= localStorage.getItem('user_id');
-
-  
+function App() { 
   return (
     <AuthProvider> 
       <ScrollToTop />
       <div>
-        
         <Routes>
           <Route path="/admin" element={<AdminPage />} />
           <Route path="/" element={<Home />} />
-          <Route path="/profile/:userId" element={<Profile />} />
           
-          <Route path="exoquiz" element={<ExoQuiz />} />
-          <Route path="/exoquiz/:quizId" element={<QuizDetails/>} />
-          <Route path="community" element={<CommunityForum />} />
-          <Route path="/forum/:forum_id" element={<ForumDetail />} />
+          {/* Conditionally render routes based on user_id */}
+          <Route path="/profile/:userId" element={<RequireLogin><Profile /></RequireLogin>} />
+          <Route path="/exoquiz/:quizId" element={<RequireLogin><QuizDetails /></RequireLogin>} />
+          <Route path="/forum/:forum_id" element={<RequireLogin><ForumDetail /></RequireLogin>} />
+          <Route path="/exoshowGallery/:exoshowdown_id" element={<RequireLogin><ExoShowGallery /></RequireLogin>} />
+          <Route path="/exovision" element={<RequireLogin><ExoVision /></RequireLogin>} />
+          
+          {/* Routes that require login */}
+          <Route path="exoquiz" element={<RequireLogin><ExoQuiz /></RequireLogin>} />
+          <Route path="community" element={<RequireLogin><CommunityForum /></RequireLogin>} />
+          <Route path="exoshowdown" element={<RequireLogin><ExoShowDown /></RequireLogin>} />
 
-          <Route path="exoshowdown" element={<ExoShowDown />} />
-          <Route path="/exoshowGallery/:exoshowdown_id" element={<ExoShowGallery />} />
-
+          {/* Public routes */}
           <Route path="exoflex" element={<ExoFlex />} />
-
-          <Route path="exploreexoplanets" element={<ExploreExoplanets />} />         
-          <Route path="/exovision" element={<ExoVision />} />
+          <Route path="exploreexoplanets" element={<ExploreExoplanets />} />
           
+          {/* Admin routes */}
           <Route path="exoquiz/admin" element={<AdminExoQuiz />} />
           <Route path="exoshowdown/admin" element={<AdminExoShowdown />} />
           <Route path="forum/admin" element={<AdminForum />} />
-          <Route path="/exoplanet/:pl_name" element={<ExoplanetDetail />} /> 
+          <Route path="/exoplanet/:pl_name" element={<ExoplanetDetail />} />
         </Routes>
       </div>
     </AuthProvider>

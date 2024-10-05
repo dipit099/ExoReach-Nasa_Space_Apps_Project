@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import './Register.css';  
 import axios from 'axios';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import SERVER_URL from '../../config/SERVER_URL';
+
 const Register = ({ onClose, loginPopupOpen }) => {
     
     const [fullName, setFullName] = useState('');
@@ -25,22 +29,30 @@ const handleSubmit = async (e) => {
         gender 
     };
 
+    if(password !== confirmPassword) {
+        toast.error('Passwords do not match');
+        return;
+    }
+
     try {
-        const response = await axios.post('http://localhost:5000/register', userData);
-        console.log('Registration successful:', response.data);
+        const response = await axios.post(`${SERVER_URL}/register`, userData);
+        console.log('Registration successful:', response.data);       
+        onClose();
+        toast.success('Registration successful');
+        toast.success('Please login to continue');
     } catch (error) {
         if (error.response) {
             console.error('Registration error:', error.response.data.message);
-            alert(`Error: ${error.response.data.message}`);
+            toast.error(`Error: ${error.response.data.message}`);
         } else if (error.request) {
             console.error('No response received:', error.request);
-            alert('Error: No response from the server. Please try again later.');
+            toast.error('Please provide unique username and email');
         } else {
             console.error('Error in setup:', error.message);
-            alert(`Error: ${error.message}`);
+            toast.error(`Error: ${error.message}`);
         }
     }
-    onClose();
+   
 };
 
 
