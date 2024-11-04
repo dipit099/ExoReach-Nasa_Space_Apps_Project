@@ -4,9 +4,13 @@ As part of the NASA Space Apps Challenge 2024, Team BUET Astroscape presents Pro
 Project Overview Link : https://youtu.be/DtZI3O6oa5M
 
 NASA Space Apps team : https://www.spaceappschallenge.org/nasa-space-apps-2024/find-a-team/buet-astroscape/?tab=project
+
+Our Website: https://exoreach-e8718.web.app/  
+Note: Please make sure to wait for 50seconds to get the data from the online server initially because of free trial ! And please use Chrome browser for better rendering of 3D view.
+
 ## Setup Rules:
 
-### Please go to "config" folder under our "frontend" folder and find a file named "SERVER_URL.js" and set the value to "http://localhost:8000" for local running. Or you can keep it as it is. But make sure to wait for 50seconds to get the data from the online server initially because of free trial !
+#### Please go to "config" folder under our "frontend" folder and find a file named "SERVER_URL.js" and set the value to "http://localhost:8000" for local running. Or you can keep it as it is. But make sure to wait for 50seconds to get the data from the online server initially because of free trial !
 
 
 ## Setup Frontend:
