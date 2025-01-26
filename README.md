@@ -1,8 +1,6 @@
 ## ExoReach-Nasa_Space_Apps_Project
 Project Overview Link : https://youtu.be/DtZI3O6oa5M
 
-Our Website: https://exoreach-e8718.web.app/  
-Note: Please make sure to wait for 50seconds to get the data from the online server initially because of free trial ! And please use Chrome browser for better rendering of 3D view.
 
 As part of the NASA Space Apps Challenge 2024, Team BUET Astroscape presents Project ExoReach. ExoReach is an interactive educational platform designed to engage students in exploring exoplanets and the mysteries of space. It offers various features, such as ExoVision for 3D views of planets, Explore Exoplanets for in-depth insights into planetary data, ExoFlex, an interactive card game based on real-world planetary properties, ExoQuiz for fun, space-themed quizzes, ExoShowDown for art contests, and a vibrant Community Platform for student interaction. The Did You Know section adds fascinating space facts to spark curiosity and enhance learning.
 
