@@ -1,7 +1,7 @@
 ## ExoReach-Nasa_Space_Apps_Project
-Project Overview Link : https://youtu.be/DtZI3O6oa5M
+Project Overview  : https://youtu.be/DtZI3O6oa5M
 
-Website link : https://exoreach-e8718.web.app/
+Our Website  : https://exoreach-e8718.web.app/
 
 [Please wait for 50seconds because our free server needs some time to restart spinning and fetch data.]
 ```
