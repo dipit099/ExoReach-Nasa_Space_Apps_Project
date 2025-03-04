@@ -10,7 +10,6 @@ Password : 123
 Feel free to use these credentials to login
 ```
 
-
 As part of the NASA Space Apps Challenge 2024, Team BUET Astroscape presents Project ExoReach. ExoReach is an interactive educational platform designed to engage students in exploring exoplanets and the mysteries of space. It offers various features, such as ExoVision for 3D views of planets, Explore Exoplanets for in-depth insights into planetary data, ExoFlex, an interactive card game based on real-world planetary properties, ExoQuiz for fun, space-themed quizzes, ExoShowDown for art contests, and a vibrant Community Platform for student interaction. The Did You Know section adds fascinating space facts to spark curiosity and enhance learning.
 
 NASA Space Apps Project Tab : https://www.spaceappschallenge.org/nasa-space-apps-2024/find-a-team/buet-astroscape/?tab=project
